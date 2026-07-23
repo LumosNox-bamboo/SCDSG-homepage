@@ -150,33 +150,65 @@ button { color: inherit; font: inherit; }
 .card-copy span { color: var(--cyan); font-size: .63rem; font-weight: 800; letter-spacing: .16em; }
 .card-copy h3 { margin: 7px 0 2px; font-size: clamp(1.1rem, 1.5vw, 1.45rem); line-height: 1.25; }
 .card-copy p { margin: 0; color: rgba(255,255,255,.68); font-size: .78rem; }
+.wechat-stories { margin-top: 70px; display: grid; grid-template-columns: 1.15fr repeat(3, 1fr); border-top: 1px solid rgba(255,255,255,.18); border-bottom: 1px solid rgba(255,255,255,.18); }
+.wechat-stories-heading, .wechat-stories > a { min-height: 240px; padding: 28px; border-right: 1px solid rgba(255,255,255,.18); }
+.wechat-stories-heading { display: flex; flex-direction: column; justify-content: space-between; }
+.wechat-stories-heading span { color: var(--cyan); font-size: .68rem; font-weight: 900; letter-spacing: .14em; }
+.wechat-stories-heading p { margin: 0; color: rgba(255,255,255,.58); font-size: .8rem; line-height: 1.7; }
+.wechat-stories > a { display: flex; flex-direction: column; color: var(--white); transition: background .25s, transform .25s; }
+.wechat-stories > a:last-child { border-right: 0; }
+.wechat-stories > a:hover { background: rgba(92,199,209,.1); transform: translateY(-4px); }
+.wechat-stories > a span { color: var(--cyan); font-size: .62rem; font-weight: 800; letter-spacing: .12em; }
+.wechat-stories > a strong { margin: auto 0 25px; font-family: Georgia, "Noto Serif SC", serif; font-size: clamp(1.15rem, 1.6vw, 1.55rem); font-weight: 400; line-height: 1.4; }
+.wechat-stories > a em { color: rgba(255,255,255,.62); font-size: .72rem; font-style: normal; }
 
-.network { min-height: 760px; display: grid; grid-template-columns: .8fr 1.2fr; gap: 80px; align-items: center; background: var(--blue-pale); overflow: hidden; }
+.network { min-height: 820px; display: grid; grid-template-columns: .68fr 1.32fr; gap: 70px; align-items: center; background: var(--blue-pale); overflow: hidden; }
 .network-copy > p:not(.eyebrow) { margin: 30px 0 40px; color: var(--ink-soft); }
 .network-detail { padding: 22px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .network-detail span { display: block; color: var(--red); font-size: .68rem; font-weight: 800; letter-spacing: .12em; }
 .network-detail strong { display: block; margin: 7px 0; font-size: 1.2rem; }
 .network-detail p { margin: 0; color: var(--ink-soft); font-size: .86rem; }
-.network-visual { position: relative; min-height: 580px; border-radius: 50%; background: radial-gradient(circle at center, rgba(255,255,255,.9), rgba(255,255,255,.25) 46%, transparent 70%); }
-.network-visual svg { position: absolute; inset: 0; width: 100%; height: 100%; }
-.network-line { fill: none; stroke: rgba(21,94,168,.25); stroke-width: 1.5; stroke-dasharray: 4 7; }
-.network-line.main-line { stroke: url(#linkGradient); stroke-width: 2.5; stroke-dasharray: 8 9; animation: dash 15s linear infinite; }
-.pulse-ring { fill: none; stroke: var(--cyan); stroke-width: 2; transform-origin: 178px 242px; animation: pulse 2.5s infinite; }
-.pulse-ring.delay { stroke: var(--red); transform-origin: 559px 268px; animation-delay: -1.2s; }
-.map-node { position: absolute; padding: 0; display: flex; align-items: center; gap: 8px; border: 0; background: transparent; cursor: pointer; font-size: .74rem; font-weight: 700; }
-.map-node span { display: block; width: 13px; height: 13px; border: 3px solid var(--white); border-radius: 50%; background: var(--blue); box-shadow: 0 0 0 1px var(--blue); transition: transform .2s, background .2s; }
+.network-atlas { position: relative; min-height: 650px; display: grid; grid-template-columns: .72fr 1.28fr; gap: 14px; align-items: stretch; }
+.atlas-bridge { position: absolute; z-index: 5; left: 31%; right: 40%; top: 48%; display: flex; align-items: center; gap: 7px; pointer-events: none; transform: rotate(-8deg); }
+.atlas-bridge span { width: 31px; height: 31px; display: grid; place-items: center; color: var(--white); border-radius: 50%; background: var(--blue); font-size: .55rem; font-weight: 900; }
+.atlas-bridge span:last-child { background: var(--red); }
+.atlas-bridge i { height: 1px; flex: 1; background: linear-gradient(90deg, var(--blue), var(--red)); }
+.atlas-bridge b { padding: 7px 9px; color: var(--white); background: var(--blue-deep); font-size: .55rem; letter-spacing: .08em; white-space: nowrap; }
+.country-map { min-width: 0; padding: 20px; overflow: hidden; border: 1px solid rgba(21,94,168,.13); background: rgba(255,255,255,.7); }
+.country-map-cn { background: rgba(255,255,255,.92); }
+.country-map header { height: 64px; display: flex; align-items: flex-start; gap: 12px; border-bottom: 1px solid var(--line); }
+.country-map header > span { color: var(--red); font-size: .62rem; font-weight: 900; }
+.country-map header div { display: flex; flex-direction: column; }
+.country-map header strong { color: var(--blue-deep); font-size: .75rem; letter-spacing: .15em; }
+.country-map header small { margin-top: 4px; color: var(--ink-soft); font-size: .64rem; }
+.map-canvas { position: relative; height: 540px; }
+.country-map-de .map-canvas { max-width: 340px; margin: auto; }
+.map-canvas > img { position: absolute; inset: 32px 8%; width: 84%; height: calc(100% - 64px); object-fit: contain; opacity: .1; filter: invert(24%) sepia(58%) saturate(1467%) hue-rotate(177deg) brightness(82%); }
+.country-map-cn .map-canvas > img { inset: 62px 2%; width: 96%; height: calc(100% - 124px); opacity: .12; }
+.map-node { position: absolute; z-index: 3; padding: 0; display: flex; align-items: center; gap: 6px; color: var(--ink); border: 0; background: transparent; cursor: pointer; font-size: .61rem; font-weight: 800; white-space: nowrap; }
+.map-node span { display: block; width: 10px; height: 10px; border: 2px solid var(--white); border-radius: 50%; background: var(--blue); box-shadow: 0 0 0 1px var(--blue), 0 4px 10px rgba(7,40,70,.18); transition: transform .2s, background .2s; }
 .map-node:hover span, .map-node.active span { transform: scale(1.45); background: var(--red); box-shadow: 0 0 0 1px var(--red); }
-.node-heidelberg { left: 19%; top: 39%; }
-.node-berlin { left: 34%; top: 17%; }
-.node-europe { left: 8%; top: 72%; }
-.node-china { right: 17%; top: 45%; }
-.node-east { right: 2%; top: 22%; }
-.node-south { right: 2%; bottom: 17%; }
-.map-label { position: absolute; display: flex; flex-direction: column; opacity: .16; line-height: 1; }
-.map-label strong { font-family: Georgia, serif; font-size: 8rem; font-weight: 400; }
-.map-label small { letter-spacing: .3em; }
-.map-de { left: 9%; bottom: 7%; }
-.map-cn { right: 8%; top: 7%; }
+.de-hamburg { left: 43%; top: 16%; }
+.de-berlin { left: 68%; top: 25%; }
+.de-hannover { left: 38%; top: 30%; }
+.de-cologne { left: 15%; top: 45%; }
+.de-frankfurt { left: 37%; top: 53%; }
+.de-heidelberg { left: 38%; top: 63%; }
+.de-stuttgart { left: 30%; top: 72%; }
+.de-freiburg { left: 15%; top: 79%; }
+.de-munich { left: 60%; top: 84%; }
+.cn-dalian { left: 84%; top: 32%; }
+.cn-beijing { left: 71%; top: 35%; }
+.cn-qingdao { left: 78%; top: 45%; }
+.cn-xian { left: 49%; top: 53%; }
+.cn-chengdu { left: 36%; top: 64%; }
+.cn-wuhan { left: 58%; top: 63%; }
+.cn-nanjing { left: 72%; top: 59%; }
+.cn-shanghai { left: 82%; top: 62%; }
+.cn-hangzhou { left: 76%; top: 68%; }
+.cn-wenzhou { left: 80%; top: 74%; }
+.cn-xiamen { left: 72%; top: 81%; }
+.cn-guangzhou { left: 60%; top: 85%; }
 
 .forum-gallery { background: var(--white); }
 .gallery-track { display: grid; grid-template-columns: 1fr 1.2fr .85fr; gap: 18px; align-items: stretch; }
@@ -424,8 +456,12 @@ button { color: inherit; font: inherit; }
   .mission-list article { grid-template-columns: 40px 1fr; }
   .mission-list p { grid-column: 2; }
   .activity-grid { grid-template-columns: repeat(2, 1fr); }
+  .wechat-stories { grid-template-columns: repeat(3, 1fr); }
+  .wechat-stories-heading { grid-column: 1 / -1; min-height: 150px; border-right: 0; border-bottom: 1px solid rgba(255,255,255,.18); }
+  .wechat-stories-heading p { max-width: 620px; }
   .network { grid-template-columns: 1fr; }
   .network-copy { max-width: 800px; }
+  .network-atlas { width: 100%; max-width: 1000px; }
   .join { gap: 60px; }
   .forum-announcement { margin-top: 76px; }
   .forum-hero { grid-template-columns: 1fr; }
@@ -481,9 +517,16 @@ button { color: inherit; font: inherit; }
   .activities .section-heading, .activity-filters { padding-right: 22px; }
   .activity-grid { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; padding-right: 22px; }
   .activity-card, .activity-card-wide { flex: 0 0 82vw; height: 480px; scroll-snap-align: center; }
+  .wechat-stories { margin-right: 22px; display: block; }
+  .wechat-stories-heading, .wechat-stories > a { min-height: 180px; border-right: 0; border-bottom: 1px solid rgba(255,255,255,.18); }
+  .wechat-stories > a:last-child { border-bottom: 0; }
   .network { padding-left: 22px; padding-right: 22px; gap: 20px; }
-  .network-visual { min-height: 430px; transform: scale(.94); }
-  .map-label strong { font-size: 5rem; }
+  .network-atlas { min-height: 0; margin-top: 35px; grid-template-columns: 1fr; transform: none; }
+  .atlas-bridge { display: none; }
+  .country-map { padding: 16px; }
+  .map-canvas { height: 520px; }
+  .country-map-cn .map-canvas { height: 420px; }
+  .map-node { font-size: .58rem; }
   .gallery-track { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; }
   .gallery-track figure, .gallery-track figure:nth-child(2) { flex: 0 0 84vw; min-height: 460px; transform: none; scroll-snap-align: center; }
   .join { padding: 90px 22px; grid-template-columns: 1fr; gap: 55px; }

@@ -126,29 +126,119 @@ const networkContent = {
     zh: '连接德国北部高校、研究机构与华人学者。',
     de: 'Verbindet Hochschulen, Forschungsinstitute und chinesische Forschende in Norddeutschland.'
   },
-  europe: {
-    title: '欧洲 Europe',
-    titleDe: 'Europa',
-    zh: '会员与合作伙伴分布于英国、法国、荷兰等多个国家。',
-    de: 'Mitglieder und Partner sind unter anderem in Großbritannien, Frankreich und den Niederlanden aktiv.'
+  hamburg: {
+    title: '汉堡 Hamburg',
+    titleDe: 'Hamburg',
+    zh: '连接德国北部大学医院、生命科学研究机构与临床科研人才。',
+    de: 'Verbindet Universitätsmedizin, Life-Science-Institute und klinische Forschung in Norddeutschland.'
   },
-  china: {
-    title: '中国部 China',
-    titleDe: 'China-Netzwerk',
-    zh: '归国会员遍布医院、医学院与科研院所，并设有地区联络人。',
-    de: 'Rückkehrende Mitglieder arbeiten in Kliniken, medizinischen Fakultäten und Forschungseinrichtungen.'
+  hannover: {
+    title: '汉诺威 Hannover',
+    titleDe: 'Hannover',
+    zh: '覆盖医学高校、临床研究和生物医学工程领域的专业连接。',
+    de: 'Ein Knoten für Hochschulmedizin, klinische Forschung und biomedizinische Technik.'
   },
-  east: {
-    title: '华东 Ostchina',
-    titleDe: 'Ostchina',
-    zh: '上海、浙江、江苏等地是国内论坛与人才交流的重要节点。',
-    de: 'Shanghai, Zhejiang und Jiangsu sind zentrale Orte für Foren und Karriereaustausch.'
+  cologne: {
+    title: '科隆 Köln',
+    titleDe: 'Köln',
+    zh: '连接北威州高校、大学医院与生物医药产业网络。',
+    de: 'Verbindet Hochschulen, Universitätskliniken und die Biomedizin in Nordrhein-Westfalen.'
   },
-  south: {
-    title: '华南 Südchina',
-    titleDe: 'Südchina',
-    zh: '与广东、福建等地高校和附属医院保持人才与学术联系。',
-    de: 'Enge Verbindungen zu Hochschulen und Universitätskliniken in Guangdong und Fujian.'
+  frankfurt: {
+    title: '法兰克福 Frankfurt',
+    titleDe: 'Frankfurt',
+    zh: '协会正式注册地，也是中德机构联络和跨境交流的重要门户。',
+    de: 'Registrierungsort der SCDSG und wichtiges Tor für deutsch-chinesische institutionelle Kontakte.'
+  },
+  stuttgart: {
+    title: '斯图加特 Stuttgart',
+    titleDe: 'Stuttgart',
+    zh: '连接巴登-符腾堡州医学、工程与产业转化资源。',
+    de: 'Verbindet Medizin, Ingenieurwissenschaften und Translation in Baden-Württemberg.'
+  },
+  freiburg: {
+    title: '弗赖堡 Freiburg',
+    titleDe: 'Freiburg',
+    zh: '延伸至德国西南部大学医学和生命科学研究网络。',
+    de: 'Erweitert das Netzwerk in die Universitätsmedizin und Lebenswissenschaften Südwestdeutschlands.'
+  },
+  munich: {
+    title: '慕尼黑 München',
+    titleDe: 'München',
+    zh: '汇聚大学医院、科研院所和生物技术产业的重要南部节点。',
+    de: 'Ein süddeutscher Knoten für Universitätsmedizin, Forschung und Biotechnologie.'
+  },
+  beijing: {
+    title: '北京 Beijing',
+    titleDe: 'Beijing',
+    zh: '连接国家级医学科研机构、医院与高校合作伙伴。',
+    de: 'Verbindet nationale medizinische Forschungsinstitute, Kliniken und Hochschulpartner.'
+  },
+  shanghai: {
+    title: '上海 Shanghai',
+    titleDe: 'Shanghai',
+    zh: '协会华东网络和第四届国内论坛的重要节点。',
+    de: 'Zentraler Knoten des Ostchina-Netzwerks und Standort des vierten China-Forums.'
+  },
+  nanjing: {
+    title: '南京 Nanjing',
+    titleDe: 'Nanjing',
+    zh: '连接江苏高校、医院及生物医药科研合作。',
+    de: 'Verbindet Hochschulen, Kliniken und biomedizinische Kooperationen in Jiangsu.'
+  },
+  hangzhou: {
+    title: '杭州 Hangzhou',
+    titleDe: 'Hangzhou',
+    zh: '华东地区生命科学、数字医疗和人才交流节点。',
+    de: 'Ein Knoten für Life Sciences, digitale Medizin und Talentaustausch in Ostchina.'
+  },
+  wenzhou: {
+    title: '温州 Wenzhou',
+    titleDe: 'Wenzhou',
+    zh: '第三届国内学术研讨会举办地，与温州医科大学系统保持联系。',
+    de: 'Ort des dritten China-Forums mit Verbindungen zur Wenzhou Medical University.'
+  },
+  wuhan: {
+    title: '武汉 Wuhan',
+    titleDe: 'Wuhan',
+    zh: '华中地区医学高校、医院与归国会员的重要联系节点。',
+    de: 'Wichtiger Knoten für Hochschulmedizin, Kliniken und Rückkehrende in Zentralchina.'
+  },
+  xian: {
+    title: '西安 Xi’an',
+    titleDe: 'Xi’an',
+    zh: '连接西北地区临床医学、高校与生命科学人才。',
+    de: 'Verbindet klinische Medizin, Hochschulen und Life-Science-Talente in Nordwestchina.'
+  },
+  chengdu: {
+    title: '成都 Chengdu',
+    titleDe: 'Chengdu',
+    zh: '西南地区医学科研、医院与产业合作节点。',
+    de: 'Südwestchinesischer Knoten für medizinische Forschung, Kliniken und Industriekooperation.'
+  },
+  guangzhou: {
+    title: '广州 Guangzhou',
+    titleDe: 'Guangzhou',
+    zh: '连接华南高校、附属医院和生物医药合作伙伴。',
+    de: 'Verbindet Hochschulen, Universitätskliniken und Biomedizin-Partner in Südchina.'
+  },
+  xiamen: {
+    title: '厦门 Xiamen',
+    titleDe: 'Xiamen',
+    zh: '第二届国内年会暨学术研讨会举办地。',
+    de: 'Austragungsort des zweiten China-Jahrestreffens und Fachforums.'
+  },
+  dalian: {
+    title: '大连 Dalian',
+    titleDe: 'Dalian',
+    zh: '2016 年第一届国内高峰论坛研讨会举办地。',
+    de: 'Austragungsort des ersten SCDSG-Forums in China im Jahr 2016.'
+  },
+  qingdao: {
+    title: '青岛 Qingdao',
+    titleDe: 'Qingdao',
+    zh: '连接山东地区大学医院、临床研究与会员网络。',
+    de: 'Verbindet Universitätskliniken, klinische Forschung und Mitglieder in Shandong.'
   }
 };
 
