@@ -18,35 +18,46 @@ function setLanguage(nextLanguage) {
     menuLabel.textContent = menuLabel.dataset[`${language}Close`];
   }
 
-  const labels = languageButton.querySelectorAll('span:not([aria-hidden])');
-  labels[0].classList.toggle('active', language === 'zh');
-  labels[1].classList.toggle('active', language === 'de');
-  document.title = language === 'zh'
-    ? 'SCDSG · 旅德华人医师学者协会'
-    : 'SCDSG · Chinesische Ärzte und Wissenschaftler in Deutschland';
+  if (languageButton) {
+    const labels = languageButton.querySelectorAll('span:not([aria-hidden])');
+    labels[0].classList.toggle('active', language === 'zh');
+    labels[1].classList.toggle('active', language === 'de');
+  }
+
+  if (document.body.dataset.titleZh && document.body.dataset.titleDe) {
+    document.title = language === 'zh' ? document.body.dataset.titleZh : document.body.dataset.titleDe;
+  }
 
   const activeNode = document.querySelector('.map-node.active');
   if (activeNode) updateNetwork(activeNode.dataset.node);
 }
 
-languageButton.addEventListener('click', () => setLanguage(language === 'zh' ? 'de' : 'zh'));
+if (languageButton) {
+  languageButton.addEventListener('click', () => setLanguage(language === 'zh' ? 'de' : 'zh'));
+}
 
-menuButton.addEventListener('click', () => {
-  const isOpen = document.body.classList.toggle('nav-open');
-  menuButton.setAttribute('aria-expanded', String(isOpen));
-  const label = menuButton.querySelector('.sr-only');
-  label.textContent = isOpen ? label.dataset[`${language}Close`] : label.dataset[language];
-});
+if (menuButton) {
+  menuButton.addEventListener('click', () => {
+    const isOpen = document.body.classList.toggle('nav-open');
+    menuButton.setAttribute('aria-expanded', String(isOpen));
+    const label = menuButton.querySelector('.sr-only');
+    label.textContent = isOpen ? label.dataset[`${language}Close`] : label.dataset[language];
+  });
+}
 
 document.querySelectorAll('.site-nav a').forEach((link) => {
   link.addEventListener('click', () => {
     document.body.classList.remove('nav-open');
-    menuButton.setAttribute('aria-expanded', 'false');
-    menuButton.querySelector('.sr-only').textContent = menuButton.querySelector('.sr-only').dataset[language];
+    if (menuButton) {
+      menuButton.setAttribute('aria-expanded', 'false');
+      menuButton.querySelector('.sr-only').textContent = menuButton.querySelector('.sr-only').dataset[language];
+    }
   });
 });
 
-window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 24), { passive: true });
+if (header) {
+  window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 24), { passive: true });
+}
 
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
@@ -81,16 +92,22 @@ const countObserver = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('[data-count]').forEach((element) => countObserver.observe(element));
 
-document.querySelector('.timeline-prev').addEventListener('click', () => timeline.scrollBy({ left: -310, behavior: 'smooth' }));
-document.querySelector('.timeline-next').addEventListener('click', () => timeline.scrollBy({ left: 310, behavior: 'smooth' }));
+const timelinePrev = document.querySelector('.timeline-prev');
+const timelineNext = document.querySelector('.timeline-next');
+if (timeline && timelinePrev && timelineNext) {
+  timelinePrev.addEventListener('click', () => timeline.scrollBy({ left: -310, behavior: 'smooth' }));
+  timelineNext.addEventListener('click', () => timeline.scrollBy({ left: 310, behavior: 'smooth' }));
+}
 
-document.querySelectorAll('.activity-filters button').forEach((button) => {
+document.querySelectorAll('[data-filter-group] button').forEach((button) => {
   button.addEventListener('click', () => {
-    document.querySelectorAll('.activity-filters button').forEach((item) => item.classList.remove('active'));
+    const group = button.closest('[data-filter-group]');
+    const targetSelector = group.dataset.filterGroup;
+    group.querySelectorAll('button').forEach((item) => item.classList.remove('active'));
     button.classList.add('active');
     const category = button.dataset.filter;
 
-    document.querySelectorAll('.activity-card').forEach((card) => {
+    document.querySelectorAll(targetSelector).forEach((card) => {
       card.hidden = category !== 'all' && card.dataset.category !== category;
     });
   });
@@ -137,6 +154,7 @@ const networkContent = {
 
 function updateNetwork(node) {
   const content = networkContent[node];
+  if (!content) return;
   document.getElementById('network-title').textContent = language === 'zh' ? content.title : content.titleDe;
   const description = document.getElementById('network-description');
   description.textContent = content[language];
@@ -155,9 +173,11 @@ document.querySelectorAll('.map-node').forEach((button) => {
 if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   const hero = document.querySelector('.hero');
   const orbit = document.querySelector('.hero-orbit');
-  hero.addEventListener('pointermove', (event) => {
-    const x = (event.clientX / window.innerWidth - 0.5) * 12;
-    const y = (event.clientY / window.innerHeight - 0.5) * 12;
-    orbit.style.transform = `translate3d(${x}px, ${y}px, 0)`;
-  });
+  if (hero && orbit) {
+    hero.addEventListener('pointermove', (event) => {
+      const x = (event.clientX / window.innerWidth - 0.5) * 12;
+      const y = (event.clientY / window.innerHeight - 0.5) * 12;
+      orbit.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+    });
+  }
 }

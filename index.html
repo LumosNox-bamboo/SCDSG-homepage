@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="styles.css">
   <script src="script.js" defer></script>
 </head>
-<body>
+<body data-title-zh="SCDSG · 旅德华人医师学者协会" data-title-de="SCDSG · Chinesische Ärzte und Wissenschaftler in Deutschland">
   <a class="skip-link" href="#main">跳至正文</a>
 
   <header class="site-header" id="top">
@@ -26,6 +26,7 @@
     </button>
 
     <nav class="site-nav" id="site-nav" aria-label="主导航">
+      <a href="forum-2026/" data-zh="2026 青年论坛" data-de="Forum 2026">2026 青年论坛</a>
       <a href="#about" data-zh="关于协会" data-de="Über uns">关于协会</a>
       <a href="#impact" data-zh="发展历程" data-de="Geschichte">发展历程</a>
       <a href="#activities" data-zh="活动" data-de="Aktivitäten">活动</a>
@@ -57,6 +58,7 @@
         <p class="hero-intro" data-zh="以医学、生物医药及相关学科的博士和博士后为主体，构建开放、专业、有温度的学术交流平台。" data-de="Eine offene, professionelle und persönliche Plattform für den wissenschaftlichen Austausch in Medizin, Biomedizin und verwandten Disziplinen.">以医学、生物医药及相关学科的博士和博士后为主体，构建开放、专业、有温度的学术交流平台。</p>
         <div class="hero-actions">
           <a class="button button-primary" href="#join"><span data-zh="加入协会" data-de="Mitglied werden">加入协会</span><span aria-hidden="true">↗</span></a>
+          <a class="button button-secondary" href="forum-2026/"><span data-zh="进入 2026 青年论坛" data-de="Forum 2026 öffnen">进入 2026 青年论坛</span><span aria-hidden="true">→</span></a>
           <a class="text-link" href="#activities"><span data-zh="浏览近期活动" data-de="Aktivitäten entdecken">浏览近期活动</span><span aria-hidden="true">↓</span></a>
         </div>
       </div>
@@ -78,6 +80,20 @@
       <p data-zh="拼搏进取" data-de="Fortschritt">拼搏进取</p><span>✦</span>
       <p data-zh="仁爱至善" data-de="Menschlichkeit">仁爱至善</p><span>✦</span>
       <p data-zh="中德合作" data-de="Deutsch-chinesische Kooperation">中德合作</p>
+    </section>
+
+    <section class="conference-spotlight" aria-labelledby="conference-spotlight-title">
+      <div class="conference-spotlight-copy reveal">
+        <p class="eyebrow" data-zh="重点项目 · 2026" data-de="SCHWERPUNKT · 2026">重点项目 · 2026</p>
+        <h2 id="conference-spotlight-title" data-zh="旅德华人医师学者青年学术论坛" data-de="Young Chinese Medical Scholars Forum in Germany">旅德华人医师学者青年学术论坛</h2>
+        <p data-zh="2026 年 10–11 月，德国海德堡。面向旅德青年医师、博士后、博士研究生与生命科学研究者，打造中德医学科研交流与青年学术展示平台。" data-de="Oktober–November 2026 in Heidelberg. Eine Plattform für junge chinesische Ärztinnen, Ärzte und Forschende in Deutschland, mit Fokus auf medizinische Forschung, Austausch und wissenschaftliche Sichtbarkeit.">2026 年 10–11 月，德国海德堡。面向旅德青年医师、博士后、博士研究生与生命科学研究者，打造中德医学科研交流与青年学术展示平台。</p>
+      </div>
+      <div class="conference-spotlight-panel reveal">
+        <div><strong>50–80</strong><span data-zh="线下参会" data-de="vor Ort">线下参会</span></div>
+        <div><strong>10</strong><span data-zh="口头报告席位" data-de="Vorträge">口头报告席位</span></div>
+        <div><strong>5</strong><span data-zh="杰出青年科学家奖" data-de="Young Scientist Awards">杰出青年科学家奖</span></div>
+        <a class="button button-primary" href="forum-2026/"><span data-zh="进入会议网站" data-de="Zur Konferenzseite">进入会议网站</span><span aria-hidden="true">↗</span></a>
+      </div>
     </section>
 
     <section class="section about" id="about">
@@ -135,7 +151,7 @@
         <p data-zh="从学术讲座、国际论坛到公益行动与团建，我们让专业共同体保持活力。" data-de="Von Fachvorträgen und internationalen Foren bis zu Charity-Aktionen und gemeinsamen Ausflügen.">从学术讲座、国际论坛到公益行动与团建，我们让专业共同体保持活力。</p>
       </div>
 
-      <div class="activity-filters reveal" role="group" aria-label="活动筛选">
+      <div class="activity-filters reveal" role="group" aria-label="活动筛选" data-filter-group=".activity-card">
         <button class="active" type="button" data-filter="all" data-zh="全部" data-de="Alle">全部</button>
         <button type="button" data-filter="academic" data-zh="学术交流" data-de="Wissenschaft">学术交流</button>
         <button type="button" data-filter="career" data-zh="人才合作" data-de="Karriere">人才合作</button>
