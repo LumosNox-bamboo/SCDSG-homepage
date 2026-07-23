@@ -28,7 +28,7 @@ function setLanguage(nextLanguage) {
     document.title = language === 'zh' ? document.body.dataset.titleZh : document.body.dataset.titleDe;
   }
 
-  const activeNode = document.querySelector('.map-node.active');
+  const activeNode = document.querySelector('.city-chip.active');
   if (activeNode) updateNetwork(activeNode.dataset.node);
 }
 
@@ -252,10 +252,12 @@ function updateNetwork(node) {
   description.dataset.de = content.de;
 }
 
-document.querySelectorAll('.map-node').forEach((button) => {
+document.querySelectorAll('.city-chip').forEach((button) => {
   button.addEventListener('click', () => {
-    document.querySelectorAll('.map-node').forEach((node) => node.classList.remove('active'));
+    document.querySelectorAll('.city-chip').forEach((node) => node.classList.remove('active'));
+    document.querySelectorAll('.map-point').forEach((point) => point.classList.remove('active'));
     button.classList.add('active');
+    document.querySelector(`.map-point[data-node="${button.dataset.node}"]`)?.classList.add('active');
     updateNetwork(button.dataset.node);
   });
 });
