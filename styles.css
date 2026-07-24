@@ -409,7 +409,7 @@ button { color: inherit; font: inherit; }
 .award-card-small strong { font-size: 1.25rem; }
 
 .organisers-section { background: var(--white); }
-.organiser-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+.organiser-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 22px; }
 .organiser-card { position: relative; min-height: 470px; padding: clamp(32px, 5vw, 60px); display: flex; flex-direction: column; border: 1px solid var(--line); }
 .organiser-badge { position: absolute; top: 22px; right: 22px; padding: 7px 9px; color: var(--white); background: var(--blue); font-size: .6rem; font-weight: 900; letter-spacing: .12em; }
 .organiser-logo { width: auto; max-width: 310px; height: 78px; object-fit: contain; object-position: left center; }
@@ -418,8 +418,16 @@ button { color: inherit; font: inherit; }
 .organiser-card h3 { margin: auto 0 14px; font-family: Georgia, "Noto Serif SC", serif; font-size: clamp(2rem, 3.4vw, 3.5rem); font-weight: 400; line-height: 1.1; }
 .organiser-card p { margin: 0 0 25px; color: var(--ink-soft); font-size: .87rem; line-height: 1.8; }
 .organiser-card a { width: fit-content; color: var(--blue); font-size: .78rem; font-weight: 800; }
-.proposed-partner { background: var(--forum-sky); }
+.proposed-partner { min-height: 540px; border-top: 4px solid var(--forum-lime); background: linear-gradient(145deg, #eef7fb, #dcecf4); box-shadow: 0 26px 70px rgba(7,29,48,.1); }
 .proposed-partner .organiser-badge { color: var(--forum-night); background: var(--forum-lime); }
+.partner-role-list { margin: 0 0 28px; padding: 20px 0 0 20px; border-top: 1px solid rgba(16,39,60,.16); color: var(--ink-soft); font-size: .82rem; line-height: 1.7; }
+.partner-role-list li { margin: 8px 0; }
+
+.partner-keynote { border-top: 4px solid var(--forum-lime); }
+.keynote-institution { display: flex; align-items: center; justify-content: center; background: linear-gradient(145deg, #e8f4f8, #cfe5ed); }
+.keynote-institution::after { content: ""; position: absolute; inset: 11%; border: 1px solid rgba(7,29,48,.16); }
+.keynote-institution::before { content: "KEYNOTE II"; position: absolute; right: 15%; bottom: 15%; color: rgba(7,29,48,.28); font-family: Georgia, serif; font-size: clamp(2.2rem, 4vw, 4.4rem); letter-spacing: .04em; }
+.keynote-institution img { width: 72%; height: auto; max-height: 130px; object-fit: contain; filter: none; }
 
 .forum-faq { background: var(--cream); }
 .faq-list { max-width: 980px; margin-left: auto; border-top: 1px solid var(--line); }
@@ -481,6 +489,11 @@ button { color: inherit; font: inherit; }
 .form-grid input, .form-grid select, .form-grid textarea { width: 100%; padding: 13px 14px; color: var(--ink); border: 1px solid rgba(16,39,60,.24); border-radius: 2px; outline: none; background: #fbfcfd; font: inherit; font-size: .9rem; transition: border-color .2s, box-shadow .2s, background .2s; }
 .form-grid textarea { resize: vertical; }
 .form-grid input:focus, .form-grid select:focus, .form-grid textarea:focus { border-color: var(--blue); background: var(--white); box-shadow: 0 0 0 3px rgba(21,94,168,.1); }
+.field-help { color: var(--ink-soft); font-size: .7rem; font-weight: 500; line-height: 1.55; }
+.field-help.limit-exceeded { color: var(--red); font-weight: 800; }
+.file-field { padding: 18px; border: 1px solid var(--line); background: #f6f9fb; }
+.file-field input[type="file"] { padding: 10px; background: var(--white); }
+.file-field input[type="file"]::file-selector-button { margin-right: 14px; padding: 9px 13px; color: var(--white); border: 0; border-radius: 2px; background: var(--blue); font: inherit; font-size: .75rem; font-weight: 800; cursor: pointer; }
 .form-honeypot { position: absolute !important; left: -10000px !important; width: 1px !important; height: 1px !important; overflow: hidden !important; }
 .consent-field { margin-top: 30px; padding: 20px 0; display: grid; grid-template-columns: 18px 1fr; gap: 12px; align-items: start; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); color: var(--ink-soft); font-size: .78rem; line-height: 1.7; }
 .consent-field input { margin-top: 4px; accent-color: var(--blue); }
