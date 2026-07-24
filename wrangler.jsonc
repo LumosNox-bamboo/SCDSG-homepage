@@ -1,0 +1,19 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "scdsg-homepage",
+  "pages_build_output_dir": ".",
+  "compatibility_date": "2026-07-24",
+  "compatibility_flags": ["nodejs_compat"],
+  "d1_databases": [
+    {
+      "binding": "REGISTRATIONS_DB",
+      "database_name": "scdsg-forum-2026-registrations",
+      "database_id": "2bec9a66-08ea-4d28-9754-201b24c70c5f",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 1
+  }
+}

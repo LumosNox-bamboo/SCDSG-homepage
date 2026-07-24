@@ -117,7 +117,7 @@ const networkContent = {
   heidelberg: {
     title: '海德堡 Heidelberg',
     titleDe: 'Heidelberg',
-    zh: '协会发源地，也是德国部会员最集中的地区。',
+    zh: '海德堡是协会发源地，也是德国会员最集中的地区。',
     de: 'Ursprungsort der Gemeinschaft und Schwerpunkt des deutschen Netzwerks.'
   },
   berlin: {

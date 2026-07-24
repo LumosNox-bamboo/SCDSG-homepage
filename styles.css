@@ -5,12 +5,13 @@
   --blue-deep: #0b3156;
   --blue-pale: #eaf2fb;
   --cyan: #58c3cd;
-  --red: #d9583f;
+  --red: #a34b3f;
+  --gold: #b08b52;
   --cream: #f7f6f1;
   --white: #fff;
   --line: rgba(16, 39, 60, .15);
   --shadow: 0 24px 80px rgba(16, 39, 60, .14);
-  --radius: 22px;
+  --radius: 12px;
   --max: 1240px;
 }
 
@@ -41,16 +42,16 @@ button { color: inherit; font: inherit; }
 .language-switch .active { color: var(--blue); opacity: 1; font-weight: 800; }
 .menu-toggle { display: none; }
 
-.hero { position: relative; min-height: 850px; padding: 160px max(6vw, calc((100vw - var(--max))/2)) 80px; display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(420px, .95fr); align-items: center; gap: clamp(50px, 8vw, 120px); overflow: hidden; background: radial-gradient(circle at 62% 38%, rgba(88,195,205,.2), transparent 30%), linear-gradient(135deg, #f7f6f1 0%, #edf4f8 55%, #e8f1f8 100%); }
-.hero::before { content: ""; position: absolute; top: 88px; bottom: 0; left: 56%; width: 1px; background: linear-gradient(transparent, rgba(21,94,168,.18), transparent); }
+.hero { position: relative; min-height: 790px; padding: 145px max(6vw, calc((100vw - var(--max))/2)) 80px; display: grid; grid-template-columns: minmax(0, .78fr) minmax(500px, 1.22fr); align-items: center; gap: clamp(44px, 6vw, 86px); overflow: hidden; background-color: #f3f6f8; background-image: linear-gradient(rgba(21,94,168,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(21,94,168,.035) 1px, transparent 1px), radial-gradient(circle at 66% 35%, rgba(88,195,205,.17), transparent 31%); background-size: 44px 44px, 44px 44px, auto; }
+.hero::before { content: ""; position: absolute; top: 88px; bottom: 0; left: 43%; width: 1px; background: linear-gradient(transparent, rgba(21,94,168,.2), transparent); }
 .hero-copy { position: relative; z-index: 3; }
 .eyebrow { margin: 0 0 20px; color: var(--blue); font-size: .72rem; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; }
-.hero h1 { margin: 0; max-width: 760px; font-size: clamp(3.4rem, 6.4vw, 6.8rem); font-weight: 500; line-height: .98; letter-spacing: -.06em; }
+.hero h1 { margin: 0; max-width: 660px; font-family: Georgia, "Noto Serif SC", serif; font-size: clamp(3rem, 5vw, 5.4rem); font-weight: 400; line-height: 1.03; letter-spacing: -.045em; }
 .hero h1 span, .hero h1 em { display: block; }
 .hero h1 em { margin-top: 14px; color: var(--blue); font-family: Georgia, "Noto Serif SC", serif; font-weight: 400; font-style: normal; }
 .hero-intro { max-width: 610px; margin: 36px 0; color: var(--ink-soft); font-size: clamp(1rem, 1.35vw, 1.18rem); line-height: 1.85; }
 .hero-actions { display: flex; align-items: center; gap: 28px; }
-.button { display: inline-flex; justify-content: center; align-items: center; gap: 30px; min-width: 160px; padding: 14px 22px; border-radius: 999px; font-size: .9rem; font-weight: 700; transition: transform .2s, box-shadow .2s, background .2s; }
+.button { display: inline-flex; justify-content: center; align-items: center; gap: 30px; min-width: 160px; padding: 14px 22px; border-radius: 4px; font-size: .9rem; font-weight: 700; transition: transform .2s, box-shadow .2s, background .2s; }
 .button:hover { transform: translateY(-2px); }
 .button-primary { color: var(--white); background: var(--blue); box-shadow: 0 12px 28px rgba(21,94,168,.25); }
 .button-primary:hover { background: var(--blue-deep); box-shadow: 0 16px 34px rgba(21,94,168,.35); }
@@ -60,14 +61,18 @@ button { color: inherit; font: inherit; }
 .button-light:hover { color: var(--white); background: var(--red); border-color: var(--red); }
 .text-link { display: inline-flex; gap: 12px; align-items: center; font-size: .88rem; font-weight: 700; }
 .text-link span:last-child { color: var(--red); }
-.feature-card { position: relative; z-index: 2; height: min(61vw, 610px); max-height: 610px; min-height: 510px; border-radius: 280px 280px var(--radius) var(--radius); overflow: hidden; box-shadow: var(--shadow); }
-.feature-card::after { content: ""; position: absolute; inset: 0; background: linear-gradient(transparent 45%, rgba(4,26,46,.9)); }
+.feature-card { position: relative; z-index: 2; height: min(44vw, 540px); max-height: 540px; min-height: 460px; overflow: hidden; border: 1px solid rgba(21,94,168,.2); border-radius: 6px; box-shadow: 0 26px 76px rgba(7,40,70,.2); }
+.feature-card::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(4,26,46,.75), rgba(4,26,46,.06) 70%), linear-gradient(transparent 42%, rgba(4,26,46,.92)); }
 .feature-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 1s cubic-bezier(.2,.8,.2,1); }
-.feature-card:hover img { transform: scale(1.04); }
+.feature-card:hover img { transform: scale(1.025); }
+.conference-poster { display: block; }
+.conference-poster::before { content: ""; position: absolute; z-index: 3; inset: 16px; border: 1px solid rgba(255,255,255,.28); pointer-events: none; }
 .feature-overlay { position: absolute; z-index: 2; left: 38px; right: 38px; bottom: 34px; color: var(--white); }
-.feature-overlay p { margin: 0 0 8px; color: var(--cyan); font-size: .7rem; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
-.feature-overlay h2 { margin: 0; font-size: clamp(1.45rem, 2vw, 2rem); line-height: 1.25; }
-.feature-overlay span { opacity: .72; font-size: .82rem; }
+.feature-overlay p { margin: 0 0 13px; color: var(--cyan); font-size: .64rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
+.feature-overlay h2 { max-width: 620px; margin: 0; font-family: Georgia, "Noto Serif SC", serif; font-size: clamp(1.7rem, 2.55vw, 2.75rem); font-weight: 400; line-height: 1.18; }
+.feature-meta { margin-top: 20px; padding-top: 16px; display: flex; align-items: center; justify-content: space-between; gap: 20px; border-top: 1px solid rgba(255,255,255,.28); }
+.feature-meta span { opacity: .72; font-size: .78rem; }
+.feature-meta strong { color: var(--white); font-size: .76rem; letter-spacing: .04em; }
 .hero-scroll { position: absolute; left: max(6vw, calc((100vw - var(--max))/2)); bottom: 30px; display: flex; align-items: center; gap: 12px; color: var(--ink-soft); }
 .hero-scroll span { display: block; width: 58px; height: 1px; background: var(--ink-soft); animation: scroll-line 1.8s infinite; transform-origin: left; }
 .hero-scroll small { font-size: .58rem; letter-spacing: .16em; }
@@ -254,38 +259,39 @@ button { color: inherit; font: inherit; }
 .site-footer a { color: var(--cyan); }
 
 .forum-page {
-  --forum-lime: #d7f13d;
-  --forum-violet: #6f5cff;
-  --forum-night: #071b2b;
-  --forum-sky: #e7f2ff;
+  --forum-lime: #79c6d0;
+  --forum-violet: #a9824b;
+  --forum-night: #071d30;
+  --forum-sky: #edf3f7;
   background: var(--white);
 }
+.forum-page .button { border-radius: 3px; }
 .forum-page .section { scroll-margin-top: 130px; }
 .forum-header { border-bottom-color: rgba(16,39,60,.1); }
 .forum-announcement { min-height: 48px; margin-top: 72px; padding: 10px max(6vw, calc((100vw - var(--max))/2)); display: flex; align-items: center; gap: 22px; color: var(--white); background: var(--forum-night); }
 .forum-announcement p { flex: 1; margin: 0; font-size: .82rem; letter-spacing: .02em; }
 .forum-announcement a { color: var(--forum-lime); font-size: .78rem; font-weight: 800; white-space: nowrap; }
-.announcement-label { padding: 5px 9px; color: var(--forum-night); background: var(--forum-lime); font-size: .62rem; font-weight: 900; letter-spacing: .14em; }
+.announcement-label { padding: 5px 9px; color: var(--forum-lime); border: 1px solid rgba(121,198,208,.5); background: transparent; font-size: .62rem; font-weight: 900; letter-spacing: .14em; }
 
-.forum-hero { min-height: 730px; padding: 72px max(6vw, calc((100vw - var(--max))/2)) 70px; display: grid; grid-template-columns: minmax(0, .92fr) minmax(440px, .75fr); gap: clamp(36px, 6vw, 92px); align-items: center; color: var(--forum-night); background: linear-gradient(120deg, #f8fbff 0%, #edf7ff 58%, #e7eaff 100%); overflow: hidden; }
+.forum-hero { min-height: 730px; padding: 72px max(6vw, calc((100vw - var(--max))/2)) 70px; display: grid; grid-template-columns: minmax(0, .92fr) minmax(440px, .75fr); gap: clamp(36px, 6vw, 92px); align-items: center; color: var(--forum-night); background-color: #f4f7f9; background-image: linear-gradient(rgba(7,29,48,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(7,29,48,.035) 1px, transparent 1px); background-size: 42px 42px; overflow: hidden; }
 .forum-hero-copy { position: relative; z-index: 2; }
-.forum-edition { width: fit-content; margin-bottom: 36px; padding: 9px 12px; display: grid; grid-template-columns: auto auto; gap: 0 8px; color: var(--white); background: var(--forum-night); transform: rotate(-2deg); }
+.forum-edition { width: fit-content; margin-bottom: 36px; padding: 10px 13px; display: grid; grid-template-columns: auto auto; gap: 0 8px; color: var(--white); border-left: 3px solid var(--forum-lime); background: var(--forum-night); }
 .forum-edition span, .forum-edition strong { font-size: .64rem; letter-spacing: .16em; }
 .forum-edition span { color: var(--forum-lime); }
 .forum-edition em { grid-column: 2; grid-row: 1 / span 2; align-self: center; color: var(--forum-lime); font-family: Georgia, serif; font-size: 1.55rem; font-style: normal; line-height: 1; }
 .forum-hero .eyebrow { max-width: 650px; margin-bottom: 18px; color: var(--blue); }
-.forum-hero h1 { max-width: 780px; margin: 0; font-family: Georgia, "Noto Serif SC", serif; font-size: clamp(3.5rem, 6.3vw, 7.3rem); font-weight: 400; line-height: .96; letter-spacing: -.055em; }
+.forum-hero h1 { max-width: 780px; margin: 0; font-family: Georgia, "Noto Serif SC", serif; font-size: clamp(3.2rem, 5.5vw, 6.1rem); font-weight: 400; line-height: 1.01; letter-spacing: -.045em; }
 .forum-lead { max-width: 680px; margin: 30px 0; color: var(--ink-soft); font-size: clamp(.98rem, 1.25vw, 1.12rem); line-height: 1.82; }
 .forum-hero-actions { display: flex; align-items: center; gap: 26px; flex-wrap: wrap; }
 .forum-text-link { display: inline-flex; gap: 10px; color: var(--ink); font-size: .84rem; font-weight: 800; }
 .forum-hero-visual { position: relative; min-height: 585px; }
-.forum-hero-visual::before { content: ""; position: absolute; inset: 38px -30px -24px 28px; background: var(--forum-lime); clip-path: polygon(8% 0, 100% 5%, 91% 100%, 0 92%); }
-.forum-hero-visual img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; clip-path: polygon(0 3%, 96% 0, 100% 91%, 8% 100%); filter: saturate(.85) contrast(1.04); }
-.forum-visual-caption { position: absolute; z-index: 3; right: -18px; bottom: 22px; width: min(330px, 80%); padding: 24px 26px; color: var(--white); background: rgba(7,27,43,.94); box-shadow: 0 22px 70px rgba(7,27,43,.3); }
+.forum-hero-visual::before { content: ""; position: absolute; inset: 18px -18px -18px 18px; border: 1px solid rgba(7,29,48,.18); background: rgba(121,198,208,.12); }
+.forum-hero-visual img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border: 1px solid rgba(7,29,48,.15); filter: saturate(.82) contrast(1.06); }
+.forum-visual-caption { position: absolute; z-index: 3; right: 0; bottom: 0; width: min(360px, 82%); padding: 24px 26px; color: var(--white); border-top: 2px solid var(--forum-lime); background: rgba(7,29,48,.96); box-shadow: 0 22px 70px rgba(7,27,43,.3); }
 .forum-visual-caption span { color: var(--forum-lime); font-size: .63rem; font-weight: 900; letter-spacing: .18em; }
 .forum-visual-caption strong { display: block; margin-top: 7px; font-family: Georgia, "Noto Serif SC", serif; font-size: 1.6rem; font-weight: 400; }
 .forum-visual-caption p { margin: 6px 0 0; color: rgba(255,255,255,.67); font-size: .8rem; }
-.forum-orbit { position: absolute; z-index: 4; top: -24px; right: -38px; width: 120px; height: 120px; border: 1px solid rgba(21,94,168,.35); border-radius: 50%; animation: forum-spin 18s linear infinite; }
+.forum-orbit { display: none; }
 .forum-orbit span { position: absolute; width: 11px; height: 11px; border-radius: 50%; background: var(--forum-violet); }
 .forum-orbit span:nth-child(1) { top: 4px; left: 52px; }
 .forum-orbit span:nth-child(2) { right: 3px; bottom: 28px; background: var(--forum-lime); }
@@ -339,7 +345,7 @@ button { color: inherit; font: inherit; }
 .faculty-more span { color: var(--cyan); font-size: .62rem; font-weight: 900; letter-spacing: .13em; }
 .faculty-more strong { margin-top: 44px; font-size: 1.08rem; }
 .faculty-more p { margin: 8px 0 0; color: rgba(255,255,255,.56); font-size: .8rem; }
-.faculty-open { background: rgba(111,92,255,.18); }
+.faculty-open { background: rgba(169,130,75,.15); }
 
 .programme-section { display: grid; grid-template-columns: .72fr 1.28fr; gap: clamp(55px, 8vw, 115px); background: var(--forum-sky); }
 .programme-heading h2 { margin: 0; font-family: Georgia, "Noto Serif SC", serif; font-size: clamp(2.8rem, 4.7vw, 5rem); font-weight: 400; line-height: 1.1; letter-spacing: -.045em; }
@@ -375,7 +381,7 @@ button { color: inherit; font: inherit; }
 .abstract-call .eyebrow { color: var(--forum-lime); }
 .abstract-call h2 { margin: 0; font-family: Georgia, "Noto Serif SC", serif; font-size: clamp(3rem, 5.5vw, 6rem); font-weight: 400; line-height: 1; letter-spacing: -.05em; }
 .abstract-call > div:first-child > p:last-child { max-width: 720px; margin: 30px 0 0; color: rgba(255,255,255,.72); line-height: 1.85; }
-.abstract-format { padding: 30px; align-self: start; color: var(--ink); background: var(--forum-lime); }
+.abstract-format { padding: 30px; align-self: start; color: var(--ink); border-top: 4px solid var(--forum-violet); background: #f2f6f7; }
 .abstract-format > span { font-size: .63rem; font-weight: 900; letter-spacing: .15em; }
 .abstract-format > strong { display: block; margin-top: 14px; font-family: Georgia, "Noto Serif SC", serif; font-size: 2rem; font-weight: 400; }
 .abstract-format ul { margin: 25px 0 0; padding: 22px 0 0 19px; border-top: 1px solid rgba(7,27,43,.2); }
@@ -398,7 +404,7 @@ button { color: inherit; font: inherit; }
 .award-card span { color: var(--forum-lime); font-size: .62rem; font-weight: 900; letter-spacing: .13em; writing-mode: vertical-rl; }
 .award-card strong { font-family: Georgia, "Noto Serif SC", serif; font-size: clamp(1.5rem, 2.6vw, 2.8rem); font-weight: 400; line-height: 1.15; }
 .award-card p { margin: 0; color: rgba(255,255,255,.6); font-size: .75rem; line-height: 1.6; }
-.award-card-main { background: linear-gradient(150deg, rgba(111,92,255,.65), rgba(21,94,168,.45)); }
+.award-card-main { background: linear-gradient(150deg, rgba(169,130,75,.5), rgba(21,94,168,.42)); }
 .award-card-small { min-height: 430px; padding: 22px; }
 .award-card-small strong { font-size: 1.25rem; }
 
@@ -431,6 +437,62 @@ button { color: inherit; font: inherit; }
 .forum-cta .eyebrow { color: var(--forum-lime); }
 .forum-cta h2 { max-width: 920px; margin: 0; font-family: Georgia, "Noto Serif SC", serif; font-size: clamp(3rem, 6vw, 6.6rem); font-weight: 400; line-height: 1; letter-spacing: -.045em; }
 .forum-cta p { max-width: 690px; margin: 28px 0 34px; color: rgba(255,255,255,.72); line-height: 1.82; }
+.forum-cta-actions { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
+.forum-text-link-light { color: var(--white); }
+
+.registration-section { display: grid; grid-template-columns: 1.15fr .85fr; gap: clamp(60px, 9vw, 130px); align-items: center; color: var(--white); background: linear-gradient(125deg, var(--forum-night), #103d60); }
+.registration-section .eyebrow { color: var(--forum-lime); }
+.registration-section h2 { max-width: 760px; margin: 0; font-family: Georgia, "Noto Serif SC", serif; font-size: clamp(2.8rem, 5vw, 5.4rem); font-weight: 400; line-height: 1.08; letter-spacing: -.04em; }
+.registration-copy > p:last-child { max-width: 680px; margin: 28px 0 0; color: rgba(255,255,255,.68); line-height: 1.85; }
+.registration-panel { padding: clamp(30px, 4vw, 48px); border: 1px solid rgba(255,255,255,.2); border-top: 3px solid var(--forum-lime); background: rgba(255,255,255,.06); }
+.registration-panel > span { color: var(--forum-lime); font-size: .64rem; font-weight: 900; letter-spacing: .14em; }
+.registration-panel > strong { display: block; margin-top: 12px; font-family: Georgia, "Noto Serif SC", serif; font-size: 2rem; font-weight: 400; }
+.registration-panel ul { margin: 24px 0 30px; padding: 20px 0 0 20px; border-top: 1px solid rgba(255,255,255,.16); color: rgba(255,255,255,.72); }
+.registration-panel li { margin: 8px 0; }
+
+.registration-nav { display: flex; align-items: center; gap: 24px; }
+.registration-nav a { color: var(--ink-soft); font-size: .78rem; font-weight: 700; }
+.registration-nav a:hover { color: var(--blue); }
+.registration-main { padding-top: 88px; background: #f4f7f9; }
+.registration-hero { position: relative; min-height: 470px; display: flex; align-items: end; overflow: hidden; color: var(--white); }
+.registration-hero > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.registration-hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(7,29,48,.96), rgba(7,29,48,.55) 56%, rgba(7,29,48,.1)); }
+.registration-hero-copy { position: relative; z-index: 2; width: min(100% - 44px, var(--max)); margin: 0 auto; padding: 88px 0 68px; }
+.registration-hero .eyebrow { color: var(--forum-lime); }
+.registration-hero h1 { max-width: 850px; margin: 0; font-family: Georgia, "Noto Serif SC", serif; font-size: clamp(3.2rem, 6vw, 6.4rem); font-weight: 400; line-height: 1; letter-spacing: -.045em; }
+.registration-hero-copy > p:last-child { margin: 24px 0 0; color: rgba(255,255,255,.72); }
+.registration-layout { width: min(100% - 44px, var(--max)); margin: 0 auto; padding: 90px 0 120px; display: grid; grid-template-columns: .62fr 1.38fr; gap: clamp(50px, 8vw, 110px); align-items: start; }
+.registration-context { position: sticky; top: 112px; }
+.registration-context h2 { margin: 0; font-family: Georgia, "Noto Serif SC", serif; font-size: clamp(2.4rem, 4vw, 4.1rem); font-weight: 400; line-height: 1.1; letter-spacing: -.035em; }
+.registration-context > p:not(.eyebrow) { margin: 28px 0 38px; color: var(--ink-soft); line-height: 1.85; }
+.registration-context dl { margin: 0; border-top: 1px solid var(--line); }
+.registration-context dl div { padding: 18px 0; display: grid; grid-template-columns: 110px 1fr; gap: 18px; border-bottom: 1px solid var(--line); }
+.registration-context dt { color: var(--blue); font-size: .62rem; font-weight: 900; letter-spacing: .12em; }
+.registration-context dd { margin: 0; color: var(--ink-soft); font-size: .82rem; }
+.registration-form-card { padding: clamp(30px, 5vw, 64px); border: 1px solid var(--line); border-top: 4px solid var(--blue); background: var(--white); box-shadow: 0 30px 90px rgba(7,29,48,.1); }
+.form-heading { margin-bottom: 42px; padding-bottom: 24px; display: grid; grid-template-columns: 70px 1fr; gap: 20px; border-bottom: 1px solid var(--line); }
+.form-heading > span { color: var(--forum-violet); font-family: Georgia, serif; font-size: 1.45rem; }
+.form-heading h2 { margin: 0; font-family: Georgia, "Noto Serif SC", serif; font-size: 2rem; font-weight: 400; }
+.form-heading p { margin: 4px 0 0; color: var(--ink-soft); font-size: .78rem; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px 20px; }
+.form-grid label { display: flex; flex-direction: column; gap: 8px; }
+.form-grid label > span { font-size: .78rem; font-weight: 800; }
+.form-wide { grid-column: 1 / -1; }
+.form-grid input, .form-grid select, .form-grid textarea { width: 100%; padding: 13px 14px; color: var(--ink); border: 1px solid rgba(16,39,60,.24); border-radius: 2px; outline: none; background: #fbfcfd; font: inherit; font-size: .9rem; transition: border-color .2s, box-shadow .2s, background .2s; }
+.form-grid textarea { resize: vertical; }
+.form-grid input:focus, .form-grid select:focus, .form-grid textarea:focus { border-color: var(--blue); background: var(--white); box-shadow: 0 0 0 3px rgba(21,94,168,.1); }
+.form-honeypot { position: absolute !important; left: -10000px !important; width: 1px !important; height: 1px !important; overflow: hidden !important; }
+.consent-field { margin-top: 30px; padding: 20px 0; display: grid; grid-template-columns: 18px 1fr; gap: 12px; align-items: start; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); color: var(--ink-soft); font-size: .78rem; line-height: 1.7; }
+.consent-field input { margin-top: 4px; accent-color: var(--blue); }
+.form-submit-row { margin-top: 30px; display: flex; align-items: center; gap: 24px; }
+.form-submit-row p { margin: 0; color: var(--ink-soft); font-size: .75rem; }
+.form-submit-row button { border: 0; cursor: pointer; }
+.form-submit-row button:disabled { opacity: .62; cursor: wait; }
+.form-status { min-height: 0; margin-top: 20px; padding: 0; font-size: .86rem; }
+.form-status.loading { color: var(--blue); }
+.form-status.success, .form-status.error { padding: 16px 18px; border-left: 3px solid; }
+.form-status.success { color: #1e6043; border-color: #2f8b62; background: #eaf7f0; }
+.form-status.error { color: #8b302b; border-color: var(--red); background: #fbefed; }
 
 @keyframes forum-spin { to { transform: rotate(360deg); } }
 
@@ -467,6 +529,9 @@ button { color: inherit; font: inherit; }
   .network-copy { max-width: 800px; }
   .network-atlas { width: 100%; max-width: 1000px; }
   .join { gap: 60px; }
+  .registration-section { grid-template-columns: 1fr; }
+  .registration-layout { grid-template-columns: 1fr; }
+  .registration-context { position: static; max-width: 760px; }
   .forum-announcement { margin-top: 76px; }
   .forum-hero { grid-template-columns: 1fr; }
   .forum-hero-copy { max-width: 850px; }
@@ -496,8 +561,9 @@ button { color: inherit; font: inherit; }
   .hero h1 { font-size: clamp(3rem, 14vw, 4.6rem); }
   .hero-intro { margin: 28px 0; }
   .hero-actions { align-items: flex-start; flex-direction: column; gap: 18px; }
-  .feature-card { height: 540px; min-height: 0; border-radius: 180px 180px 20px 20px; }
+  .feature-card { height: 500px; min-height: 0; border-radius: 4px; }
   .feature-overlay { left: 24px; right: 24px; bottom: 24px; }
+  .feature-meta { align-items: flex-start; flex-direction: column; gap: 8px; }
   .hero-scroll { display: none; }
   .signal-strip { justify-content: flex-start; overflow-x: auto; }
   .conference-spotlight { padding: 74px 22px; }
@@ -538,6 +604,16 @@ button { color: inherit; font: inherit; }
   .qr-card { max-width: 330px; justify-self: center; }
   .site-footer { padding: 42px 22px; grid-template-columns: 1fr auto; }
   .site-footer p { display: none; }
+  .registration-nav { display: none; }
+  .registration-main { padding-top: 76px; }
+  .registration-hero { min-height: 520px; }
+  .registration-hero-copy { padding: 82px 0 52px; }
+  .registration-layout { padding: 70px 0 90px; }
+  .registration-form-card { padding: 30px 22px; }
+  .form-grid { grid-template-columns: 1fr; }
+  .form-wide { grid-column: auto; }
+  .form-heading { grid-template-columns: 54px 1fr; }
+  .form-submit-row { align-items: flex-start; flex-direction: column; }
   .forum-announcement { padding: 10px 22px; gap: 12px; }
   .forum-announcement p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .forum-announcement a { display: none; }
