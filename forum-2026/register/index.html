@@ -46,14 +46,14 @@
         <p data-zh="投稿将交由学术委员会进行匿名评审。综合排名靠前的摘要将获邀进行口头报告，其余高质量投稿可进入壁报展示环节。" data-de="Die Einreichungen werden anonym durch das wissenschaftliche Komitee begutachtet. Ausgewählte Beiträge werden als Vortrag oder Poster präsentiert.">投稿将交由学术委员会进行匿名评审。综合排名靠前的摘要将获邀进行口头报告，其余高质量投稿可进入壁报展示环节。</p>
         <dl>
           <div><dt data-zh="摘要要求" data-de="ABSTRACT">摘要要求</dt><dd data-zh="英文 · 不超过 300 词" data-de="Englisch · max. 300 Wörter">英文 · 不超过 300 词</dd></div>
-          <div><dt data-zh="个人简历" data-de="LEBENSLAUF">个人简历</dt><dd data-zh="PDF · 必传 · 最大 5 MB" data-de="PDF · erforderlich · max. 5 MB">PDF · 必传 · 最大 5 MB</dd></div>
-          <div><dt data-zh="研究图片" data-de="ABBILDUNG">研究图片</dt><dd data-zh="JPG / PNG / WebP · 可选 · 最大 8 MB" data-de="JPG / PNG / WebP · optional · max. 8 MB">JPG / PNG / WebP · 可选 · 最大 8 MB</dd></div>
+          <div><dt data-zh="个人简历" data-de="LEBENSLAUF">个人简历</dt><dd data-zh="文件上传稍后开放" data-de="Dateiupload folgt">文件上传稍后开放</dd></div>
+          <div><dt data-zh="研究图片" data-de="ABBILDUNG">研究图片</dt><dd data-zh="文件上传稍后开放" data-de="Dateiupload folgt">文件上传稍后开放</dd></div>
         </dl>
       </aside>
 
       <div class="registration-form-card">
         <div class="form-heading">
-          <span>01—10</span>
+          <span>01—08</span>
           <div>
             <h2 data-zh="投稿信息" data-de="Einreichungsdaten">投稿信息</h2>
             <p data-zh="带 * 的项目为必填项。" data-de="Mit * markierte Felder sind Pflichtfelder.">带 * 的项目为必填项。</p>
@@ -112,15 +112,15 @@
               <input type="text" name="keywords" maxlength="220" placeholder="例如：Organoids; Immunotherapy; Precision Medicine" required>
               <small class="field-help" data-zh="建议填写 3–6 个英文关键词，并以分号分隔。" data-de="Empfohlen: 3–6 englische Schlüsselwörter, getrennt durch Semikolons.">建议填写 3–6 个英文关键词，并以分号分隔。</small>
             </label>
-            <label class="form-wide file-field">
-              <span data-zh="个人简历 *" data-de="Lebenslauf *">个人简历 *</span>
-              <input type="file" name="cvFile" accept=".pdf,application/pdf" required>
-              <small class="field-help" data-zh="仅接受 PDF，最大 5 MB。" data-de="Nur PDF, maximal 5 MB.">仅接受 PDF，最大 5 MB。</small>
+            <label class="form-wide file-field file-field-pending">
+              <span data-zh="个人简历（稍后补交）" data-de="Lebenslauf (wird später ergänzt)">个人简历（稍后补交）</span>
+              <input type="file" name="cvFile" accept=".pdf,application/pdf" disabled>
+              <small class="field-help" data-zh="文件上传模块准备中。本次先提交文字信息，开放后可凭投稿编号补交 PDF 简历。" data-de="Der Dateiupload wird vorbereitet. Der PDF-Lebenslauf kann später mit der Einreichungsnummer ergänzt werden.">文件上传模块准备中。本次先提交文字信息，开放后可凭投稿编号补交 PDF 简历。</small>
             </label>
-            <label class="form-wide file-field">
-              <span data-zh="研究示意图（可选）" data-de="Forschungsabbildung (optional)">研究示意图（可选）</span>
-              <input type="file" name="figureFile" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp">
-              <small class="field-help" data-zh="可上传一张研究示意图或代表性图表，最大 8 MB。" data-de="Eine Forschungsabbildung oder repräsentative Grafik, maximal 8 MB.">可上传一张研究示意图或代表性图表，最大 8 MB。</small>
+            <label class="form-wide file-field file-field-pending">
+              <span data-zh="研究示意图（可选，稍后补交）" data-de="Forschungsabbildung (optional, später)">研究示意图（可选，稍后补交）</span>
+              <input type="file" name="figureFile" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp" disabled>
+              <small class="field-help" data-zh="文件上传模块准备中，开放后可凭投稿编号补交一张研究图片。" data-de="Der Upload folgt. Eine Forschungsabbildung kann später mit der Einreichungsnummer ergänzt werden.">文件上传模块准备中，开放后可凭投稿编号补交一张研究图片。</small>
             </label>
             <label class="form-honeypot" aria-hidden="true">
               <span>Website</span>
@@ -130,7 +130,7 @@
 
           <label class="consent-field">
             <input type="checkbox" name="consent" value="true" required>
-            <span data-zh="我同意协会为本次论坛的匿名评审、会务联络及学术展示保存和使用上述投稿信息与文件。*" data-de="Ich stimme zu, dass die SCDSG diese Angaben und Dateien für anonymes Review, Kommunikation und wissenschaftliche Präsentation des Forums speichert und nutzt. *">我同意协会为本次论坛的匿名评审、会务联络及学术展示保存和使用上述投稿信息与文件。*</span>
+            <span data-zh="我同意协会为本次论坛的匿名评审、会务联络及学术展示保存和使用上述投稿信息。*" data-de="Ich stimme zu, dass die SCDSG diese Angaben für anonymes Review, Kommunikation und wissenschaftliche Präsentation des Forums speichert und nutzt. *">我同意协会为本次论坛的匿名评审、会务联络及学术展示保存和使用上述投稿信息。*</span>
           </label>
 
           <div class="form-submit-row">
@@ -138,7 +138,7 @@
               <span data-submit-zh="提交摘要" data-submit-de="Abstract einreichen" data-loading-zh="正在上传…" data-loading-de="Wird hochgeladen…">提交摘要</span>
               <span aria-hidden="true">→</span>
             </button>
-            <p data-zh="提交后系统将显示投稿编号，请妥善保存。" data-de="Nach dem Absenden erhalten Sie eine Einreichungsnummer.">提交后系统将显示投稿编号，请妥善保存。</p>
+            <p data-zh="提交后系统将显示投稿编号；后续补交文件时需要使用该编号。" data-de="Nach dem Absenden erhalten Sie eine Einreichungsnummer, die später für Dateien benötigt wird.">提交后系统将显示投稿编号；后续补交文件时需要使用该编号。</p>
           </div>
           <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
         </form>

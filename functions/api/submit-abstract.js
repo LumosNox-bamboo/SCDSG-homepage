@@ -1,6 +1,4 @@
-const MAX_REQUEST_BYTES = 14 * 1024 * 1024;
-const MAX_CV_BYTES = 5 * 1024 * 1024;
-const MAX_FIGURE_BYTES = 8 * 1024 * 1024;
+const MAX_REQUEST_BYTES = 100 * 1024;
 const MAX_ABSTRACT_WORDS = 300;
 
 const CAREER_STAGES = new Set([
@@ -20,8 +18,6 @@ const RESEARCH_AREAS = new Set([
   'pharma',
   'other'
 ]);
-
-const FIGURE_TYPES = new Set(['image/jpeg', 'image/png', 'image/webp']);
 
 function json(data, status = 200) {
   return Response.json(data, {
@@ -52,52 +48,6 @@ function countWords(value) {
   return value.trim() ? value.trim().split(/\s+/u).length : 0;
 }
 
-function safeFileName(name, fallback) {
-  const cleaned = name
-    .normalize('NFKC')
-    .replace(/[^\p{L}\p{N}._-]+/gu, '-')
-    .replace(/^-+|-+$/gu, '')
-    .slice(0, 120);
-  return cleaned || fallback;
-}
-
-async function hasPdfSignature(file) {
-  const bytes = new Uint8Array(await file.slice(0, 5).arrayBuffer());
-  return bytes.length === 5 &&
-    bytes[0] === 0x25 &&
-    bytes[1] === 0x50 &&
-    bytes[2] === 0x44 &&
-    bytes[3] === 0x46 &&
-    bytes[4] === 0x2d;
-}
-
-async function hasValidImageSignature(file) {
-  const bytes = new Uint8Array(await file.slice(0, 12).arrayBuffer());
-
-  if (file.type === 'image/jpeg') {
-    return bytes[0] === 0xff && bytes[1] === 0xd8 && bytes[2] === 0xff;
-  }
-
-  if (file.type === 'image/png') {
-    const png = [0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a];
-    return png.every((value, index) => bytes[index] === value);
-  }
-
-  if (file.type === 'image/webp') {
-    return String.fromCharCode(...bytes.slice(0, 4)) === 'RIFF' &&
-      String.fromCharCode(...bytes.slice(8, 12)) === 'WEBP';
-  }
-
-  return false;
-}
-
-function extensionFor(contentType) {
-  if (contentType === 'image/jpeg') return 'jpg';
-  if (contentType === 'image/png') return 'png';
-  if (contentType === 'image/webp') return 'webp';
-  return 'bin';
-}
-
 export async function onRequestPost(context) {
   const { request, env } = context;
   const url = new URL(request.url);
@@ -114,18 +64,18 @@ export async function onRequestPost(context) {
   const contentLengthHeader = request.headers.get('Content-Length');
   const contentLength = Number(contentLengthHeader);
   if (!contentLengthHeader || !Number.isFinite(contentLength) || contentLength <= 0) {
-    return json({ message: '无法确认上传大小，请刷新页面后重试。' }, 411);
+    return json({ message: '无法确认投稿大小，请刷新页面后重试。' }, 411);
   }
 
   if (contentLength > MAX_REQUEST_BYTES) {
-    return json({ message: '上传内容超过允许大小。' }, 413);
+    return json({ message: '投稿内容超过允许大小。' }, 413);
   }
 
   let form;
   try {
     form = await request.formData();
   } catch {
-    return json({ message: '无法读取投稿表，请检查文件后重试。' }, 400);
+    return json({ message: '无法读取投稿表，请刷新页面后重试。' }, 400);
   }
 
   if (form.get('website')) {
@@ -145,11 +95,7 @@ export async function onRequestPost(context) {
     locale
   };
 
-  const cvFile = form.get('cvFile');
-  const figureValue = form.get('figureFile');
-  const figureFile = figureValue instanceof File && figureValue.size > 0 ? figureValue : null;
   const consent = form.get('consent') === 'true';
-
   const invalid =
     !submission.fullName ||
     !validateEmail(submission.email) ||
@@ -173,72 +119,11 @@ export async function onRequestPost(context) {
     );
   }
 
-  if (!(cvFile instanceof File) ||
-      cvFile.type !== 'application/pdf' ||
-      cvFile.size === 0 ||
-      cvFile.size > MAX_CV_BYTES ||
-      !(await hasPdfSignature(cvFile))) {
-    return json(
-      {
-        message: locale === 'de'
-          ? 'Der Lebenslauf muss eine gültige PDF-Datei bis 5 MB sein.'
-          : '个人简历须为有效的 PDF 文件，且不超过 5 MB。'
-      },
-      400
-    );
-  }
-
-  if (figureFile &&
-      (!FIGURE_TYPES.has(figureFile.type) ||
-       figureFile.size > MAX_FIGURE_BYTES ||
-       !(await hasValidImageSignature(figureFile)))) {
-    return json(
-      {
-        message: locale === 'de'
-          ? 'Die Abbildung muss eine gültige JPG-, PNG- oder WebP-Datei bis 8 MB sein.'
-          : '研究图片须为有效的 JPG、PNG 或 WebP 文件，且不超过 8 MB。'
-      },
-      400
-    );
-  }
-
   const id = crypto.randomUUID();
   const submissionCode = `SCDSG26-A-${id.replaceAll('-', '').slice(0, 10).toUpperCase()}`;
   const createdAt = new Date().toISOString();
-  const objectPrefix = `submissions/${id}`;
-  const cvKey = `${objectPrefix}/cv.pdf`;
-  const figureKey = figureFile
-    ? `${objectPrefix}/figure.${extensionFor(figureFile.type)}`
-    : '';
-  const uploadedKeys = [];
 
   try {
-    await env.SUBMISSION_FILES.put(cvKey, cvFile.stream(), {
-      httpMetadata: {
-        contentType: 'application/pdf',
-        contentDisposition: 'attachment; filename="cv.pdf"'
-      },
-      customMetadata: {
-        submissionCode,
-        kind: 'cv'
-      }
-    });
-    uploadedKeys.push(cvKey);
-
-    if (figureFile) {
-      await env.SUBMISSION_FILES.put(figureKey, figureFile.stream(), {
-        httpMetadata: {
-          contentType: figureFile.type,
-          contentDisposition: `attachment; filename="figure.${extensionFor(figureFile.type)}"`
-        },
-        customMetadata: {
-          submissionCode,
-          kind: 'figure'
-        }
-      });
-      uploadedKeys.push(figureKey);
-    }
-
     await env.REGISTRATIONS_DB
       .prepare(
         `INSERT INTO abstract_submissions (
@@ -260,9 +145,10 @@ export async function onRequestPost(context) {
           figure_content_type,
           figure_size,
           locale,
+          status,
           consented_at,
           created_at
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, '', '', 0, '', '', '', 0, ?, 'files_pending', ?, ?)`
       )
       .bind(
         id,
@@ -275,31 +161,12 @@ export async function onRequestPost(context) {
         submission.researchArea,
         submission.abstractText,
         submission.keywords,
-        cvKey,
-        safeFileName(cvFile.name, 'cv.pdf'),
-        cvFile.size,
-        figureKey,
-        figureFile ? safeFileName(figureFile.name, `figure.${extensionFor(figureFile.type)}`) : '',
-        figureFile?.type || '',
-        figureFile?.size || 0,
         submission.locale,
         createdAt,
         createdAt
       )
       .run();
   } catch (error) {
-    if (uploadedKeys.length > 0) {
-      try {
-        await env.SUBMISSION_FILES.delete(uploadedKeys);
-      } catch (cleanupError) {
-        console.error({
-          event: 'abstract_submission_cleanup_failed',
-          submissionCode,
-          error: cleanupError instanceof Error ? cleanupError.message : String(cleanupError)
-        });
-      }
-    }
-
     console.error({
       event: 'abstract_submission_failed',
       submissionCode,
@@ -319,10 +186,10 @@ export async function onRequestPost(context) {
     event: 'abstract_submission_created',
     submissionCode,
     researchArea: submission.researchArea,
-    hasFigure: Boolean(figureFile)
+    filesStatus: 'pending'
   });
 
-  return json({ submissionId: submissionCode }, 201);
+  return json({ submissionId: submissionCode, filesPending: true }, 201);
 }
 
 export function onRequestGet() {

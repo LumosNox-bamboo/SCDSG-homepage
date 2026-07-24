@@ -11,11 +11,5 @@
       "database_id": "2bec9a66-08ea-4d28-9754-201b24c70c5f",
       "migrations_dir": "migrations"
     }
-  ],
-  "r2_buckets": [
-    {
-      "binding": "SUBMISSION_FILES",
-      "bucket_name": "scdsg-forum-2026-submission-files"
-    }
   ]
 }

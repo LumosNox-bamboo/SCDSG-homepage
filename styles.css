@@ -494,6 +494,8 @@ button { color: inherit; font: inherit; }
 .file-field { padding: 18px; border: 1px solid var(--line); background: #f6f9fb; }
 .file-field input[type="file"] { padding: 10px; background: var(--white); }
 .file-field input[type="file"]::file-selector-button { margin-right: 14px; padding: 9px 13px; color: var(--white); border: 0; border-radius: 2px; background: var(--blue); font: inherit; font-size: .75rem; font-weight: 800; cursor: pointer; }
+.file-field-pending { border-style: dashed; background: #f3f5f6; }
+.file-field-pending input[type="file"] { opacity: .48; cursor: not-allowed; }
 .form-honeypot { position: absolute !important; left: -10000px !important; width: 1px !important; height: 1px !important; overflow: hidden !important; }
 .consent-field { margin-top: 30px; padding: 20px 0; display: grid; grid-template-columns: 18px 1fr; gap: 12px; align-items: start; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); color: var(--ink-soft); font-size: .78rem; line-height: 1.7; }
 .consent-field input { margin-top: 4px; accent-color: var(--blue); }
