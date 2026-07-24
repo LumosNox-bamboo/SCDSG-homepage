@@ -11,9 +11,5 @@
       "database_id": "2bec9a66-08ea-4d28-9754-201b24c70c5f",
       "migrations_dir": "migrations"
     }
-  ],
-  "observability": {
-    "enabled": true,
-    "head_sampling_rate": 1
-  }
+  ]
 }
