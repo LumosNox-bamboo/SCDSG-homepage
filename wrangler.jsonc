@@ -15,7 +15,8 @@
   "r2_buckets": [
     {
       "binding": "SUBMISSION_FILES",
-      "bucket_name": "scdsg-private-submissions"
+      "bucket_name": "scdsg-private-submissions",
+      "jurisdiction": "eu"
     }
   ]
 }
