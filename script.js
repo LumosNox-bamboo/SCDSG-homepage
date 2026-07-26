@@ -68,7 +68,10 @@ const revealObserver = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.12 });
 
-document.querySelectorAll('.reveal').forEach((element) => revealObserver.observe(element));
+document.querySelectorAll('.reveal').forEach((element) => {
+  element.classList.add('reveal-pending');
+  revealObserver.observe(element);
+});
 
 const countObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {

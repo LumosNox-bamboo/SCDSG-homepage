@@ -4,6 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="旅德华人医师学者青年学术论坛 2026 摘要投稿。">
+  <link rel="canonical" href="https://scdsg-med.com/forum-2026/register/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="摘要投稿 · 2026 青年学术论坛 · SCDSG">
+  <meta property="og:description" content="旅德华人医师学者青年学术论坛 2026 摘要投稿。">
+  <meta property="og:url" content="https://scdsg-med.com/forum-2026/register/">
+  <meta property="og:image" content="https://scdsg-med.com/assets/images/forum-2026-hero-concept.png">
   <title>摘要投稿 · 2026 青年学术论坛 · SCDSG</title>
   <link rel="stylesheet" href="../../styles.css">
   <script src="../../script.js" defer></script>
@@ -46,8 +52,8 @@
         <p data-zh="投稿将交由学术委员会进行匿名评审。综合排名靠前的摘要将获邀进行口头报告，其余高质量投稿可进入壁报展示环节。" data-de="Die Einreichungen werden anonym durch das wissenschaftliche Komitee begutachtet. Ausgewählte Beiträge werden als Vortrag oder Poster präsentiert.">投稿将交由学术委员会进行匿名评审。综合排名靠前的摘要将获邀进行口头报告，其余高质量投稿可进入壁报展示环节。</p>
         <dl>
           <div><dt data-zh="摘要要求" data-de="ABSTRACT">摘要要求</dt><dd data-zh="英文 · 不超过 300 词" data-de="Englisch · max. 300 Wörter">英文 · 不超过 300 词</dd></div>
-          <div><dt data-zh="个人简历" data-de="LEBENSLAUF">个人简历</dt><dd data-zh="文件上传稍后开放" data-de="Dateiupload folgt">文件上传稍后开放</dd></div>
-          <div><dt data-zh="研究图片" data-de="ABBILDUNG">研究图片</dt><dd data-zh="文件上传稍后开放" data-de="Dateiupload folgt">文件上传稍后开放</dd></div>
+          <div><dt data-zh="个人简历" data-de="LEBENSLAUF">个人简历</dt><dd data-zh="PDF · 最大 5 MB" data-de="PDF · max. 5 MB">PDF · 最大 5 MB</dd></div>
+          <div><dt data-zh="研究图片" data-de="ABBILDUNG">研究图片</dt><dd data-zh="可选 · 最大 8 MB" data-de="Optional · max. 8 MB">可选 · 最大 8 MB</dd></div>
         </dl>
       </aside>
 
@@ -112,15 +118,15 @@
               <input type="text" name="keywords" maxlength="220" placeholder="例如：Organoids; Immunotherapy; Precision Medicine" required>
               <small class="field-help" data-zh="建议填写 3–6 个英文关键词，并以分号分隔。" data-de="Empfohlen: 3–6 englische Schlüsselwörter, getrennt durch Semikolons.">建议填写 3–6 个英文关键词，并以分号分隔。</small>
             </label>
-            <label class="form-wide file-field file-field-pending">
-              <span data-zh="个人简历（稍后补交）" data-de="Lebenslauf (wird später ergänzt)">个人简历（稍后补交）</span>
-              <input type="file" name="cvFile" accept=".pdf,application/pdf" disabled>
-              <small class="field-help" data-zh="文件上传模块准备中。本次先提交文字信息，开放后可凭投稿编号补交 PDF 简历。" data-de="Der Dateiupload wird vorbereitet. Der PDF-Lebenslauf kann später mit der Einreichungsnummer ergänzt werden.">文件上传模块准备中。本次先提交文字信息，开放后可凭投稿编号补交 PDF 简历。</small>
+            <label class="form-wide file-field">
+              <span data-zh="个人简历 PDF *" data-de="Lebenslauf als PDF *">个人简历 PDF *</span>
+              <input type="file" name="cvFile" accept=".pdf,application/pdf" required>
+              <small class="field-help" data-zh="仅接受 PDF，最大 5 MB。" data-de="Nur PDF, maximal 5 MB.">仅接受 PDF，最大 5 MB。</small>
             </label>
-            <label class="form-wide file-field file-field-pending">
-              <span data-zh="研究示意图（可选，稍后补交）" data-de="Forschungsabbildung (optional, später)">研究示意图（可选，稍后补交）</span>
-              <input type="file" name="figureFile" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp" disabled>
-              <small class="field-help" data-zh="文件上传模块准备中，开放后可凭投稿编号补交一张研究图片。" data-de="Der Upload folgt. Eine Forschungsabbildung kann später mit der Einreichungsnummer ergänzt werden.">文件上传模块准备中，开放后可凭投稿编号补交一张研究图片。</small>
+            <label class="form-wide file-field">
+              <span data-zh="研究示意图（可选）" data-de="Forschungsabbildung (optional)">研究示意图（可选）</span>
+              <input type="file" name="figureFile" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp">
+              <small class="field-help" data-zh="接受 JPG、PNG 或 WebP，最大 8 MB。" data-de="JPG, PNG oder WebP, maximal 8 MB.">接受 JPG、PNG 或 WebP，最大 8 MB。</small>
             </label>
             <label class="form-honeypot" aria-hidden="true">
               <span>Website</span>
@@ -138,7 +144,7 @@
               <span data-submit-zh="提交摘要" data-submit-de="Abstract einreichen" data-loading-zh="正在上传…" data-loading-de="Wird hochgeladen…">提交摘要</span>
               <span aria-hidden="true">→</span>
             </button>
-            <p data-zh="提交后系统将显示投稿编号；后续补交文件时需要使用该编号。" data-de="Nach dem Absenden erhalten Sie eine Einreichungsnummer, die später für Dateien benötigt wird.">提交后系统将显示投稿编号；后续补交文件时需要使用该编号。</p>
+            <p data-zh="提交成功后系统将显示投稿编号，请妥善保存。" data-de="Nach erfolgreicher Einreichung erhalten Sie eine Einreichungsnummer. Bitte bewahren Sie diese auf.">提交成功后系统将显示投稿编号，请妥善保存。</p>
           </div>
           <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
         </form>

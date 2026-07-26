@@ -5,7 +5,11 @@ if (registrationForm) {
   const submitButton = registrationForm.querySelector('button[type="submit"]');
   const submitLabel = submitButton.querySelector('span:first-child');
   const abstractField = registrationForm.elements.abstractText;
+  const cvField = registrationForm.elements.cvFile;
+  const figureField = registrationForm.elements.figureFile;
   const abstractCounter = document.getElementById('abstract-counter');
+  const maxCvBytes = 5 * 1024 * 1024;
+  const maxFigureBytes = 8 * 1024 * 1024;
 
   const getLanguage = () => document.documentElement.lang === 'de' ? 'de' : 'zh';
   const countWords = (value) => value.trim() ? value.trim().split(/\s+/u).length : 0;
@@ -49,6 +53,24 @@ if (registrationForm) {
       return;
     }
 
+    if (cvField.files[0]?.size > maxCvBytes) {
+      setStatus(
+        'error',
+        language === 'de' ? 'Der Lebenslauf darf maximal 5 MB groß sein.' : '个人简历不能超过 5 MB。'
+      );
+      cvField.focus();
+      return;
+    }
+
+    if (figureField.files[0]?.size > maxFigureBytes) {
+      setStatus(
+        'error',
+        language === 'de' ? 'Die Abbildung darf maximal 8 MB groß sein.' : '研究图片不能超过 8 MB。'
+      );
+      figureField.focus();
+      return;
+    }
+
     const data = new FormData(registrationForm);
     data.set('locale', language);
 
@@ -63,7 +85,11 @@ if (registrationForm) {
         method: 'POST',
         body: data
       });
-      const result = await response.json();
+      const result = await response.json().catch(() => ({
+        message: language === 'de'
+          ? 'Die Serverantwort konnte nicht gelesen werden. Bitte versuchen Sie es erneut.'
+          : '无法读取服务器响应，请稍后重试。'
+      }));
 
       if (!response.ok) {
         throw new Error(result.message || (language === 'de' ? 'Einreichung fehlgeschlagen.' : '提交失败，请稍后重试。'));
@@ -74,8 +100,8 @@ if (registrationForm) {
       setStatus(
         'success',
         language === 'de'
-          ? `Ihr Abstract wurde gespeichert. Einreichungsnummer: ${result.submissionId}. Lebenslauf und Abbildung werden später ergänzt.`
-          : `投稿文字信息已保存。您的投稿编号是 ${result.submissionId}。简历和图片将在文件功能开放后补交。`
+          ? `Ihr Beitrag und die Dateien wurden gespeichert. Einreichungsnummer: ${result.submissionId}.`
+          : `投稿及文件已保存。您的投稿编号是 ${result.submissionId}，请妥善保存。`
       );
     } catch (error) {
       setStatus('error', error.message);

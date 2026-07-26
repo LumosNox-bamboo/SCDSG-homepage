@@ -1,15 +1,21 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "scdsg-homepage",
+  "name": "scdsg-med-homepage",
   "pages_build_output_dir": ".",
-  "compatibility_date": "2026-07-24",
+  "compatibility_date": "2026-07-26",
   "compatibility_flags": ["nodejs_compat"],
   "d1_databases": [
     {
       "binding": "REGISTRATIONS_DB",
-      "database_name": "scdsg-forum-2026-registrations",
-      "database_id": "2bec9a66-08ea-4d28-9754-201b24c70c5f",
+      "database_name": "scdsg-association-production",
+      "database_id": "cbfd31ee-0795-4af2-b29c-45810cdf4bc2",
       "migrations_dir": "migrations"
+    }
+  ],
+  "r2_buckets": [
+    {
+      "binding": "SUBMISSION_FILES",
+      "bucket_name": "scdsg-private-submissions"
     }
   ]
 }
