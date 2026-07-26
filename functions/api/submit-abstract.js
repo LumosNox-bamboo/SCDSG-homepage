@@ -1,7 +1,7 @@
 const MIB = 1024 * 1024;
-const MAX_REQUEST_BYTES = 15 * MIB;
-const MAX_CV_BYTES = 5 * MIB;
-const MAX_FIGURE_BYTES = 8 * MIB;
+const MAX_REQUEST_BYTES = 32 * MIB;
+const MAX_CV_BYTES = 10 * MIB;
+const MAX_FIGURE_BYTES = 20 * MIB;
 const MAX_ABSTRACT_WORDS = 300;
 
 const CAREER_STAGES = new Set([
@@ -122,7 +122,7 @@ async function prepareCv(file, locale) {
     throw new Error(localizedMessage(locale, '请上传 PDF 格式的个人简历。', 'Bitte laden Sie Ihren Lebenslauf als PDF hoch.'));
   }
   if (file.size > MAX_CV_BYTES) {
-    throw new Error(localizedMessage(locale, '个人简历不能超过 5 MB。', 'Der Lebenslauf darf maximal 5 MB groß sein.'));
+    throw new Error(localizedMessage(locale, '个人简历不能超过 10 MB。', 'Der Lebenslauf darf maximal 10 MB groß sein.'));
   }
 
   const originalFileName = cleanFileName(file.name);
@@ -150,7 +150,7 @@ async function prepareCv(file, locale) {
 async function prepareFigure(file, locale) {
   if (!isUploadedFile(file) || !file.name || file.size <= 0) return null;
   if (file.size > MAX_FIGURE_BYTES) {
-    throw new Error(localizedMessage(locale, '研究图片不能超过 8 MB。', 'Die Abbildung darf maximal 8 MB groß sein.'));
+    throw new Error(localizedMessage(locale, '研究图片不能超过 20 MB。', 'Die Abbildung darf maximal 20 MB groß sein.'));
   }
 
   const originalFileName = cleanFileName(file.name);

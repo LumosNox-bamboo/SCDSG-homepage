@@ -8,8 +8,8 @@ if (registrationForm) {
   const cvField = registrationForm.elements.cvFile;
   const figureField = registrationForm.elements.figureFile;
   const abstractCounter = document.getElementById('abstract-counter');
-  const maxCvBytes = 5 * 1024 * 1024;
-  const maxFigureBytes = 8 * 1024 * 1024;
+  const maxCvBytes = 10 * 1024 * 1024;
+  const maxFigureBytes = 20 * 1024 * 1024;
 
   const getLanguage = () => document.documentElement.lang === 'de' ? 'de' : 'zh';
   const countWords = (value) => value.trim() ? value.trim().split(/\s+/u).length : 0;
@@ -56,7 +56,7 @@ if (registrationForm) {
     if (cvField.files[0]?.size > maxCvBytes) {
       setStatus(
         'error',
-        language === 'de' ? 'Der Lebenslauf darf maximal 5 MB groß sein.' : '个人简历不能超过 5 MB。'
+        language === 'de' ? 'Der Lebenslauf darf maximal 10 MB groß sein.' : '个人简历不能超过 10 MB。'
       );
       cvField.focus();
       return;
@@ -65,7 +65,7 @@ if (registrationForm) {
     if (figureField.files[0]?.size > maxFigureBytes) {
       setStatus(
         'error',
-        language === 'de' ? 'Die Abbildung darf maximal 8 MB groß sein.' : '研究图片不能超过 8 MB。'
+        language === 'de' ? 'Die Abbildung darf maximal 20 MB groß sein.' : '研究图片不能超过 20 MB。'
       );
       figureField.focus();
       return;
