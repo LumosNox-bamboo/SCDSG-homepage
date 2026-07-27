@@ -6,6 +6,8 @@ const timeline = document.querySelector('.timeline');
 
 let language = 'zh';
 
+document.querySelectorAll('.wechat-stories em').forEach((item) => { item.textContent = '查看活动详情 ↗'; });
+
 function setLanguage(nextLanguage) {
   language = nextLanguage;
   root.lang = language === 'zh' ? 'zh-CN' : 'de';

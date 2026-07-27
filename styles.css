@@ -211,18 +211,18 @@ button { color: inherit; font: inherit; }
 .de-stuttgart { left: 30%; top: 72%; }
 .de-freiburg { left: 15%; top: 79%; }
 .de-munich { left: 60%; top: 84%; }
-.cn-dalian { left: 84%; top: 32%; }
-.cn-beijing { left: 71%; top: 35%; }
-.cn-qingdao { left: 78%; top: 45%; }
-.cn-xian { left: 49%; top: 53%; }
-.cn-chengdu { left: 36%; top: 64%; }
-.cn-wuhan { left: 58%; top: 63%; }
-.cn-nanjing { left: 72%; top: 59%; }
-.cn-shanghai { left: 82%; top: 62%; }
-.cn-hangzhou { left: 76%; top: 68%; }
-.cn-wenzhou { left: 80%; top: 74%; }
-.cn-xiamen { left: 72%; top: 81%; }
-.cn-guangzhou { left: 60%; top: 85%; }
+.cn-dalian { left: 79%; top: 46%; }
+.cn-beijing { left: 71%; top: 46%; }
+.cn-qingdao { left: 72%; top: 49%; }
+.cn-xian { left: 56%; top: 50%; }
+.cn-chengdu { left: 46%; top: 62%; }
+.cn-wuhan { left: 59%; top: 67%; }
+.cn-nanjing { left: 70%; top: 59%; }
+.cn-shanghai { left: 80%; top: 69%; }
+.cn-hangzhou { left: 79%; top: 71%; }
+.cn-wenzhou { left: 80%; top: 78%; }
+.cn-xiamen { left: 72%; top: 87%; }
+.cn-guangzhou { left: 64%; top: 92%; }
 
 .forum-gallery { background: var(--white); }
 .gallery-track { display: grid; grid-template-columns: 1fr 1.2fr .85fr; gap: 18px; align-items: stretch; }
