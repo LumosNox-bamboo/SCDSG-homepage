@@ -1,0 +1,21 @@
+const records = {
+  'forum-2025': ['学术交流 · 2025.09 · Shanghai','第四届协会学术研讨会暨上海交流会','以十三载发展为线索，汇聚中德医学与生命科学研究者开展专题交流。','2025 年，协会在上海举行第四届国内学术研讨会暨海德堡龙一族学术交流会。活动延续协会中德交流传统，围绕医学、生命科学与青年人才发展展开分享。','../assets/images/activity-records/forum-2025.jpg','../SCDSG_articles/_十三载同心_筑梦再前行_第四届旅德华人医师学者协会学术研讨会暨2025海德堡龙一族学术交流会在沪圆满举行/index.html'],
+  'heart-syndrome': ['学术交流 · 2026.05 · Heidelberg','周小波高级研究员解析心碎综合征发病机制','围绕心碎综合征的发病机制开展专题分享，连接基础研究与临床观察。','本次学术讲座聚焦心碎综合征的研究进展、关键机制与临床启示，为协会成员提供面向医学前沿的深入交流机会。','../assets/images/activity-records/heart-syndrome.jpg','../SCDSG_articles/_学术讲座回顾_周小波高级研究员解析心碎综合征发病机制/index.html'],
+  'guizhou': ['人才与合作 · 2017.06 · Guiyang','与贵州大学签订合作框架协议','推动协会与高校在学术交流、人才培养及科研合作方面建立联系。','协会与贵州大学建立合作框架，探索中德医学与生命科学领域的学术互访、人才交流和科研合作。','../assets/images/activity-records/guizhou-cooperation.jpg','../SCDSG_articles/旅德华人医师学者协会与贵州大学签订合作框架协议/index.html'],
+  'wuhan-aid': ['公益行动 · 2020.01 · Wuhan','驰援武汉，龙一族在行动','面对突发公共卫生事件，会员以专业与行动参与支援。','疫情发生后，协会成员发起支援行动，组织募捐与医疗物资相关工作，以医学专业共同体的方式参与社会公益。','../assets/images/activity-records/wuhan-aid.jpg','../SCDSG_articles/驰援武汉_龙一族在行动/index.html'],
+  'founding': ['会员社群 · 2016.07 · Germany','旅德华人医师学者协会注册大会','协会组织建设的重要里程碑，正式建立面向会员的长期交流平台。','注册大会标志着协会从早期同行互助社群走向正式组织建设，为后续学术活动、会员服务和中德合作奠定基础。','../assets/images/activity-records/founding.jpg','../SCDSG_articles/旅德华人医师学者协会注册大会胜利召开/index.html'],
+  'forum-2016': ['学术交流 · 2016.09 · Dalian','第一届国内高峰论坛研讨会','协会早期国内论坛的重要节点，开启跨地域学术合作与人才交流。','第一届国内高峰论坛在大连举行，协会成员围绕医学与生命科学议题开展研讨，形成中德两地持续交流的基础。','../assets/images/activity-records/forum-2016.jpg','../SCDSG_articles/旅德华人医师学者协会第一届国内高峰论坛研讨会顺利召开/index.html'],
+  'forum-2023': ['学术交流 · 2023.07 · Wenzhou','第三届国内学术研讨会在温州举行','协会国内论坛延续中德合作传统，围绕医学与生命科学开展跨区域研讨。','第三届国内研讨会连接海德堡与温州的会员和合作伙伴，推动学术分享、人才交流与区域协作。','../assets/images/activity-records/forum-2023.jpg','../SCDSG_articles/闪耀_旅德华人医师学者协会第三届国内研讨会圆满落幕_/index.html'],
+  'dna-lecture': ['学术交流 · 2018.06 · Germany','DNA 微阵列基因表达数据分析讲座','围绕基因表达数据分析方法，分享生命科学研究中的实用经验。','本次讲座聚焦 DNA 微阵列与基因表达数据分析，为会员提供研究方法、数据解读与科研交流的机会。','../assets/images/activity-records/heart-syndrome.jpg','../SCDSG_articles/DNA微阵列基因表达数据分析__龙一族5月学术讲座总结/index.html'],
+  'medical-license': ['人才与合作 · 2018.01 · Germany','在德国考取行医资格经验分享','面向医学学习者与青年医生，梳理德国执业路径和临床实践经验。','活动围绕德国医师执照考试、准备方法和医院工作环境展开，帮助医学背景成员了解职业发展的具体路径。','../assets/images/activity-records/medical-license.jpg','../SCDSG_articles/_经验精华贴_在德国考执医_你能行/index.html'],
+  'medical-affairs': ['人才与合作 · 2018.09 · Germany','职业观察：聊聊药企的医学事务部','从医学专业视角了解药企医学事务岗位与产业协作。','活动介绍医学事务部的工作内容、跨部门协作和职业能力要求，为青年医师学者提供产业发展参考。','../assets/images/activity-records/doctor-in-germany.jpg','../SCDSG_articles/聊聊药企的医学事务部/index.html'],
+  'dkfz-phd': ['人才与合作 · 2018.10 · Heidelberg','德国癌症研究中心国际博士项目申请经验','分享国际博士项目申请流程、准备重点与科研选择。','活动围绕 DKFZ 国际博士生项目的申请材料、研究环境与发展机会展开经验交流。','../assets/images/activity-records/bioinformatics-radiotherapy.jpg','../SCDSG_articles/_经验帖_德国癌症研究中心国际博士生项目申请/index.html'],
+  'career-germany': ['人才与合作 · 2018.11 · Germany','医学背景如何在德国找工作','面向医学生与相关专业成员，讨论德国职业选择与求职准备。','从岗位信息、语言准备到职业路径，活动总结了医学背景成员在德国寻找工作的实践经验。','../assets/images/activity-records/medical-license.jpg','../SCDSG_articles/_经验帖_在德国找工作_并没有那么难（医学生适用_其他专业亦可借鉴）/index.html'],
+  'newcomer-2025': ['会员社群 · 2025.12 · Heidelberg','2025 新人交流会与协会顾问聘任','新成员与协会前辈相聚，建立面向未来的同行联系。','新人交流会帮助新成员了解协会，并记录刘海坤教授、孔波教授受聘协会顾问的重要时刻。','../assets/images/activity-records/newcomer-2025.jpg','../SCDSG_articles/_活动回顾_旅德华人医师学者协会2025新人交流会圆满落幕_刘海坤教授_孔波教授受聘协会顾问_/index.html'],
+  'doctor-germany': ['人才与合作 · 2026.04 · Germany','在德国定义“医生”的无限可能','从职业身份、培训路径与临床工作出发，讨论德国医疗体系中的多元发展。','协会交流活动记录了德国医疗职业路径与个人发展的多种可能。','../assets/images/activity-records/doctor-in-germany.jpg','../SCDSG_articles/在德国定义_医生_的无限可能_严璞医生交流会活动总结/index.html'],
+  'career-return': ['人才与合作 · 2026.07 · Online','顾祖光教授回国高校入职经验分享','围绕回国发展、岗位选择与高校科研环境展开经验交流。','活动聚焦青年学者回国发展、岗位选择和高校科研工作的实际经验。','../assets/images/activity-records/career-return.jpg','../SCDSG_articles/_7_18交流会报名_顾祖光教授回国高校入职经验分享/index.html']
+};
+const id = new URLSearchParams(location.search).get('id') || 'forum-2025';
+const r = records[id] || records['forum-2025'];
+document.title = `${r[1]} | SCDSG`;
+document.getElementById('detail').innerHTML = `<div class="detail-meta">${r[0]}</div><h1>${r[1]}</h1><p class="detail-lead">${r[2]}</p><img class="detail-hero" src="${r[4]}" alt="${r[1]}"><p class="detail-body">${r[3]}</p><a class="detail-source" href="${r[5]}">阅读原始图文档案 ↗</a>`;
