@@ -255,14 +255,14 @@ function updateNetwork(node) {
   description.dataset.de = content.de;
 }
 
-document.querySelectorAll('.city-chip').forEach((button) => {
-  button.addEventListener('click', () => {
-    document.querySelectorAll('.city-chip').forEach((node) => node.classList.remove('active'));
-    document.querySelectorAll('.map-point').forEach((point) => point.classList.remove('active'));
-    button.classList.add('active');
-    document.querySelector(`.map-point[data-node="${button.dataset.node}"]`)?.classList.add('active');
-    updateNetwork(button.dataset.node);
-  });
+function selectNetworkNode(node) {
+  document.querySelectorAll('.city-chip').forEach((chip) => chip.classList.toggle('active', chip.dataset.node === node));
+  document.querySelectorAll('.map-point').forEach((point) => point.classList.toggle('active', point.dataset.node === node));
+  updateNetwork(node);
+}
+
+document.querySelectorAll('.city-chip, .map-point').forEach((button) => {
+  button.addEventListener('click', () => selectNetworkNode(button.dataset.node));
 });
 
 if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {

@@ -193,6 +193,12 @@ button { color: inherit; font: inherit; }
 .country-map-cn .map-canvas > img { inset: 22px 2%; width: 96%; height: calc(100% - 44px); opacity: .14; }
 .map-point { position: absolute; z-index: 3; width: 9px; height: 9px; border: 2px solid var(--white); border-radius: 50%; background: var(--blue); box-shadow: 0 0 0 1px var(--blue), 0 4px 10px rgba(7,40,70,.18); }
 .map-point.active { background: var(--red); box-shadow: 0 0 0 1px var(--red), 0 0 0 6px rgba(228,87,61,.14); }
+.map-point { padding: 0; cursor: pointer; }
+.map-label { position: absolute; left: 50%; top: -1rem; transform: translateX(-50%); white-space: nowrap; color: var(--blue); background: rgba(255,255,255,.94); border: 1px solid rgba(7,40,70,.18); border-radius: 3px; padding: .12rem .28rem; font: 600 .55rem/1.1 Arial, sans-serif; pointer-events: none; box-shadow: 0 2px 7px rgba(7,40,70,.08); }
+.map-point:hover .map-label, .map-point:focus-visible .map-label, .map-point.active .map-label { color: var(--white); background: var(--red); border-color: var(--red); z-index: 5; }
+.map-point:focus-visible { outline: 2px solid var(--red); outline-offset: 4px; }
+.activity-archive-link { display: inline-flex; margin: .6rem 0 1.3rem; color: var(--red); font-weight: 700; text-decoration: none; }
+.activity-archive-link:hover { color: var(--blue); }
 .city-list { padding-top: 16px; display: flex; flex-wrap: wrap; gap: 7px; border-top: 1px solid var(--line); }
 .city-chip { padding: 7px 9px; color: var(--ink-soft); border: 1px solid rgba(21,94,168,.16); border-radius: 999px; background: rgba(255,255,255,.72); cursor: pointer; font-size: .62rem; font-weight: 800; transition: color .2s, background .2s, border-color .2s; }
 .city-chip:hover, .city-chip.active { color: var(--white); border-color: var(--blue); background: var(--blue); }
