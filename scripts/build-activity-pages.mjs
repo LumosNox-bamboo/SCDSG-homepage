@@ -103,7 +103,7 @@ for (const row of auditRows) {
   const homepageDate = row.date
     .match(/^(\d{4})年(\d{2})月(\d{2})日/)?.slice(1).join('.');
   const linkedBlocks = [...homepage.matchAll(
-    new RegExp(`<a[^>]+href="activities/${row.slug}/"[^>]*>([\\s\\S]*?)<\\/a>`, 'g'),
+    new RegExp(`<a[^>]+href="activities/${row.slug}/index\\.html"[^>]*>([\\s\\S]*?)<\\/a>`, 'g'),
   )];
 
   if (!linkedBlocks.length) throw new Error(`${row.slug}: missing homepage link`);
