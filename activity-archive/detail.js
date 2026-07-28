@@ -136,5 +136,5 @@ if (!record) {
   detail.innerHTML = '<div class="detail-meta">SCDSG · 活动档案</div><h1>未找到该活动记录</h1><p class="detail-lead">请返回活动列表选择其他记录。</p>';
 } else {
   document.title = `${record.title} | SCDSG`;
-  detail.innerHTML = `<div class="detail-meta">${record.category} · ${record.date} · ${record.location}</div><h1>${record.title}</h1><p class="detail-lead">${record.summary}</p><img class="detail-hero" src="${record.image}" alt="${record.title}"><div class="detail-body"><p>${record.summary}</p><p>本页信息由协会保存的公众号 ZIP 图文档案整理，标题与发布时间保持原文记录。</p></div><a class="detail-source" href="${record.source}">阅读原始图文档案 ↗</a>`;
+  detail.innerHTML = `<div class="detail-meta">${record.category} · ${record.date} · ${record.location}</div><h1>${record.title}</h1><p class="detail-lead">${record.summary}</p><img class="detail-hero" src="${record.image}" alt="${record.title}"><a class="detail-source" href="${record.source}">查看完整活动报道 ↗</a>`;
 }

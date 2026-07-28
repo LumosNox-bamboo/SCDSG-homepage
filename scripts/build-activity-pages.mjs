@@ -77,11 +77,7 @@ for (const [slug, record] of Object.entries(records)) {
       <h1>${escapeHtml(title)}</h1>
       <p class="detail-lead">${escapeHtml(record.summary)}</p>
       <img class="detail-hero" src="../../${escapeHtml(imageRelative)}" alt="${escapeHtml(title)}">
-      <div class="detail-body">
-        <p>${escapeHtml(record.summary)}</p>
-        <p>本页信息由协会保存的公众号 ZIP 图文档案整理，标题与发布时间保持原文记录。</p>
-      </div>
-      <a class="detail-source" href="../../${escapeHtml(sourceRelative)}">阅读原始图文档案 ↗</a>
+      <a class="detail-source" href="../../${escapeHtml(sourceRelative)}">查看完整活动报道 ↗</a>
     </article>
   </main>
 </body>
