@@ -1,21 +1,140 @@
 const records = {
-  'forum-2025': ['学术交流 · 2025.09 · Shanghai','第四届协会学术研讨会暨上海交流会','以十三载发展为线索，汇聚中德医学与生命科学研究者开展专题交流。','2025 年，协会在上海举行第四届国内学术研讨会暨海德堡龙一族学术交流会。活动延续协会中德交流传统，围绕医学、生命科学与青年人才发展展开分享。','../assets/images/activity-records/forum-2025.jpg','../SCDSG_articles/_十三载同心_筑梦再前行_第四届旅德华人医师学者协会学术研讨会暨2025海德堡龙一族学术交流会在沪圆满举行/index.html'],
-  'heart-syndrome': ['学术交流 · 2026.05 · Heidelberg','周小波高级研究员解析心碎综合征发病机制','围绕心碎综合征的发病机制开展专题分享，连接基础研究与临床观察。','本次学术讲座聚焦心碎综合征的研究进展、关键机制与临床启示，为协会成员提供面向医学前沿的深入交流机会。','../assets/images/activity-records/heart-syndrome.jpg','../SCDSG_articles/_学术讲座回顾_周小波高级研究员解析心碎综合征发病机制/index.html'],
-  'guizhou': ['人才与合作 · 2017.06 · Guiyang','与贵州大学签订合作框架协议','推动协会与高校在学术交流、人才培养及科研合作方面建立联系。','协会与贵州大学建立合作框架，探索中德医学与生命科学领域的学术互访、人才交流和科研合作。','../assets/images/activity-records/guizhou-cooperation.jpg','../SCDSG_articles/旅德华人医师学者协会与贵州大学签订合作框架协议/index.html'],
-  'wuhan-aid': ['公益行动 · 2020.01 · Wuhan','驰援武汉，龙一族在行动','面对突发公共卫生事件，会员以专业与行动参与支援。','疫情发生后，协会成员发起支援行动，组织募捐与医疗物资相关工作，以医学专业共同体的方式参与社会公益。','../assets/images/activity-records/wuhan-aid.jpg','../SCDSG_articles/驰援武汉_龙一族在行动/index.html'],
-  'founding': ['会员社群 · 2016.07 · Germany','旅德华人医师学者协会注册大会','协会组织建设的重要里程碑，正式建立面向会员的长期交流平台。','注册大会标志着协会从早期同行互助社群走向正式组织建设，为后续学术活动、会员服务和中德合作奠定基础。','../assets/images/activity-records/founding.jpg','../SCDSG_articles/旅德华人医师学者协会注册大会胜利召开/index.html'],
-  'forum-2016': ['学术交流 · 2016.09 · Dalian','第一届国内高峰论坛研讨会','协会早期国内论坛的重要节点，开启跨地域学术合作与人才交流。','第一届国内高峰论坛在大连举行，协会成员围绕医学与生命科学议题开展研讨，形成中德两地持续交流的基础。','../assets/images/activity-records/forum-2016.jpg','../SCDSG_articles/旅德华人医师学者协会第一届国内高峰论坛研讨会顺利召开/index.html'],
-  'forum-2023': ['学术交流 · 2023.07 · Wenzhou','第三届国内学术研讨会在温州举行','协会国内论坛延续中德合作传统，围绕医学与生命科学开展跨区域研讨。','第三届国内研讨会连接海德堡与温州的会员和合作伙伴，推动学术分享、人才交流与区域协作。','../assets/images/activity-records/forum-2023.jpg','../SCDSG_articles/闪耀_旅德华人医师学者协会第三届国内研讨会圆满落幕_/index.html'],
-  'dna-lecture': ['学术交流 · 2018.06 · Germany','DNA 微阵列基因表达数据分析讲座','围绕基因表达数据分析方法，分享生命科学研究中的实用经验。','本次讲座聚焦 DNA 微阵列与基因表达数据分析，为会员提供研究方法、数据解读与科研交流的机会。','../assets/images/activity-records/heart-syndrome.jpg','../SCDSG_articles/DNA微阵列基因表达数据分析__龙一族5月学术讲座总结/index.html'],
-  'medical-license': ['人才与合作 · 2018.01 · Germany','在德国考取行医资格经验分享','面向医学学习者与青年医生，梳理德国执业路径和临床实践经验。','活动围绕德国医师执照考试、准备方法和医院工作环境展开，帮助医学背景成员了解职业发展的具体路径。','../assets/images/activity-records/medical-license.jpg','../SCDSG_articles/_经验精华贴_在德国考执医_你能行/index.html'],
-  'medical-affairs': ['人才与合作 · 2018.09 · Germany','职业观察：聊聊药企的医学事务部','从医学专业视角了解药企医学事务岗位与产业协作。','活动介绍医学事务部的工作内容、跨部门协作和职业能力要求，为青年医师学者提供产业发展参考。','../assets/images/activity-records/doctor-in-germany.jpg','../SCDSG_articles/聊聊药企的医学事务部/index.html'],
-  'dkfz-phd': ['人才与合作 · 2018.10 · Heidelberg','德国癌症研究中心国际博士项目申请经验','分享国际博士项目申请流程、准备重点与科研选择。','活动围绕 DKFZ 国际博士生项目的申请材料、研究环境与发展机会展开经验交流。','../assets/images/activity-records/bioinformatics-radiotherapy.jpg','../SCDSG_articles/_经验帖_德国癌症研究中心国际博士生项目申请/index.html'],
-  'career-germany': ['人才与合作 · 2018.11 · Germany','医学背景如何在德国找工作','面向医学生与相关专业成员，讨论德国职业选择与求职准备。','从岗位信息、语言准备到职业路径，活动总结了医学背景成员在德国寻找工作的实践经验。','../assets/images/activity-records/medical-license.jpg','../SCDSG_articles/_经验帖_在德国找工作_并没有那么难（医学生适用_其他专业亦可借鉴）/index.html'],
-  'newcomer-2025': ['会员社群 · 2025.12 · Heidelberg','2025 新人交流会与协会顾问聘任','新成员与协会前辈相聚，建立面向未来的同行联系。','新人交流会帮助新成员了解协会，并记录刘海坤教授、孔波教授受聘协会顾问的重要时刻。','../assets/images/activity-records/newcomer-2025.jpg','../SCDSG_articles/_活动回顾_旅德华人医师学者协会2025新人交流会圆满落幕_刘海坤教授_孔波教授受聘协会顾问_/index.html'],
-  'doctor-germany': ['人才与合作 · 2026.04 · Germany','在德国定义“医生”的无限可能','从职业身份、培训路径与临床工作出发，讨论德国医疗体系中的多元发展。','协会交流活动记录了德国医疗职业路径与个人发展的多种可能。','../assets/images/activity-records/doctor-in-germany.jpg','../SCDSG_articles/在德国定义_医生_的无限可能_严璞医生交流会活动总结/index.html'],
-  'career-return': ['人才与合作 · 2026.07 · Online','顾祖光教授回国高校入职经验分享','围绕回国发展、岗位选择与高校科研环境展开经验交流。','活动聚焦青年学者回国发展、岗位选择和高校科研工作的实际经验。','../assets/images/activity-records/career-return.jpg','../SCDSG_articles/_7_18交流会报名_顾祖光教授回国高校入职经验分享/index.html']
+  founding: {
+    date: '2016年07月26日 15:38', category: '协会发展', location: '德国',
+    title: '旅德华人医师学者协会注册大会胜利召开',
+    summary: '协会完成正式注册与组织建设，为长期会员服务、学术活动和中德合作建立制度基础。',
+    image: '../assets/images/activity-records/founding.jpg',
+    source: '../SCDSG_articles/旅德华人医师学者协会注册大会胜利召开/index.html'
+  },
+  'forum-2016': {
+    date: '2016年09月11日 23:33', category: '年度论坛', location: '大连',
+    title: '旅德华人医师学者协会第一届国内高峰论坛研讨会顺利召开',
+    summary: '协会首届国内高峰论坛连接在德会员、归国学者及国内合作伙伴，开启常态化国内学术交流。',
+    image: '../assets/images/activity-records/forum-2016.jpg',
+    source: '../SCDSG_articles/旅德华人医师学者协会第一届国内高峰论坛研讨会顺利召开/index.html'
+  },
+  'consulate-health': {
+    date: '2017年06月28日 10:27', category: '医学科普', location: '法兰克福',
+    title: '旅德华人医师学者协会在中国驻法兰克福总领事馆举办医学科普讲座',
+    summary: '协会发挥医学专业优势，面向公众开展健康知识传播与医学科普。',
+    image: '../assets/images/activity-records/consulate-health.jpg',
+    source: '../SCDSG_articles/旅德华人医师学者协会在中国驻法兰克福总领事馆举办医学科普讲座/index.html'
+  },
+  'nct-run': {
+    date: '2017年07月14日 09:51', category: '公益行动', location: '海德堡',
+    title: '#NCT Lauf# 旅德华人医师学者协会公益跑专题报道',
+    summary: '协会成员参加 NCT 公益跑，以行动支持癌症研究与健康倡导。',
+    image: '../assets/images/activity-records/nct-run.jpg',
+    source: '../SCDSG_articles/_NCT_Lauf__旅德华人医师学者协会公益跑专题报道/index.html'
+  },
+  'student-exchange-2017': {
+    date: '2017年11月21日 16:00', category: '会员交流', location: '海德堡',
+    title: 'SCDSG新老生交流会成功举办',
+    summary: '新成员与协会前辈交流德国学习、科研和生活经验，建立同行支持网络。',
+    image: '../assets/images/activity-records/student-exchange-2017.jpg',
+    source: '../SCDSG_articles/SCDSG新老生交流会成功举办/index.html'
+  },
+  'hiv-lecture': {
+    date: '2018年05月09日 19:31', category: '学术讲座', location: '德国',
+    title: 'HIV组装过程研究及其对AIDS治疗的意义：HIV entry and exit 学术交流会总结',
+    summary: '专题交流聚焦 HIV 进入、组装与释放过程及其对 AIDS 治疗研究的意义。',
+    image: '../assets/images/activity-records/hiv-lecture.jpg',
+    source: '../SCDSG_articles/HIV组装过程研究及其对AIDS治疗的意义_HIV_entry_and_exit_学术交流会总结/index.html'
+  },
+  'dna-lecture': {
+    date: '2018年06月05日 21:58', category: '学术讲座', location: '德国',
+    title: 'DNA微阵列基因表达数据分析——龙一族5月学术讲座总结',
+    summary: '讲座围绕 DNA 微阵列与基因表达数据分析方法，分享科研实践与数据解读经验。',
+    image: '../assets/images/activity-records/dna-lecture.jpg',
+    source: '../SCDSG_articles/DNA微阵列基因表达数据分析__龙一族5月学术讲座总结/index.html'
+  },
+  'forum-2018': {
+    date: '2018年11月14日 23:46', category: '年度论坛', location: '厦门',
+    title: '旅德华人医师学者协会第二届国内学术研讨会（中国厦门）成功举办',
+    summary: '第二届国内学术研讨会在厦门举行，继续推进中德医学与生命科学领域交流。',
+    image: '../assets/images/activity-records/forum-2018.jpg',
+    source: '../SCDSG_articles/旅德华人医师学者协会第二届国内学术研讨会（中国厦门）成功举办/index.html'
+  },
+  'single-cell': {
+    date: '2019年09月07日 12:31', category: '学术讲座', location: '德国',
+    title: '单细胞转录组测序——龙一族7月学术讲座总结',
+    summary: '专题讲座介绍单细胞转录组测序的研究方法、分析思路与应用场景。',
+    image: '../assets/images/activity-records/single-cell.jpg',
+    source: '../SCDSG_articles/单细胞转录组测序__龙一族7月学术讲座总结/index.html'
+  },
+  'wuhan-aid': {
+    date: '2020年01月25日 15:29', category: '公益行动', location: '武汉',
+    title: '驰援武汉，龙一族在行动',
+    summary: '面对突发公共卫生事件，协会会员组织支援行动与医疗物资相关工作。',
+    image: '../assets/images/activity-records/wuhan-aid.jpg',
+    source: '../SCDSG_articles/驰援武汉_龙一族在行动/index.html'
+  },
+  'wuhan-report': {
+    date: '2020年03月30日 17:22', category: '公益行动', location: '武汉',
+    title: '募捐公示：龙一族驰援武汉募捐项目阶段性公示（更新）',
+    summary: '协会公布驰援武汉募捐项目的阶段性进展与执行记录。',
+    image: '../assets/images/activity-records/wuhan-report.jpg',
+    source: '../SCDSG_articles/募捐公示_龙一族驰援武汉募捐项目阶段性公示（更新）/index.html'
+  },
+  'forum-2023': {
+    date: '2023年07月27日 03:18', category: '年度论坛', location: '温州',
+    title: '闪耀！旅德华人医师学者协会第三届国内研讨会圆满落幕！',
+    summary: '第三届国内研讨会在温州举行，连接海德堡与国内医学、生命科学合作网络。',
+    image: '../assets/images/activity-records/forum-2023.jpg',
+    source: '../SCDSG_articles/闪耀_旅德华人医师学者协会第三届国内研讨会圆满落幕_/index.html'
+  },
+  'license-2024': {
+    date: '2024年12月03日 09:00', category: '职业发展', location: '德国',
+    title: '德国执业医师资格考试备考及德国从医经验分享交流会圆满结束',
+    summary: '交流会梳理德国执业医师资格考试准备与临床工作经验，为青年医生提供职业参考。',
+    image: '../assets/images/activity-records/license-2024.jpg',
+    source: '../SCDSG_articles/德国执业医师资格考试备考及德国从医经验分享交流会圆满结束/index.html'
+  },
+  'hike-2025': {
+    date: '2025年04月17日 14:00', category: '会员交流', location: '海德堡',
+    title: '寻找春天｜海德堡哲学家小径徒步活动成功举办！',
+    summary: '协会成员在哲学家小径开展春季徒步，在专业交流之外加强会员联系。',
+    image: '../assets/images/activity-records/hike-2025.jpg',
+    source: '../SCDSG_articles/寻找春天___海德堡哲学家小径徒步活动成功举办_/index.html'
+  },
+  'forum-2025': {
+    date: '2025年09月02日 15:35', category: '年度论坛', location: '上海',
+    title: '「十三载同心・筑梦再前行」第四届旅德华人医师学者协会学术研讨会暨2025海德堡龙一族学术交流会在沪圆满举行',
+    summary: '第四届国内学术研讨会在上海举行，汇聚中德医学与生命科学研究者开展专题交流。',
+    image: '../assets/images/activity-records/forum-2025.jpg',
+    source: '../SCDSG_articles/_十三载同心_筑梦再前行_第四届旅德华人医师学者协会学术研讨会暨2025海德堡龙一族学术交流会在沪圆满举行/index.html'
+  },
+  'newcomer-2025': {
+    date: '2025年12月02日 18:47', category: '会员交流', location: '海德堡',
+    title: '【活动回顾】旅德华人医师学者协会2025新人交流会圆满落幕！刘海坤教授、孔波教授受聘协会顾问！',
+    summary: '新人交流会帮助新成员了解协会、认识同行，并记录协会顾问聘任。',
+    image: '../assets/images/activity-records/newcomer-2025.jpg',
+    source: '../SCDSG_articles/_活动回顾_旅德华人医师学者协会2025新人交流会圆满落幕_刘海坤教授_孔波教授受聘协会顾问_/index.html'
+  },
+  'bioinformatics-radiotherapy': {
+    date: '2025年12月19日 09:00', category: '学术讲座', location: '海德堡',
+    title: '[活动回顾]当生信大神“遇见”放疗之钻，DKFZ 高被引学者顾祖光 & 质子重离子专家赵静芳重磅讲座圆满落幕！',
+    summary: '跨学科讲座连接生物信息学与质子重离子放疗研究，呈现科研与临床转化对话。',
+    image: '../assets/images/activity-records/bioinformatics-radiotherapy.jpg',
+    source: '../SCDSG_articles/_活动回顾_当生信大神_遇见_放疗之钻_DKFZ_高被引学者顾祖光___质子重离子专家赵静芳重磅讲座圆满落幕_/index.html'
+  },
+  'heart-syndrome': {
+    date: '2026年05月06日 08:00', category: '学术讲座', location: '海德堡',
+    title: '【学术讲座回顾】周小波高级研究员解析心碎综合征发病机制',
+    summary: '专题讲座聚焦心碎综合征发病机制、研究进展及其临床意义。',
+    image: '../assets/images/activity-records/heart-syndrome.jpg',
+    source: '../SCDSG_articles/_学术讲座回顾_周小波高级研究员解析心碎综合征发病机制/index.html'
+  }
 };
-const id = new URLSearchParams(location.search).get('id') || 'forum-2025';
-const r = records[id] || records['forum-2025'];
-document.title = `${r[1]} | SCDSG`;
-document.getElementById('detail').innerHTML = `<div class="detail-meta">${r[0]}</div><h1>${r[1]}</h1><p class="detail-lead">${r[2]}</p><img class="detail-hero" src="${r[4]}" alt="${r[1]}"><p class="detail-body">${r[3]}</p><a class="detail-source" href="${r[5]}">阅读原始图文档案 ↗</a>`;
+
+const requestedId = new URLSearchParams(location.search).get('id');
+const record = records[requestedId];
+const detail = document.getElementById('detail');
+
+if (!record) {
+  document.title = '活动未找到 | SCDSG';
+  detail.innerHTML = '<div class="detail-meta">SCDSG · 活动档案</div><h1>未找到该活动记录</h1><p class="detail-lead">请返回活动列表选择其他记录。</p>';
+} else {
+  document.title = `${record.title} | SCDSG`;
+  detail.innerHTML = `<div class="detail-meta">${record.category} · ${record.date} · ${record.location}</div><h1>${record.title}</h1><p class="detail-lead">${record.summary}</p><img class="detail-hero" src="${record.image}" alt="${record.title}"><div class="detail-body"><p>${record.summary}</p><p>本页信息由协会保存的公众号 ZIP 图文档案整理，标题与发布时间保持原文记录。</p></div><a class="detail-source" href="${record.source}">阅读原始图文档案 ↗</a>`;
+}

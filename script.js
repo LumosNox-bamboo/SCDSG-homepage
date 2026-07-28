@@ -6,7 +6,11 @@ const timeline = document.querySelector('.timeline');
 
 let language = 'zh';
 
-document.querySelectorAll('.wechat-stories em').forEach((item) => { item.textContent = '查看活动详情 ↗'; });
+document.querySelectorAll('.wechat-stories em').forEach((item) => {
+  item.dataset.zh = '查看活动详情 ↗';
+  item.dataset.de = 'Aktivitätsdetails ansehen ↗';
+  item.textContent = item.dataset[language];
+});
 
 function setLanguage(nextLanguage) {
   language = nextLanguage;

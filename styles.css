@@ -187,10 +187,11 @@ button { color: inherit; font: inherit; }
 .country-map header strong { color: var(--blue-deep); font-size: .75rem; letter-spacing: .15em; }
 .country-map header small { margin-top: 4px; color: var(--ink-soft); font-size: .64rem; }
 .map-canvas { position: relative; height: 360px; }
-.country-map-de .map-canvas { max-width: 280px; margin: auto; }
+.country-map-de .map-canvas { width: 100%; max-width: 330px; height: auto; aspect-ratio: 586 / 793; margin: auto; }
 .country-map-cn .map-canvas { width: 100%; max-width: 520px; height: auto; aspect-ratio: 774 / 569; margin: 0 auto; }
 .map-canvas > img { position: absolute; inset: 18px 8%; width: 84%; height: calc(100% - 36px); object-fit: contain; opacity: .12; filter: invert(24%) sepia(58%) saturate(1467%) hue-rotate(177deg) brightness(82%); }
 .country-map-cn .map-canvas > img { inset: 0; width: 100%; height: 100%; opacity: .16; }
+.country-map-de .map-canvas > img { inset: 0; width: 100%; height: 100%; opacity: .16; }
 .map-point { position: absolute; z-index: 3; width: 9px; height: 9px; border: 2px solid var(--white); border-radius: 50%; background: var(--blue); box-shadow: 0 0 0 1px var(--blue), 0 4px 10px rgba(7,40,70,.18); }
 .map-point.active { background: var(--red); box-shadow: 0 0 0 1px var(--red), 0 0 0 6px rgba(228,87,61,.14); }
 .map-point { padding: 0; cursor: pointer; }
@@ -202,27 +203,35 @@ button { color: inherit; font: inherit; }
 .city-list { padding-top: 16px; display: flex; flex-wrap: wrap; gap: 7px; border-top: 1px solid var(--line); }
 .city-chip { padding: 7px 9px; color: var(--ink-soft); border: 1px solid rgba(21,94,168,.16); border-radius: 999px; background: rgba(255,255,255,.72); cursor: pointer; font-size: .62rem; font-weight: 800; transition: color .2s, background .2s, border-color .2s; }
 .city-chip:hover, .city-chip.active { color: var(--white); border-color: var(--blue); background: var(--blue); }
-.de-hamburg { left: 43%; top: 16%; }
-.de-berlin { left: 68%; top: 25%; }
-.de-hannover { left: 38%; top: 30%; }
-.de-cologne { left: 15%; top: 45%; }
-.de-frankfurt { left: 37%; top: 53%; }
-.de-heidelberg { left: 38%; top: 63%; }
-.de-stuttgart { left: 30%; top: 72%; }
-.de-freiburg { left: 15%; top: 79%; }
-.de-munich { left: 60%; top: 84%; }
-.cn-dalian { left: 79%; top: 46%; }
-.cn-beijing { left: 71%; top: 46%; }
-.cn-qingdao { left: 72%; top: 49%; }
-.cn-xian { left: 56%; top: 50%; }
-.cn-chengdu { left: 46%; top: 62%; }
-.cn-wuhan { left: 59%; top: 67%; }
-.cn-nanjing { left: 70%; top: 59%; }
-.cn-shanghai { left: 80%; top: 69%; }
-.cn-hangzhou { left: 79%; top: 71%; }
-.cn-wenzhou { left: 80%; top: 78%; }
-.cn-xiamen { left: 72%; top: 87%; }
-.cn-guangzhou { left: 64%; top: 92%; }
+.de-hamburg { left: 46%; top: 20%; }
+.de-berlin { left: 80%; top: 34%; }
+.de-hannover { left: 43%; top: 35%; }
+.de-cologne { left: 16%; top: 55%; }
+.de-frankfurt { left: 33%; top: 65%; }
+.de-heidelberg { left: 33%; top: 73%; }
+.de-stuttgart { left: 38%; top: 81%; }
+.de-freiburg { left: 24%; top: 91%; }
+.de-munich { left: 61%; top: 90%; }
+.cn-dalian { left: 76%; top: 43%; }
+.cn-beijing { left: 68%; top: 44%; }
+.cn-qingdao { left: 75%; top: 51%; }
+.cn-xian { left: 57%; top: 55%; }
+.cn-chengdu { left: 50%; top: 64%; }
+.cn-wuhan { left: 65%; top: 65%; }
+.cn-nanjing { left: 72%; top: 61%; }
+.cn-shanghai { left: 76%; top: 63%; }
+.cn-hangzhou { left: 74%; top: 66%; }
+.cn-wenzhou { left: 75%; top: 72%; }
+.cn-xiamen { left: 71%; top: 81%; }
+.cn-guangzhou { left: 64%; top: 85%; }
+.cn-beijing .map-label { left: -1.1rem; top: -1.15rem; }
+.cn-dalian .map-label { left: 1.25rem; top: -.55rem; }
+.cn-qingdao .map-label { left: 1.1rem; top: .45rem; }
+.cn-nanjing .map-label { left: -1rem; top: -1.1rem; }
+.cn-shanghai .map-label { left: 1.15rem; top: -.65rem; }
+.cn-hangzhou .map-label { left: -1rem; top: .35rem; }
+.cn-wenzhou .map-label { left: 1rem; top: .45rem; }
+.map-country-code { position: absolute; right: .55rem; top: .55rem; z-index: 2; color: rgba(7,40,70,.42); font-size: 1.8rem; font-weight: 800; letter-spacing: -.06em; pointer-events: none; }
 
 .forum-gallery { background: var(--white); }
 .gallery-track { display: grid; grid-template-columns: 1fr 1.2fr .85fr; gap: 18px; align-items: stretch; }
