@@ -51,7 +51,7 @@ button { color: inherit; font: inherit; }
 .hero h1 em { margin-top: 14px; color: var(--blue); font-family: Georgia, "Noto Serif SC", serif; font-weight: 400; font-style: normal; }
 .hero-intro { max-width: 610px; margin: 36px 0; color: var(--ink-soft); font-size: clamp(1rem, 1.35vw, 1.18rem); line-height: 1.85; }
 .hero-actions { display: flex; align-items: stretch; gap: 14px; }
-.hero-actions .button { width: calc((100% - 28px) / 3); min-width: 0; flex: 0 0 calc((100% - 28px) / 3); padding-inline: 15px; gap: 12px; white-space: nowrap; }
+.hero-actions .button { width: 146px; min-width: 146px; min-height: 46px; flex: 0 0 146px; padding: 10px; gap: 0; white-space: nowrap; font-size: .74rem; text-align: center; }
 .button { display: inline-flex; justify-content: center; align-items: center; gap: 30px; min-width: 160px; padding: 14px 22px; border-radius: 4px; font-size: .9rem; font-weight: 700; transition: transform .2s, box-shadow .2s, background .2s; }
 .button:hover { transform: translateY(-2px); }
 .button-primary { color: var(--white); background: var(--blue); box-shadow: 0 12px 28px rgba(21,94,168,.25); }
@@ -109,8 +109,7 @@ button { color: inherit; font: inherit; }
 .about { background: var(--white); }
 .about-grid { display: grid; grid-template-columns: .88fr 1.12fr; gap: clamp(60px, 9vw, 130px); align-items: start; }
 .about-image { position: sticky; top: 110px; margin: 0; }
-.about-image { padding: 12px; border: 1px solid rgba(21,94,168,.24); border-radius: 18px; background: var(--white); box-shadow: var(--shadow); }
-.about-image img { display: block; width: 100%; height: auto; object-fit: contain; border-radius: 9px; }
+.about-image img { display: block; width: 100%; height: auto; object-fit: contain; border-radius: 0; box-shadow: var(--shadow); }
 .about-image figcaption { margin-top: 12px; padding: 0 4px 2px; display: flex; justify-content: space-between; color: var(--ink-soft); font-size: .75rem; letter-spacing: .08em; }
 .about-image figcaption span:first-child { color: var(--red); font-weight: 800; }
 .about-content .lead { margin: 0 0 44px; font-size: clamp(1.15rem, 1.8vw, 1.5rem); line-height: 1.75; }
@@ -391,13 +390,13 @@ button { color: inherit; font: inherit; }
 .programme-feature::before { content: ""; position: absolute; top: 18px; bottom: 18px; left: -32px; width: 4px; background: var(--forum-lime); }
 
 .science-section { background: var(--white); overflow: hidden; }
-.science-track { display: flex; gap: 16px; overflow-x: auto; padding-bottom: 18px; scroll-snap-type: x mandatory; }
-.science-track article { flex: 0 0 min(340px, 78vw); min-height: 310px; padding: 28px; display: flex; flex-direction: column; justify-content: space-between; border: 1px solid var(--line); scroll-snap-align: start; transition: transform .25s, background .25s, color .25s; }
+.science-track { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+.science-track article { min-width: 0; min-height: 220px; padding: 18px; display: flex; flex-direction: column; justify-content: space-between; border: 1px solid var(--line); transition: transform .25s, background .25s, color .25s; }
 .science-track article:hover { color: var(--white); background: var(--blue); transform: translateY(-6px); }
-.science-track span { color: var(--forum-violet); font-family: Georgia, serif; font-size: 2.2rem; }
+.science-track span { color: var(--forum-violet); font-family: Georgia, serif; font-size: 1.35rem; }
 .science-track article:hover span { color: var(--forum-lime); }
-.science-track h3 { max-width: 240px; margin: auto 0 18px; font-family: Georgia, "Noto Serif SC", serif; font-size: 1.8rem; font-weight: 400; line-height: 1.18; }
-.science-track p { margin: 0; color: var(--ink-soft); font-size: .72rem; }
+.science-track h3 { margin: auto 0 12px; font-family: Georgia, "Noto Serif SC", serif; font-size: clamp(1rem, 1.35vw, 1.3rem); font-weight: 400; line-height: 1.25; }
+.science-track p { margin: 0; color: var(--ink-soft); font-size: .62rem; line-height: 1.5; }
 .science-track article:hover p { color: rgba(255,255,255,.66); }
 
 .abstracts-section { background: var(--cream); }
@@ -586,6 +585,7 @@ button { color: inherit; font: inherit; }
   .keynote-card-reverse .keynote-copy { grid-column: 2; }
   .programme-section { grid-template-columns: 1fr; }
   .programme-heading { max-width: 850px; }
+  .science-track { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .important-dates { grid-template-columns: repeat(4, 1fr); }
   .important-dates > p { grid-column: 1 / -1; min-height: auto; border-right: 0; border-bottom: 1px solid var(--line); }
   .awards-section { grid-template-columns: 1fr 1fr 1fr; }
@@ -687,6 +687,8 @@ button { color: inherit; font: inherit; }
   .programme-stream { padding: 0 24px 18px; }
   .programme-stream article { grid-template-columns: 72px 1fr; gap: 16px; }
   .programme-feature::before { left: -24px; }
+  .science-track { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .science-track article { min-height: 190px; }
   .abstract-call { grid-template-columns: 1fr; gap: 40px; padding: 34px 24px; }
   .abstract-call h2 { font-size: 3.4rem; }
   .abstract-format { padding: 24px; }
