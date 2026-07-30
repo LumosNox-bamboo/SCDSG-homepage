@@ -48,18 +48,19 @@
     <section class="registration-layout">
       <aside class="registration-context">
         <p class="eyebrow" data-zh="CALL FOR ABSTRACTS 2026" data-de="CALL FOR ABSTRACTS 2026">CALL FOR ABSTRACTS 2026</p>
-        <h2 data-zh="提交研究摘要。" data-de="Abstract einreichen.">提交研究摘要。</h2>
-        <p data-zh="投稿将交由学术委员会进行匿名评审。综合排名靠前的摘要将获邀进行口头报告，其余高质量投稿可进入壁报展示环节。" data-de="Die Einreichungen werden anonym durch das wissenschaftliche Komitee begutachtet. Ausgewählte Beiträge werden als Vortrag oder Poster präsentiert.">投稿将交由学术委员会进行匿名评审。综合排名靠前的摘要将获邀进行口头报告，其余高质量投稿可进入壁报展示环节。</p>
+        <h2 data-zh="提交研究摘要" data-de="Abstract einreichen">提交研究摘要</h2>
+        <p data-zh="投稿将交由学术委员会进行匿名评审。投稿人可选择希望的展示形式，最终安排由评审委员会根据评审结果确定。" data-de="Die Einreichungen werden anonym durch das wissenschaftliche Komitee begutachtet. Eine Präsentationspräferenz kann angegeben werden; die endgültige Zuordnung entscheidet das Komitee nach dem Review.">投稿将交由学术委员会进行匿名评审。投稿人可选择希望的展示形式，最终安排由评审委员会根据评审结果确定。</p>
         <dl>
           <div><dt data-zh="摘要要求" data-de="ABSTRACT">摘要要求</dt><dd data-zh="英文 · 不超过 300 词" data-de="Englisch · max. 300 Wörter">英文 · 不超过 300 词</dd></div>
+          <div><dt data-zh="投稿截止" data-de="FRIST">投稿截止</dt><dd data-zh="XXXX" data-de="XXXX">XXXX</dd></div>
           <div><dt data-zh="个人简历" data-de="LEBENSLAUF">个人简历</dt><dd data-zh="PDF · 最大 10 MB" data-de="PDF · max. 10 MB">PDF · 最大 10 MB</dd></div>
-          <div><dt data-zh="研究图片" data-de="ABBILDUNG">研究图片</dt><dd data-zh="可选 · 最大 20 MB" data-de="Optional · max. 20 MB">可选 · 最大 20 MB</dd></div>
+          <div><dt data-zh="补充图表" data-de="ERGÄNZENDE ABBILDUNG">补充图表</dt><dd data-zh="可选 · 最大 20 MB" data-de="Optional · max. 20 MB">可选 · 最大 20 MB</dd></div>
         </dl>
       </aside>
 
       <div class="registration-form-card">
         <div class="form-heading">
-          <span>01—08</span>
+          <span>01—09</span>
           <div>
             <h2 data-zh="投稿信息" data-de="Einreichungsdaten">投稿信息</h2>
             <p data-zh="带 * 的项目为必填项。" data-de="Mit * markierte Felder sind Pflichtfelder.">带 * 的项目为必填项。</p>
@@ -108,6 +109,16 @@
                 <option value="other" data-zh="其他医学或生命科学方向" data-de="Anderes Fachgebiet">其他医学或生命科学方向</option>
               </select>
             </label>
+            <label>
+              <span data-zh="展示形式偏好 *" data-de="Präsentationspräferenz *">展示形式偏好 *</span>
+              <select name="presentationPreference" required>
+                <option value="" data-zh="请选择" data-de="Bitte wählen">请选择</option>
+                <option value="oral" data-zh="口头报告" data-de="Vortrag">口头报告</option>
+                <option value="poster" data-zh="壁报展示" data-de="Posterpräsentation">壁报展示</option>
+                <option value="either" data-zh="均可" data-de="Beides möglich">均可</option>
+              </select>
+              <small class="field-help" data-zh="此项为投稿偏好，最终展示形式由评审委员会审核后确定。" data-de="Diese Angabe ist eine Präferenz. Die endgültige Präsentationsform wird nach Begutachtung durch das Komitee festgelegt.">此项为投稿偏好，最终展示形式由评审委员会审核后确定。</small>
+            </label>
             <label class="form-wide">
               <span data-zh="英文摘要 *" data-de="Englisches Abstract *">英文摘要 *</span>
               <textarea name="abstractText" rows="10" maxlength="3000" aria-describedby="abstract-counter" required></textarea>
@@ -124,9 +135,9 @@
               <small class="field-help" data-zh="仅接受 PDF，最大 10 MB。" data-de="Nur PDF, maximal 10 MB.">仅接受 PDF，最大 10 MB。</small>
             </label>
             <label class="form-wide file-field">
-              <span data-zh="研究示意图（可选）" data-de="Forschungsabbildung (optional)">研究示意图（可选）</span>
+              <span data-zh="补充图表（可选）" data-de="Ergänzende Abbildung (optional)">补充图表（可选）</span>
               <input type="file" name="figureFile" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp">
-              <small class="field-help" data-zh="接受 JPG、PNG 或 WebP，最大 20 MB。" data-de="JPG, PNG oder WebP, maximal 20 MB.">接受 JPG、PNG 或 WebP，最大 20 MB。</small>
+              <small class="field-help" data-zh="可选；接受 JPG、PNG 或 WebP，最大 20 MB。" data-de="Optional; JPG, PNG oder WebP, maximal 20 MB.">可选；接受 JPG、PNG 或 WebP，最大 20 MB。</small>
             </label>
             <label class="form-honeypot" aria-hidden="true">
               <span>Website</span>

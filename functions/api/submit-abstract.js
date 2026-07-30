@@ -22,6 +22,12 @@ const RESEARCH_AREAS = new Set([
   'other'
 ]);
 
+const PRESENTATION_PREFERENCES = new Set([
+  'oral',
+  'poster',
+  'either'
+]);
+
 const FIGURE_TYPES = {
   jpeg: {
     contentType: 'image/jpeg',
@@ -150,7 +156,7 @@ async function prepareCv(file, locale) {
 async function prepareFigure(file, locale) {
   if (!isUploadedFile(file) || !file.name || file.size <= 0) return null;
   if (file.size > MAX_FIGURE_BYTES) {
-    throw new Error(localizedMessage(locale, '研究图片不能超过 20 MB。', 'Die Abbildung darf maximal 20 MB groß sein.'));
+    throw new Error(localizedMessage(locale, '补充图表不能超过 20 MB。', 'Die ergänzende Abbildung darf maximal 20 MB groß sein.'));
   }
 
   const originalFileName = cleanFileName(file.name);
@@ -164,7 +170,7 @@ async function prepareFigure(file, locale) {
     !typeConfig.extensions.has(extension) ||
     file.type !== typeConfig.contentType
   ) {
-    throw new Error(localizedMessage(locale, '研究图片必须为有效的 JPG、PNG 或 WebP 文件。', 'Die Abbildung muss eine gültige JPG-, PNG- oder WebP-Datei sein.'));
+    throw new Error(localizedMessage(locale, '补充图表必须为有效的 JPG、PNG 或 WebP 文件。', 'Die ergänzende Abbildung muss eine gültige JPG-, PNG- oder WebP-Datei sein.'));
   }
 
   return {
@@ -229,6 +235,7 @@ export async function onRequestPost(context) {
     careerStage: cleanString(form.get('careerStage'), 24),
     contributionTitle: cleanString(form.get('contributionTitle'), 240),
     researchArea: cleanString(form.get('researchArea'), 24),
+    presentationPreference: cleanString(form.get('presentationPreference'), 16),
     abstractText: cleanMultiline(form.get('abstractText'), 3000),
     keywords: cleanString(form.get('keywords'), 220),
     locale
@@ -242,6 +249,7 @@ export async function onRequestPost(context) {
     !CAREER_STAGES.has(submission.careerStage) ||
     !submission.contributionTitle ||
     !RESEARCH_AREAS.has(submission.researchArea) ||
+    !PRESENTATION_PREFERENCES.has(submission.presentationPreference) ||
     !submission.abstractText ||
     countWords(submission.abstractText) > MAX_ABSTRACT_WORDS ||
     !submission.keywords ||
@@ -303,6 +311,7 @@ export async function onRequestPost(context) {
           career_stage,
           contribution_title,
           research_area,
+          presentation_preference,
           abstract_text,
           keywords,
           cv_object_key,
@@ -316,7 +325,7 @@ export async function onRequestPost(context) {
           status,
           consented_at,
           created_at
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'submitted', ?, ?)`
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'submitted', ?, ?)`
       ).bind(
         id,
         submissionCode,
@@ -326,6 +335,7 @@ export async function onRequestPost(context) {
         submission.careerStage,
         submission.contributionTitle,
         submission.researchArea,
+        submission.presentationPreference,
         submission.abstractText,
         submission.keywords,
         cvObjectKey,

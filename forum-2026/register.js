@@ -65,7 +65,7 @@ if (registrationForm) {
     if (figureField.files[0]?.size > maxFigureBytes) {
       setStatus(
         'error',
-        language === 'de' ? 'Die Abbildung darf maximal 20 MB groß sein.' : '研究图片不能超过 20 MB。'
+        language === 'de' ? 'Die ergänzende Abbildung darf maximal 20 MB groß sein.' : '补充图表不能超过 20 MB。'
       );
       figureField.focus();
       return;

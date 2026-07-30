@@ -11,6 +11,7 @@ function makeForm() {
   form.set('careerStage', 'postdoc');
   form.set('contributionTitle', 'A Test Contribution');
   form.set('researchArea', 'translational');
+  form.set('presentationPreference', 'either');
   form.set('abstractText', 'This is a valid test abstract.');
   form.set('keywords', 'test; abstract; medicine');
   form.set('consent', 'true');
@@ -79,6 +80,7 @@ test('stores a valid abstract and required PDF privately', async () => {
   assert.equal(state.stored.size, 1);
   assert.equal(state.batches.length, 1);
   assert.equal(state.batches[0].length, 2);
+  assert.equal(state.batches[0][0].values[8], 'either');
   assert.match([...state.stored.keys()][0], /^private\/forum\/2026\/[0-9a-f-]+\/cv\.pdf$/u);
 });
 
@@ -111,6 +113,21 @@ test('rejects a file whose bytes do not match PDF', async () => {
 
   assert.equal(response.status, 400);
   assert.match(result.message, /PDF/u);
+  assert.equal(state.stored.size, 0);
+  assert.equal(state.batches.length, 0);
+});
+
+test('rejects an invalid presentation preference', async () => {
+  const form = makeForm();
+  form.set('presentationPreference', 'invalid');
+  const state = makeEnvironment();
+
+  const response = await onRequestPost({
+    request: makeRequest(form),
+    env: state.env
+  });
+
+  assert.equal(response.status, 400);
   assert.equal(state.stored.size, 0);
   assert.equal(state.batches.length, 0);
 });
