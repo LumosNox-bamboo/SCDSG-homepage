@@ -308,7 +308,7 @@ button { color: inherit; font: inherit; }
 .forum-lead { max-width: 680px; margin: 30px 0; color: var(--ink-soft); font-size: clamp(.98rem, 1.25vw, 1.12rem); line-height: 1.82; }
 .forum-hero-actions { display: flex; align-items: center; gap: 26px; flex-wrap: wrap; }
 .forum-submit-action { display: flex; flex-direction: column; align-items: stretch; gap: 9px; }
-.forum-submit-action small { padding: 6px 9px; color: #72440f; border-left: 3px solid var(--forum-violet); background: #fff0d2; font-size: .7rem; font-weight: 900; letter-spacing: .04em; text-align: center; }
+.forum-submit-action small { padding: 6px 9px; color: var(--blue-deep); border: 1px solid rgba(21,94,168,.2); border-left: 3px solid var(--forum-lime); background: var(--blue-pale); font-size: .7rem; font-weight: 900; letter-spacing: .04em; text-align: center; }
 .forum-text-link { display: inline-flex; gap: 10px; color: var(--ink); font-size: .84rem; font-weight: 800; }
 .forum-hero-visual { position: relative; min-height: 585px; }
 .forum-hero-visual::before { content: ""; position: absolute; inset: 18px -18px -18px 18px; border: 1px solid rgba(7,29,48,.18); background: rgba(121,198,208,.12); }
@@ -506,8 +506,7 @@ button { color: inherit; font: inherit; }
 .registration-context dt { color: var(--blue); font-size: .62rem; font-weight: 900; letter-spacing: .12em; }
 .registration-context dd { margin: 0; color: var(--ink-soft); font-size: .82rem; }
 .registration-form-card { padding: clamp(30px, 5vw, 64px); border: 1px solid var(--line); border-top: 4px solid var(--blue); background: var(--white); box-shadow: 0 30px 90px rgba(7,29,48,.1); }
-.form-heading { margin-bottom: 42px; padding-bottom: 24px; display: grid; grid-template-columns: 70px 1fr; gap: 20px; border-bottom: 1px solid var(--line); }
-.form-heading > span { padding-top: 5px; color: var(--forum-violet); font-size: .66rem; font-weight: 900; letter-spacing: .12em; }
+.form-heading { margin-bottom: 42px; padding-bottom: 24px; border-bottom: 1px solid var(--line); }
 .form-heading h2 { margin: 0; font-family: Georgia, "Noto Serif SC", serif; font-size: 2rem; font-weight: 400; }
 .form-heading p { margin: 4px 0 0; color: var(--ink-soft); font-size: .78rem; }
 .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px 20px; }
@@ -659,7 +658,6 @@ button { color: inherit; font: inherit; }
   .registration-form-card { padding: 30px 22px; }
   .form-grid { grid-template-columns: 1fr; }
   .form-wide { grid-column: auto; }
-  .form-heading { grid-template-columns: 54px 1fr; }
   .form-submit-row { align-items: flex-start; flex-direction: column; }
   .forum-announcement { padding: 10px 22px; gap: 12px; }
   .forum-announcement p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
