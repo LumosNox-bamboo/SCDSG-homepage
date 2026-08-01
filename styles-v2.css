@@ -292,7 +292,7 @@ button { color: inherit; font: inherit; }
 .forum-page .button { border-radius: 3px; }
 .forum-page .section { scroll-margin-top: 130px; }
 .forum-header { border-bottom-color: rgba(16,39,60,.1); }
-.forum-announcement { min-height: 48px; margin-top: 72px; padding: 10px max(6vw, calc((100vw - var(--max))/2)); display: flex; align-items: center; gap: 22px; color: var(--white); background: var(--forum-night); }
+.forum-announcement { min-height: 52px; margin-top: 80px; padding: 13px max(6vw, calc((100vw - var(--max))/2)) 10px; display: flex; align-items: center; gap: 22px; color: var(--white); background: var(--forum-night); }
 .forum-announcement p { flex: 1; margin: 0; font-size: .82rem; letter-spacing: .02em; }
 .forum-announcement a { color: var(--forum-lime); font-size: .78rem; font-weight: 800; white-space: nowrap; }
 .announcement-label { padding: 5px 9px; color: var(--forum-lime); border: 1px solid rgba(121,198,208,.5); background: transparent; font-size: .62rem; font-weight: 900; letter-spacing: .14em; }
@@ -308,7 +308,7 @@ button { color: inherit; font: inherit; }
 .forum-lead { max-width: 680px; margin: 30px 0; color: var(--ink-soft); font-size: clamp(.98rem, 1.25vw, 1.12rem); line-height: 1.82; }
 .forum-hero-actions { display: flex; align-items: center; gap: 26px; flex-wrap: wrap; }
 .forum-submit-action { display: flex; flex-direction: column; align-items: stretch; gap: 9px; }
-.forum-submit-action small { color: rgba(255,255,255,.7); font-size: .7rem; font-weight: 700; letter-spacing: .04em; text-align: center; }
+.forum-submit-action small { padding: 6px 9px; color: #72440f; border-left: 3px solid var(--forum-violet); background: #fff0d2; font-size: .7rem; font-weight: 900; letter-spacing: .04em; text-align: center; }
 .forum-text-link { display: inline-flex; gap: 10px; color: var(--ink); font-size: .84rem; font-weight: 800; }
 .forum-hero-visual { position: relative; min-height: 585px; }
 .forum-hero-visual::before { content: ""; position: absolute; inset: 18px -18px -18px 18px; border: 1px solid rgba(7,29,48,.18); background: rgba(121,198,208,.12); }
@@ -393,13 +393,13 @@ button { color: inherit; font: inherit; }
 .programme-feature::before { content: ""; position: absolute; top: 18px; bottom: 18px; left: -32px; width: 4px; background: var(--forum-lime); }
 
 .science-section { background: var(--white); overflow: hidden; }
-.science-track { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
-.science-track article { min-width: 0; min-height: 132px; padding: 14px 16px; display: flex; flex-direction: column; justify-content: space-between; border: 1px solid var(--line); transition: transform .25s, background .25s, color .25s; }
+.science-track { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.science-track article { min-width: 0; min-height: 126px; padding: 16px 18px; display: flex; flex-direction: column; justify-content: space-between; border: 1px solid var(--line); transition: transform .25s, background .25s, color .25s; }
 .science-track article:hover { color: var(--white); background: var(--blue); transform: translateY(-6px); }
 .science-track span { color: var(--forum-violet); font-family: Georgia, serif; font-size: 1rem; }
 .science-track article:hover span { color: var(--forum-lime); }
 .science-track h3 { margin: auto 0 7px; font-family: Georgia, "Noto Serif SC", serif; font-size: clamp(.88rem, 1.1vw, 1.05rem); font-weight: 400; line-height: 1.25; }
-.science-track p { margin: 0; color: var(--ink-soft); font-size: .56rem; line-height: 1.4; }
+.science-track p { margin: 0; color: var(--ink-soft); font-size: .62rem; line-height: 1.45; letter-spacing: .01em; }
 .science-track article:hover p { color: rgba(255,255,255,.66); }
 
 .abstracts-section { background: var(--cream); }
@@ -412,6 +412,8 @@ button { color: inherit; font: inherit; }
 .abstract-format > strong { display: block; margin-top: 14px; font-family: Georgia, "Noto Serif SC", serif; font-size: 2rem; font-weight: 400; }
 .abstract-format ul { margin: 25px 0 0; padding: 22px 0 0 19px; border-top: 1px solid rgba(7,27,43,.2); }
 .abstract-format li { margin: 9px 0; font-size: .82rem; line-height: 1.5; }
+.abstract-template-link, .registration-template-link { width: fit-content; display: inline-flex; align-items: center; color: var(--blue); border-bottom: 1px solid currentColor; font-size: .75rem; font-weight: 900; line-height: 1.5; }
+.abstract-template-link { margin-top: 20px; }
 .important-dates { margin-top: 28px; display: grid; grid-template-columns: .8fr repeat(4, 1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .important-dates > p, .important-dates article { min-height: 170px; padding: 25px; border-right: 1px solid var(--line); }
 .important-dates > p { margin: 0; color: var(--blue); font-size: .7rem; font-weight: 900; letter-spacing: .14em; }
@@ -421,18 +423,16 @@ button { color: inherit; font: inherit; }
 .important-dates strong { margin-top: auto; font-size: .88rem; }
 .important-dates em { margin-top: 7px; color: var(--ink-soft); font-size: .74rem; font-style: normal; }
 
-.awards-section { display: grid; grid-template-columns: 1.1fr .9fr .45fr .45fr; gap: 14px; color: var(--white); background: var(--forum-night); }
-.awards-copy { padding-right: clamp(20px, 4vw, 70px); align-self: center; }
+.awards-section { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; color: var(--white); background: var(--forum-night); }
+.awards-copy { grid-column: 1 / -1; max-width: 1120px; padding: 0 0 42px; align-self: center; }
 .awards-section .eyebrow { color: var(--forum-lime); }
 .awards-section h2 { margin: 0; font-family: Georgia, "Noto Serif SC", serif; font-size: clamp(2.7rem, 4.6vw, 5rem); font-weight: 400; line-height: 1.08; letter-spacing: -.045em; }
 .awards-copy p { margin: 28px 0 0; color: rgba(255,255,255,.68); line-height: 1.82; }
-.award-card { min-height: 430px; padding: 30px; display: flex; flex-direction: column; justify-content: space-between; border: 1px solid rgba(255,255,255,.18); background: rgba(255,255,255,.05); }
-.award-card span { color: var(--forum-lime); font-size: .62rem; font-weight: 900; letter-spacing: .13em; writing-mode: vertical-rl; }
+.award-card { min-height: 340px; padding: 30px; display: flex; flex-direction: column; justify-content: space-between; border: 1px solid rgba(255,255,255,.18); background: rgba(255,255,255,.05); }
+.award-card span { color: var(--forum-lime); font-size: .62rem; font-weight: 900; letter-spacing: .13em; writing-mode: horizontal-tb; }
 .award-card strong { font-family: Georgia, "Noto Serif SC", serif; font-size: clamp(1.5rem, 2.6vw, 2.8rem); font-weight: 400; line-height: 1.15; }
 .award-card p { margin: 0; color: rgba(255,255,255,.6); font-size: .75rem; line-height: 1.6; }
 .award-card-main { background: linear-gradient(150deg, rgba(169,130,75,.5), rgba(21,94,168,.42)); }
-.award-card-small { min-height: 430px; padding: 22px; }
-.award-card-small strong { font-size: 1.25rem; }
 
 .organisers-section { background: var(--white); }
 .organiser-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 22px; }
@@ -500,13 +500,14 @@ button { color: inherit; font: inherit; }
 .registration-context { position: sticky; top: 112px; }
 .registration-context h2 { margin: 0; font-family: Georgia, "Noto Serif SC", serif; font-size: clamp(2.4rem, 4vw, 4.1rem); font-weight: 400; line-height: 1.1; letter-spacing: -.035em; }
 .registration-context > p:not(.eyebrow) { margin: 28px 0 38px; color: var(--ink-soft); line-height: 1.85; }
+.registration-template-link { margin: -14px 0 34px; }
 .registration-context dl { margin: 0; border-top: 1px solid var(--line); }
 .registration-context dl div { padding: 18px 0; display: grid; grid-template-columns: 110px 1fr; gap: 18px; border-bottom: 1px solid var(--line); }
 .registration-context dt { color: var(--blue); font-size: .62rem; font-weight: 900; letter-spacing: .12em; }
 .registration-context dd { margin: 0; color: var(--ink-soft); font-size: .82rem; }
 .registration-form-card { padding: clamp(30px, 5vw, 64px); border: 1px solid var(--line); border-top: 4px solid var(--blue); background: var(--white); box-shadow: 0 30px 90px rgba(7,29,48,.1); }
 .form-heading { margin-bottom: 42px; padding-bottom: 24px; display: grid; grid-template-columns: 70px 1fr; gap: 20px; border-bottom: 1px solid var(--line); }
-.form-heading > span { color: var(--forum-violet); font-family: Georgia, serif; font-size: 1.45rem; }
+.form-heading > span { padding-top: 5px; color: var(--forum-violet); font-size: .66rem; font-weight: 900; letter-spacing: .12em; }
 .form-heading h2 { margin: 0; font-family: Georgia, "Noto Serif SC", serif; font-size: 2rem; font-weight: 400; }
 .form-heading p { margin: 4px 0 0; color: var(--ink-soft); font-size: .78rem; }
 .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px 20px; }
@@ -575,7 +576,7 @@ button { color: inherit; font: inherit; }
   .registration-section { grid-template-columns: 1fr; }
   .registration-layout { grid-template-columns: 1fr; }
   .registration-context { position: static; max-width: 760px; }
-  .forum-announcement { margin-top: 76px; }
+  .forum-announcement { margin-top: 84px; }
   .forum-hero { grid-template-columns: 1fr; }
   .forum-hero-copy { max-width: 850px; }
   .forum-hero-visual { min-height: 530px; }
@@ -589,11 +590,10 @@ button { color: inherit; font: inherit; }
   .keynote-card-reverse .keynote-copy { grid-column: 2; }
   .programme-section { grid-template-columns: 1fr; }
   .programme-heading { max-width: 850px; }
-  .science-track { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .science-track { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .important-dates { grid-template-columns: repeat(4, 1fr); }
   .important-dates > p { grid-column: 1 / -1; min-height: auto; border-right: 0; border-bottom: 1px solid var(--line); }
   .awards-section { grid-template-columns: 1fr 1fr 1fr; }
-  .awards-copy { grid-column: 1 / -1; padding: 0 0 45px; }
 }
 
 @media (max-width: 720px) {
@@ -693,7 +693,7 @@ button { color: inherit; font: inherit; }
   .programme-stream { padding: 0 24px 18px; }
   .programme-stream article { grid-template-columns: 72px 1fr; gap: 16px; }
   .programme-feature::before { left: -24px; }
-  .science-track { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .science-track { grid-template-columns: 1fr; }
   .science-track article { min-height: 126px; }
   .abstract-call { grid-template-columns: 1fr; gap: 40px; padding: 34px 24px; }
   .abstract-call h2 { font-size: 3.4rem; }
@@ -704,7 +704,6 @@ button { color: inherit; font: inherit; }
   .important-dates strong { margin-top: 22px; }
   .awards-section { grid-template-columns: 1fr; padding-left: 22px; padding-right: 22px; }
   .award-card { min-height: 280px; }
-  .award-card span { writing-mode: horizontal-tb; }
   .organiser-grid { grid-template-columns: 1fr; }
   .organiser-card { min-height: 430px; padding: 32px 24px; }
   .organiser-badge { position: static; width: fit-content; margin-bottom: 32px; }

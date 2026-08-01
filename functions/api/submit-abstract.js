@@ -14,11 +14,12 @@ const CAREER_STAGES = new Set([
 ]);
 
 const RESEARCH_AREAS = new Set([
-  'basic',
+  'molecular',
+  'immunology',
   'clinical',
   'translational',
-  'ai',
   'pharma',
+  'bioinformatics',
   'other'
 ]);
 
