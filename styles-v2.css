@@ -263,6 +263,8 @@ button { color: inherit; font: inherit; }
 .join-steps span { display: flex; gap: 9px; align-items: baseline; }
 .join-steps b { color: var(--cyan); font-size: .65rem; }
 .join-steps em { font-size: .86rem; font-style: normal; }
+.join-copy > .join-note { margin: 28px 0 10px; color: rgba(255,255,255,.82); font-size: .78rem; line-height: 1.75; }
+.join-email { color: var(--cyan); border-bottom: 1px solid currentColor; font-size: .86rem; font-weight: 800; }
 .qr-card { padding: 25px; color: var(--ink); background: var(--white); border-radius: 22px; box-shadow: 0 30px 90px rgba(0,0,0,.2); transform: rotate(2deg); }
 .qr-card img { width: 100%; aspect-ratio: 1; object-fit: contain; }
 .qr-card div { padding: 16px 4px 2px; display: flex; flex-direction: column; }
@@ -277,9 +279,11 @@ button { color: inherit; font: inherit; }
 .contact-copy h2 { max-width: 760px; margin: 0; font-family: Georgia, "Noto Serif SC", serif; font-size: clamp(2.35rem, 4.5vw, 4.7rem); font-weight: 400; line-height: 1.17; letter-spacing: -.035em; }
 .contact-copy > p:not(.eyebrow) { max-width: 650px; margin: 28px 0 24px; color: var(--ink-soft); line-height: 1.8; }
 .contact-email { display: inline-block; color: var(--blue); border-bottom: 1px solid currentColor; font-size: clamp(1rem, 1.6vw, 1.35rem); font-weight: 700; }
+.contact-linkedin { width: fit-content; margin-top: 15px; display: block; color: var(--ink-soft); font-size: .8rem; font-weight: 800; }
 .contact-qr-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
 .contact-qr-grid article { padding: 18px; border: 1px solid var(--line); background: var(--white); }
 .qr-placeholder { width: 100%; aspect-ratio: 1; margin-bottom: 16px; border: 1px dashed rgba(16,39,60,.3); background: linear-gradient(135deg, rgba(21,94,168,.04), rgba(88,195,205,.08)); }
+.social-qr { width: 100%; aspect-ratio: 1; margin-bottom: 16px; object-fit: contain; background: var(--white); }
 .contact-qr-grid strong, .contact-qr-grid span { display: block; }
 .contact-qr-grid strong { font-size: .88rem; }
 .contact-qr-grid span { margin-top: 5px; color: var(--ink-soft); font-size: .72rem; }
@@ -334,7 +338,7 @@ button { color: inherit; font: inherit; }
 .forum-orbit span:nth-child(2) { right: 3px; bottom: 28px; background: var(--forum-lime); }
 .forum-orbit span:nth-child(3) { left: 8px; bottom: 17px; background: var(--red); }
 
-.forum-keyfacts { display: grid; grid-template-columns: repeat(4, 1fr); color: var(--white); background: var(--blue); }
+.forum-keyfacts { display: grid; grid-template-columns: repeat(3, 1fr); color: var(--white); background: var(--blue); }
 .forum-keyfacts article { min-height: 140px; padding: 27px max(24px, 2.5vw); display: grid; grid-template-columns: auto 1fr; gap: 18px; align-items: start; border-right: 1px solid rgba(255,255,255,.2); }
 .forum-keyfacts article:last-child { border-right: 0; }
 .forum-keyfacts article > span { color: var(--forum-lime); font-family: Georgia, serif; font-size: 1.9rem; line-height: 1; }
@@ -490,6 +494,7 @@ button { color: inherit; font: inherit; }
 .forum-cta h2 { max-width: 920px; margin: 0; font-family: Georgia, "Noto Serif SC", serif; font-size: clamp(3rem, 6vw, 6.6rem); font-weight: 400; line-height: 1; letter-spacing: -.045em; }
 .forum-cta p { max-width: 690px; margin: 28px 0 34px; color: rgba(255,255,255,.72); line-height: 1.82; }
 .forum-cta-actions { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
+.forum-contact { background: var(--forum-sky); }
 .forum-text-link-light { color: var(--white); }
 
 .registration-section { display: grid; grid-template-columns: 1.15fr .85fr; gap: clamp(60px, 9vw, 130px); align-items: center; color: var(--white); background: linear-gradient(125deg, var(--forum-night), #103d60); }
@@ -598,9 +603,7 @@ button { color: inherit; font: inherit; }
   .forum-hero { grid-template-columns: 1fr; }
   .forum-hero-copy { max-width: 850px; }
   .forum-hero-visual { min-height: 530px; }
-  .forum-keyfacts { grid-template-columns: repeat(2, 1fr); }
-  .forum-keyfacts article:nth-child(2) { border-right: 0; }
-  .forum-keyfacts article:nth-child(-n+2) { border-bottom: 1px solid rgba(255,255,255,.2); }
+  .forum-keyfacts { grid-template-columns: repeat(3, 1fr); }
   .congress-intro { grid-template-columns: 1fr; gap: 55px; }
   .congress-intro-copy h2 { position: static; max-width: 820px; }
   .keynote-card, .keynote-card-reverse { grid-template-columns: minmax(260px, .75fr) 1.25fr; }

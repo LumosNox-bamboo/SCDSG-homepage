@@ -132,6 +132,21 @@ test('stores one optional valid figure with its metadata', async () => {
   assert.equal(state.batches[0].length, 3);
 });
 
+test('accepts undergraduate and masters career stages', async () => {
+  for (const careerStage of ['undergraduate', 'masters']) {
+    const form = makeForm();
+    form.set('careerStage', careerStage);
+    const state = makeEnvironment();
+    const response = await onRequestPost({
+      request: makeRequest(form),
+      env: state.env
+    });
+
+    assert.equal(response.status, 201);
+    assert.equal(state.batches[0][0].values[5], careerStage);
+  }
+});
+
 test('keeps a saved submission successful when confirmation email fails', async () => {
   const state = makeEnvironment();
   const backgroundTasks = [];

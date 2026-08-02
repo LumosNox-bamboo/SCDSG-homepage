@@ -10,7 +10,7 @@ test('sitemap includes every public activity detail page', () => {
   const activitySlugs = fs.readdirSync(path.join(root, 'activities'))
     .filter((slug) => fs.existsSync(path.join(root, 'activities', slug, 'index.html')));
 
-  assert.equal(activitySlugs.length, 18);
+  assert.equal(activitySlugs.length, 24);
   for (const slug of activitySlugs) {
     assert.match(sitemap, new RegExp(`<loc>https://scdsg-med\\.com/activities/${slug}/</loc>`));
   }
@@ -36,7 +36,7 @@ test('homepage activity cards are complete, matched and newest first', () => {
     .filter((slug) => fs.existsSync(path.join(root, 'activities', slug, 'index.html')))
     .sort();
 
-  assert.equal(cards.length, 18);
+  assert.equal(cards.length, 24);
   assert.deepEqual(cards.map((card) => card.slug).sort(), activitySlugs);
   assert.deepEqual(
     cards.map((card) => card.date),
@@ -54,6 +54,10 @@ test('homepage activity cards are complete, matched and newest first', () => {
 
   const stylesheet = fs.readFileSync(path.join(root, 'styles-v2.css'), 'utf8');
   assert.match(stylesheet, /\.activity-card img \{[^}]*object-fit: contain;/u);
+
+  assert.equal((homepage.match(/data-category="academic"/gu) || []).length, 10);
+  assert.equal((homepage.match(/data-category="career"/gu) || []).length, 4);
+  assert.equal((homepage.match(/data-category="community"/gu) || []).length, 10);
 });
 
 test('homepage history is chronological and the English script is cache-busted', () => {
@@ -77,10 +81,38 @@ test('forum presents eight aligned research areas and the revised programme', ()
     assert.match(trackSection, new RegExp(area, 'u'));
     assert.match(registration, new RegExp(area, 'u'));
   }
+  for (const stage of ['本科生', '硕士研究生']) assert.match(registration, new RegExp(stage, 'u'));
+  assert.match(registration, /Background、Methods、Results、Conclusion/u);
   for (const range of ['13:00–13:15', '13:15–13:45', '13:45–15:10', '15:10–16:15', '16:15–16:45', '16:45–18:10', '18:10–18:20', '18:20–18:30']) {
     assert.match(programme, new RegExp(range, 'u'));
   }
   assert.match(forum, /€200/u);
   assert.doesNotMatch(forum, /5 HONOREES/u);
+  assert.doesNotMatch(forum, /东二区|会议规模|Keynote Lecture II|KEYNOTE II|主旨报告 II/u);
+  assert.match(forum, /2012 年成立的“海德堡龙一族”/u);
+  assert.equal((forum.match(/class="forum-keyfacts"[\s\S]*?<\/section>/u)?.[0].match(/<article>/gu) || []).length, 3);
   assert.match(forum, /<script src="\.\.\/script\.js\?v=[\d-]+" defer><\/script>/u);
+});
+
+test('contact channels and local icons are present across the public site', () => {
+  const homepage = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
+  const forum = fs.readFileSync(path.join(root, 'forum-2026', 'index.html'), 'utf8');
+  const activityFiles = fs.readdirSync(path.join(root, 'activities'))
+    .map((slug) => path.join(root, 'activities', slug, 'index.html'))
+    .filter((file) => fs.existsSync(file));
+
+  for (const social of ['wechat-qr.jpg', 'xiaohongshu-qr.jpg', 'douyin-qr.jpg', 'instagram-qr.png']) {
+    assert.match(homepage, new RegExp(social, 'u'));
+    assert.match(forum, new RegExp(social, 'u'));
+    assert.ok(fs.existsSync(path.join(root, 'assets', 'images', 'social', social)));
+  }
+  assert.match(homepage, /linkedin\.com\/company\/society-of-chinese-doctors-and-scholars-in-germany-scdsg/u);
+  assert.match(forum, /linkedin\.com\/company\/society-of-chinese-doctors-and-scholars-in-germany-scdsg/u);
+
+  for (const file of [path.join(root, 'index.html'), path.join(root, 'forum-2026', 'index.html'), path.join(root, 'forum-2026', 'register', 'index.html'), ...activityFiles]) {
+    assert.match(fs.readFileSync(file, 'utf8'), /rel="icon"/u, `${file} is missing its favicon`);
+  }
+  for (const icon of ['logo.png', 'favicon-32.png', 'apple-touch-icon.png']) {
+    assert.ok(fs.existsSync(path.join(root, 'assets', 'images', icon)));
+  }
 });

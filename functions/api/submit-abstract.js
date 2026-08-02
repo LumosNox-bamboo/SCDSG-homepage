@@ -6,6 +6,8 @@ const MAX_ABSTRACT_WORDS = 300;
 const CONSENT_VERSION = 'forum-2026-v2';
 
 const CAREER_STAGES = new Set([
+  'undergraduate',
+  'masters',
   'doctoral',
   'postdoc',
   'clinician',

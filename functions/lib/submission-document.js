@@ -31,6 +31,8 @@ const TRACKS = {
 };
 
 const CAREER_STAGES = {
+  undergraduate: '本科生',
+  masters: '硕士研究生',
   doctoral: '博士研究生',
   postdoc: '博士后',
   clinician: '临床医师',

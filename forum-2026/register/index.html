@@ -3,6 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/images/favicon-32.png">
+  <link rel="apple-touch-icon" href="../../assets/images/apple-touch-icon.png">
   <meta name="description" content="旅德华人医师学者青年学术论坛 2026 摘要投稿。">
   <link rel="canonical" href="https://scdsg-med.com/forum-2026/register/">
   <meta property="og:type" content="website">
@@ -11,7 +13,7 @@
   <meta property="og:url" content="https://scdsg-med.com/forum-2026/register/">
   <meta property="og:image" content="https://scdsg-med.com/assets/images/forum-2026-hero-concept.png">
   <title>摘要投稿 · 2026 青年学术论坛 · SCDSG</title>
-  <link rel="stylesheet" href="../../styles-v2.css?v=20260802-4">
+  <link rel="stylesheet" href="../../styles-v2.css?v=20260802-5">
   <script src="../../script.js?v=20260802-4" defer></script>
   <script src="../register.js?v=20260802-4" defer></script>
 </head>
@@ -53,7 +55,7 @@
         <a class="registration-template-link" href="../../assets/docs/scdsg-forum-2026-abstract-template.docx" download data-zh="下载英文摘要准备模板" data-en="Download the English Abstract Template">下载英文摘要准备模板</a>
         <dl>
           <div><dt data-zh="摘要要求" data-en="ABSTRACT">摘要要求</dt><dd data-zh="英文 · 不超过 300 词" data-en="English · Maximum 300 Words">英文 · 不超过 300 词</dd></div>
-          <div><dt data-zh="投稿截止" data-en="Submission Deadline">投稿截止</dt><dd data-zh="2026 年 9 月 30 日 23:30（东二区，UTC+2）" data-en="30 September 2026 · 23:30 (UTC+2)">2026 年 9 月 30 日 23:30（东二区，UTC+2）</dd></div>
+          <div><dt data-zh="投稿截止" data-en="Submission Deadline">投稿截止</dt><dd data-zh="2026 年 9 月 30 日 23:30（UTC+2）" data-en="30 September 2026 · 23:30 (UTC+2)">2026 年 9 月 30 日 23:30（UTC+2）</dd></div>
           <div><dt data-zh="个人简历" data-en="CV">个人简历</dt><dd data-zh="PDF · 最大 10 MB" data-en="PDF · Maximum 10 MB">PDF · 最大 10 MB</dd></div>
           <div><dt data-zh="补充图表" data-en="SUPPLEMENTARY FIGURE">补充图表</dt><dd data-zh="可选 · 最大 20 MB" data-en="Optional · Maximum 20 MB">可选 · 最大 20 MB</dd></div>
         </dl>
@@ -85,6 +87,8 @@
               <span data-zh="职位或培养阶段 *" data-en="Position or Career Stage *">职位或培养阶段 *</span>
               <select name="careerStage" required>
                 <option value="" data-zh="请选择" data-en="Please Select">请选择</option>
+                <option value="undergraduate" data-zh="本科生" data-en="Undergraduate Student">本科生</option>
+                <option value="masters" data-zh="硕士研究生" data-en="Master's Student">硕士研究生</option>
                 <option value="doctoral" data-zh="博士研究生" data-en="Doctoral Candidate">博士研究生</option>
                 <option value="postdoc" data-zh="博士后" data-en="Postdoctoral Researcher">博士后</option>
                 <option value="clinician" data-zh="青年医师" data-en="Early-Career Clinician">青年医师</option>
@@ -123,7 +127,8 @@
             </label>
             <label class="form-wide">
               <span data-zh="英文摘要 *" data-en="Abstract in English *">英文摘要 *</span>
-              <textarea name="abstractText" rows="10" maxlength="3000" aria-describedby="abstract-counter" required></textarea>
+              <textarea name="abstractText" rows="10" maxlength="3000" aria-describedby="abstract-structure abstract-counter" required></textarea>
+              <small class="field-help" id="abstract-structure" data-zh="请按 Background、Methods、Results、Conclusion 四部分书写。" data-en="Please structure the abstract under Background, Methods, Results and Conclusion.">请按 Background、Methods、Results、Conclusion 四部分书写。</small>
               <small class="field-help" id="abstract-counter" data-zh="0 / 300 词" data-en="0 / 300 Words">0 / 300 词</small>
             </label>
             <label class="form-wide">
