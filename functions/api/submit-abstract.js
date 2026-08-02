@@ -3,7 +3,7 @@ const MAX_REQUEST_BYTES = 32 * MIB;
 const MAX_CV_BYTES = 10 * MIB;
 const MAX_FIGURE_BYTES = 20 * MIB;
 const MAX_ABSTRACT_WORDS = 300;
-const CONSENT_VERSION = 'forum-2026-v2';
+const CONSENT_VERSION = 'forum-2026-v3';
 
 const CAREER_STAGES = new Set([
   'undergraduate',

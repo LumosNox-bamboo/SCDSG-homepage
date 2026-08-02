@@ -280,10 +280,10 @@ button { color: inherit; font: inherit; }
 .contact-copy > p:not(.eyebrow) { max-width: 650px; margin: 28px 0 24px; color: var(--ink-soft); line-height: 1.8; }
 .contact-email { display: inline-block; color: var(--blue); border-bottom: 1px solid currentColor; font-size: clamp(1rem, 1.6vw, 1.35rem); font-weight: 700; }
 .contact-linkedin { width: fit-content; margin-top: 15px; display: block; color: var(--ink-soft); font-size: .8rem; font-weight: 800; }
-.contact-qr-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
-.contact-qr-grid article { padding: 18px; border: 1px solid var(--line); background: var(--white); }
+.contact-qr-grid { width: 100%; max-width: 760px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; align-self: start; }
+.contact-qr-grid article { min-width: 0; padding: 12px; text-align: center; border: 1px solid var(--line); background: var(--white); }
 .qr-placeholder { width: 100%; aspect-ratio: 1; margin-bottom: 16px; border: 1px dashed rgba(16,39,60,.3); background: linear-gradient(135deg, rgba(21,94,168,.04), rgba(88,195,205,.08)); }
-.social-qr { width: 100%; aspect-ratio: 1; margin-bottom: 16px; object-fit: contain; background: var(--white); }
+.social-qr { width: min(100%, 116px); aspect-ratio: 1; margin: 0 auto 10px; object-fit: contain; background: var(--white); }
 .contact-qr-grid strong, .contact-qr-grid span { display: block; }
 .contact-qr-grid strong { font-size: .88rem; }
 .contact-qr-grid span { margin-top: 5px; color: var(--ink-soft); font-size: .72rem; }
@@ -595,7 +595,7 @@ button { color: inherit; font: inherit; }
   .network-atlas { width: 100%; max-width: 1000px; }
   .join { gap: 60px; }
   .contact { grid-template-columns: 1fr; }
-  .contact-qr-grid { max-width: 620px; }
+  .contact-qr-grid { max-width: 760px; }
   .registration-section { grid-template-columns: 1fr; }
   .registration-layout { grid-template-columns: 1fr; }
   .registration-context { position: static; max-width: 760px; }
@@ -670,7 +670,10 @@ button { color: inherit; font: inherit; }
   .gallery-track figure, .gallery-item:nth-child(2) figure { min-height: 460px; transform: none; }
   .join { padding: 90px 22px; grid-template-columns: 1fr; gap: 55px; }
   .qr-card { max-width: 330px; justify-self: center; }
-  .contact-qr-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .contact-qr-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 5px; }
+  .contact-qr-grid article { padding: 6px; }
+  .contact-qr-grid strong { font-size: .65rem; }
+  .contact-qr-grid span { display: none; }
   .site-footer { padding: 42px 22px; grid-template-columns: 1fr auto; }
   .site-footer p { display: none; }
   .registration-nav { display: none; }

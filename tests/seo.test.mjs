@@ -82,7 +82,12 @@ test('forum presents eight aligned research areas and the revised programme', ()
     assert.match(registration, new RegExp(area, 'u'));
   }
   for (const stage of ['本科生', '硕士研究生']) assert.match(registration, new RegExp(stage, 'u'));
-  assert.match(registration, /Background、Method、Result、Conclusion/u);
+  assert.match(registration, /placeholder="Background \/ Method \/ Result \/ Conclusion"/u);
+  assert.doesNotMatch(forum, /abstract-template-link|下载英文摘要准备模板/u);
+  assert.doesNotMatch(registration, /registration-template-link|下载英文摘要准备模板/u);
+  assert.match(registration, /我同意协会为本次论坛的投稿评审及会务联络处理所提交的信息与材料/u);
+  assert.match(forum, /投稿需要准备哪些材料/u);
+  assert.match(forum, /投稿和评审的关键日期是什么/u);
   for (const range of ['13:00–13:15', '13:15–13:45', '13:45–15:10', '15:10–16:15', '16:15–16:45', '16:45–18:10', '18:10–18:20', '18:20–18:30']) {
     assert.match(programme, new RegExp(range, 'u'));
   }

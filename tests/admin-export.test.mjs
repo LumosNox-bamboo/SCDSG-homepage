@@ -83,6 +83,12 @@ test('describes the exact consent scope recorded for the submission', () => {
   assert.match(consent.items.join('\n'), /会务联络/u);
 });
 
+test('describes the concise current forum consent', () => {
+  const consent = consentDetails('forum-2026-v3');
+  assert.equal(consent.items.length, 1);
+  assert.match(consent.items[0], /投稿评审及会务联络/u);
+});
+
 test('soft deletes selected submissions without touching private files', async () => {
   const batches = [];
   const database = {
