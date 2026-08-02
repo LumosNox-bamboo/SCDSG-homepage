@@ -82,7 +82,7 @@ test('forum presents eight aligned research areas and the revised programme', ()
     assert.match(registration, new RegExp(area, 'u'));
   }
   for (const stage of ['本科生', '硕士研究生']) assert.match(registration, new RegExp(stage, 'u'));
-  assert.match(registration, /Background、Methods、Results、Conclusion/u);
+  assert.match(registration, /Background、Method、Result、Conclusion/u);
   for (const range of ['13:00–13:15', '13:15–13:45', '13:45–15:10', '15:10–16:15', '16:15–16:45', '16:45–18:10', '18:10–18:20', '18:20–18:30']) {
     assert.match(programme, new RegExp(range, 'u'));
   }
