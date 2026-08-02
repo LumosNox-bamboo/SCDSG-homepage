@@ -35,6 +35,28 @@ test('sends the requested Chinese confirmation through the email binding', async
   assert.match(messages[0].text, /祝科研顺利/u);
 });
 
+test('sends an English confirmation for an English submission', async () => {
+  const messages = [];
+  const response = await worker.fetch(request({
+    recipient: 'researcher@example.com',
+    submissionCode: 'SCDSG26-A-123456789A',
+    locale: 'en'
+  }), {
+    EMAIL: {
+      async send(message) {
+        messages.push(message);
+        return { messageId: 'test-message-id' };
+      }
+    }
+  });
+
+  assert.equal(response.status, 200);
+  assert.equal(messages.length, 1);
+  assert.match(messages[0].subject, /Submission Confirmation/u);
+  assert.match(messages[0].text, /Submission number: SCDSG26-A-123456789A/u);
+  assert.match(messages[0].text, /success in your research/u);
+});
+
 test('rejects a malformed confirmation request without sending email', async () => {
   let sends = 0;
   const response = await worker.fetch(request({

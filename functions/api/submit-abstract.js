@@ -121,8 +121,8 @@ async function sha256(buffer) {
     .join('');
 }
 
-function localizedMessage(locale, zh, de) {
-  return locale === 'de' ? de : zh;
+function localizedMessage(locale, zh, en) {
+  return locale === 'en' ? en : zh;
 }
 
 async function sendConfirmationEmail(env, submission, submissionCode) {
@@ -153,10 +153,10 @@ async function sendConfirmationEmail(env, submission, submissionCode) {
 
 async function prepareCv(file, locale) {
   if (!isUploadedFile(file) || !file.name || file.size <= 0) {
-    throw new Error(localizedMessage(locale, '请上传 PDF 格式的个人简历。', 'Bitte laden Sie Ihren Lebenslauf als PDF hoch.'));
+    throw new Error(localizedMessage(locale, '请上传 PDF 格式的个人简历。', 'Please upload your CV as a PDF.'));
   }
   if (file.size > MAX_CV_BYTES) {
-    throw new Error(localizedMessage(locale, '个人简历不能超过 10 MB。', 'Der Lebenslauf darf maximal 10 MB groß sein.'));
+    throw new Error(localizedMessage(locale, '个人简历不能超过 10 MB。', 'The CV must not exceed 10 MB.'));
   }
 
   const originalFileName = cleanFileName(file.name);
@@ -168,7 +168,7 @@ async function prepareCv(file, locale) {
     file.type !== 'application/pdf' ||
     detectFileType(buffer) !== 'pdf'
   ) {
-    throw new Error(localizedMessage(locale, '个人简历必须为有效的 PDF 文件。', 'Der Lebenslauf muss eine gültige PDF-Datei sein.'));
+    throw new Error(localizedMessage(locale, '个人简历必须为有效的 PDF 文件。', 'The CV must be a valid PDF file.'));
   }
 
   return {
@@ -184,7 +184,7 @@ async function prepareCv(file, locale) {
 async function prepareFigure(file, locale) {
   if (!isUploadedFile(file) || !file.name || file.size <= 0) return null;
   if (file.size > MAX_FIGURE_BYTES) {
-    throw new Error(localizedMessage(locale, '补充图表不能超过 20 MB。', 'Die ergänzende Abbildung darf maximal 20 MB groß sein.'));
+    throw new Error(localizedMessage(locale, '补充图表不能超过 20 MB。', 'The supplementary figure must not exceed 20 MB.'));
   }
 
   const originalFileName = cleanFileName(file.name);
@@ -198,7 +198,7 @@ async function prepareFigure(file, locale) {
     !typeConfig.extensions.has(extension) ||
     file.type !== typeConfig.contentType
   ) {
-    throw new Error(localizedMessage(locale, '补充图表必须为有效的 JPG、PNG 或 WebP 文件。', 'Die ergänzende Abbildung muss eine gültige JPG-, PNG- oder WebP-Datei sein.'));
+    throw new Error(localizedMessage(locale, '补充图表必须为有效的 JPG、PNG 或 WebP 文件。', 'The supplementary figure must be a valid JPG, PNG or WebP file.'));
   }
 
   return {
@@ -255,7 +255,7 @@ export async function onRequestPost(context) {
     return json({ message: 'Submission could not be processed.' }, 400);
   }
 
-  const locale = form.get('locale') === 'de' ? 'de' : 'zh';
+  const locale = form.get('locale') === 'en' ? 'en' : 'zh';
   const submission = {
     fullName: cleanString(form.get('fullName'), 80),
     email: cleanString(form.get('email'), 160).toLowerCase(),
@@ -289,7 +289,7 @@ export async function onRequestPost(context) {
         message: localizedMessage(
           locale,
           '请检查题目、研究方向、摘要、关键词及其他必填项目。',
-          'Bitte prüfen Sie Titel, Fachgebiet, Abstract, Schlüsselwörter und Pflichtfelder.'
+          'Please check the title, research field, abstract, keywords and all other required fields.'
         )
       },
       400
@@ -449,7 +449,7 @@ export async function onRequestPost(context) {
         message: localizedMessage(
           locale,
           '投稿暂时无法保存，请稍后重试。',
-          'Die Einreichung konnte nicht gespeichert werden. Bitte versuchen Sie es später erneut.'
+          'Your submission could not be saved. Please try again later.'
         )
       },
       500

@@ -20,14 +20,14 @@ function validEmail(value) {
 }
 
 function confirmationEmail(recipient, submissionCode, locale) {
-  if (locale === 'de') {
+  if (locale === 'en') {
     return {
       to: recipient,
-      from: { email: CONFIRMATION_FROM, name: 'SCDSG Nachwuchsforum' },
+      from: { email: CONFIRMATION_FROM, name: 'SCDSG Young Scholars Forum' },
       replyTo: CONTACT_EMAIL,
-      subject: 'Bestätigung Ihrer Abstract-Einreichung · SCDSG 2026',
-      html: `<p>Ihre Einreichung wurde erfolgreich übermittelt.</p><p><strong>Einreichungsnummer: ${submissionCode}</strong></p><p>Wir wünschen Ihnen weiterhin viel Erfolg bei Ihrer Forschung.</p><p>Bei Fragen kontaktieren Sie bitte <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>.</p>`,
-      text: `Ihre Einreichung wurde erfolgreich übermittelt.\n\nEinreichungsnummer: ${submissionCode}\n\nWir wünschen Ihnen weiterhin viel Erfolg bei Ihrer Forschung.\n\nBei Fragen kontaktieren Sie bitte ${CONTACT_EMAIL}.`
+      subject: 'Abstract Submission Confirmation · SCDSG 2026',
+      html: `<p>Your abstract has been submitted successfully.</p><p><strong>Submission number: ${submissionCode}</strong></p><p>We wish you every success in your research.</p><p>If you have any questions, please contact <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>.</p>`,
+      text: `Your abstract has been submitted successfully.\n\nSubmission number: ${submissionCode}\n\nWe wish you every success in your research.\n\nIf you have any questions, please contact ${CONTACT_EMAIL}.`
     };
   }
 
@@ -55,7 +55,7 @@ export default {
       return json({ message: 'Invalid request format.' }, 400);
     }
 
-    const locale = body.locale === 'de' ? 'de' : 'zh';
+    const locale = body.locale === 'en' ? 'en' : 'zh';
     if (!validEmail(body.recipient) || !SUBMISSION_CODE_PATTERN.test(body.submissionCode)) {
       return json({ message: 'Invalid confirmation request.' }, 400);
     }

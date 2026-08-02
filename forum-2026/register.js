@@ -11,7 +11,7 @@ if (registrationForm) {
   const maxCvBytes = 10 * 1024 * 1024;
   const maxFigureBytes = 20 * 1024 * 1024;
 
-  const getLanguage = () => document.documentElement.lang === 'de' ? 'de' : 'zh';
+  const getLanguage = () => document.documentElement.lang === 'en' ? 'en' : 'zh';
   const countWords = (value) => value.trim() ? value.trim().split(/\s+/u).length : 0;
 
   const setStatus = (type, message) => {
@@ -22,8 +22,8 @@ if (registrationForm) {
   const updateAbstractCounter = () => {
     const words = countWords(abstractField.value);
     const language = getLanguage();
-    abstractCounter.textContent = language === 'de'
-      ? `${words} / 300 Wörter`
+    abstractCounter.textContent = language === 'en'
+      ? `${words} / 300 Words`
       : `${words} / 300 词`;
     abstractCounter.classList.toggle('limit-exceeded', words > 300);
   };
@@ -39,7 +39,7 @@ if (registrationForm) {
     if (!registrationForm.reportValidity()) {
       setStatus(
         'error',
-        language === 'de' ? 'Bitte füllen Sie alle Pflichtfelder aus.' : '请完整填写所有必填项目。'
+        language === 'en' ? 'Please complete all required fields.' : '请完整填写所有必填项目。'
       );
       return;
     }
@@ -47,7 +47,7 @@ if (registrationForm) {
     if (abstractWords > 300) {
       setStatus(
         'error',
-        language === 'de' ? 'Das Abstract darf maximal 300 Wörter enthalten.' : '英文摘要不得超过 300 词。'
+        language === 'en' ? 'The abstract must not exceed 300 words.' : '英文摘要不得超过 300 词。'
       );
       abstractField.focus();
       return;
@@ -56,7 +56,7 @@ if (registrationForm) {
     if (cvField.files[0]?.size > maxCvBytes) {
       setStatus(
         'error',
-        language === 'de' ? 'Der Lebenslauf darf maximal 10 MB groß sein.' : '个人简历不能超过 10 MB。'
+        language === 'en' ? 'The CV must not exceed 10 MB.' : '个人简历不能超过 10 MB。'
       );
       cvField.focus();
       return;
@@ -65,7 +65,7 @@ if (registrationForm) {
     if (figureField.files[0]?.size > maxFigureBytes) {
       setStatus(
         'error',
-        language === 'de' ? 'Die ergänzende Abbildung darf maximal 20 MB groß sein.' : '补充图表不能超过 20 MB。'
+        language === 'en' ? 'The supplementary figure must not exceed 20 MB.' : '补充图表不能超过 20 MB。'
       );
       figureField.focus();
       return;
@@ -75,10 +75,10 @@ if (registrationForm) {
     data.set('locale', language);
 
     submitButton.disabled = true;
-    submitLabel.textContent = language === 'de'
-      ? submitLabel.dataset.loadingDe
+    submitLabel.textContent = language === 'en'
+      ? submitLabel.dataset.loadingEn
       : submitLabel.dataset.loadingZh;
-    setStatus('loading', language === 'de' ? 'Dateien und Abstract werden gespeichert…' : '正在上传文件并保存投稿…');
+    setStatus('loading', language === 'en' ? 'Uploading files and saving your submission…' : '正在上传文件并保存投稿…');
 
     try {
       const response = await fetch('/api/submit-abstract', {
@@ -86,29 +86,29 @@ if (registrationForm) {
         body: data
       });
       const result = await response.json().catch(() => ({
-        message: language === 'de'
-          ? 'Die Serverantwort konnte nicht gelesen werden. Bitte versuchen Sie es erneut.'
+        message: language === 'en'
+          ? 'The server response could not be read. Please try again.'
           : '无法读取服务器响应，请稍后重试。'
       }));
 
       if (!response.ok) {
-        throw new Error(result.message || (language === 'de' ? 'Einreichung fehlgeschlagen.' : '提交失败，请稍后重试。'));
+        throw new Error(result.message || (language === 'en' ? 'Submission failed. Please try again.' : '提交失败，请稍后重试。'));
       }
 
       registrationForm.reset();
       updateAbstractCounter();
       setStatus(
         'success',
-        language === 'de'
-          ? `Ihr Beitrag und die Dateien wurden gespeichert. Einreichungsnummer: ${result.submissionId}.`
+        language === 'en'
+          ? `Your abstract and files have been saved. Submission number: ${result.submissionId}.`
           : `投稿及文件已保存。您的投稿编号是 ${result.submissionId}，请妥善保存。`
       );
     } catch (error) {
       setStatus('error', error.message);
     } finally {
       submitButton.disabled = false;
-      submitLabel.textContent = language === 'de'
-        ? submitLabel.dataset.submitDe
+      submitLabel.textContent = language === 'en'
+        ? submitLabel.dataset.submitEn
         : submitLabel.dataset.submitZh;
     }
   });
