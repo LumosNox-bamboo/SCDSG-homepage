@@ -1,0 +1,16 @@
+{
+  "name": "scdsg-homepage",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test"
+  },
+  "dependencies": {
+    "client-zip": "2.5.0",
+    "docx": "9.7.1",
+    "jose": "6.2.7"
+  },
+  "devDependencies": {
+    "wrangler": "4.118.0"
+  }
+}

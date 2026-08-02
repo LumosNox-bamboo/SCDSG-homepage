@@ -1,6 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /api/
+Disallow: /admin/
 
 Sitemap: https://scdsg-med.com/sitemap.xml
-

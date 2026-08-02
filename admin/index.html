@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <title>投稿管理 · SCDSG</title>
+  <link rel="stylesheet" href="admin.css?v=20260801">
+  <script src="admin.js?v=20260801" defer></script>
+</head>
+<body>
+  <header class="admin-header">
+    <a href="../forum-2026/" class="admin-brand">
+      <img src="../assets/images/logo.png" alt="SCDSG">
+      <span><strong>SCDSG</strong><small>2026 青年学术论坛 · 投稿管理</small></span>
+    </a>
+    <span class="secure-label">PRIVATE ADMIN</span>
+  </header>
+
+  <main>
+    <section class="admin-intro">
+      <div>
+        <p class="eyebrow">CALL FOR ABSTRACTS · ADMINISTRATION</p>
+        <h1>论坛投稿管理</h1>
+        <p>选择投稿后，可批量下载按投稿编号整理的 Word、简历与补充图表。</p>
+      </div>
+      <dl>
+        <div><dt>投稿总数</dt><dd id="submission-count">—</dd></div>
+        <div><dt>已选择</dt><dd id="selected-count">0</dd></div>
+      </dl>
+    </section>
+
+    <section class="admin-panel" aria-labelledby="submission-heading">
+      <div class="panel-toolbar">
+        <div>
+          <h2 id="submission-heading">投稿记录</h2>
+          <p id="admin-identity">正在验证管理员身份…</p>
+        </div>
+        <div class="toolbar-actions">
+          <label class="search-field">
+            <span class="sr-only">搜索投稿</span>
+            <input id="search" type="search" placeholder="搜索编号、姓名、单位或题目">
+          </label>
+          <button id="select-all" class="button button-secondary" type="button">选择当前结果</button>
+          <button id="export" class="button button-primary" type="button" disabled>下载所选 ZIP</button>
+        </div>
+      </div>
+
+      <div id="status" class="status" role="status" aria-live="polite"></div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col"><span class="sr-only">选择</span></th>
+              <th scope="col">投稿编号 / 时间</th>
+              <th scope="col">投稿人 / 单位</th>
+              <th scope="col">题目 / 方向</th>
+              <th scope="col">意向</th>
+              <th scope="col">附件</th>
+            </tr>
+          </thead>
+          <tbody id="submission-list"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+  <iframe class="sr-only" name="download-frame" title="导出下载"></iframe>
+</body>
+</html>
