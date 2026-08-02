@@ -17,11 +17,15 @@ const DOCUMENT_FONT = {
 };
 
 const TRACKS = {
+  basic: '基础医学',
+  life_sciences: '生命科学',
+  medical_ai: '医学人工智能',
+  biomed_cross: '生物医药交叉学科',
   molecular: '分子、细胞与系统生物学',
   immunology: '免疫、感染与炎症研究',
-  clinical: '临床医学与患者导向研究',
-  translational: '转化医学与精准诊疗',
-  pharma: '药物发现与生物技术',
+  clinical: '临床医学',
+  translational: '转化医学',
+  pharma: '药学与化学',
   bioinformatics: '生物信息学、医学人工智能与数字健康',
   other: '其他医学与生命科学方向'
 };

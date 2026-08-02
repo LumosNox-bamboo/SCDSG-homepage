@@ -55,3 +55,32 @@ test('homepage activity cards are complete, matched and newest first', () => {
   const stylesheet = fs.readFileSync(path.join(root, 'styles-v2.css'), 'utf8');
   assert.match(stylesheet, /\.activity-card img \{[^}]*object-fit: contain;/u);
 });
+
+test('homepage history is chronological and the English script is cache-busted', () => {
+  const homepage = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
+  const timeline = homepage.match(/<div class="timeline"[^>]*>([\s\S]*?)<\/div>/u)?.[1];
+  const years = [...timeline.matchAll(/<time[^>]*>([^<]+)<\/time>/gu)].map((match) => match[1]);
+
+  assert.deepEqual(years, ['2012', '2014—15', '2016', '2017—19', '2020—21', '2022—23', '2024—至今']);
+  assert.match(homepage, /<script src="script\.js\?v=[\d-]+" defer><\/script>/u);
+});
+
+test('forum presents eight aligned research areas and the revised programme', () => {
+  const forum = fs.readFileSync(path.join(root, 'forum-2026', 'index.html'), 'utf8');
+  const registration = fs.readFileSync(path.join(root, 'forum-2026', 'register', 'index.html'), 'utf8');
+  const trackSection = forum.match(/<div class="science-track">([\s\S]*?)<\/div>/u)?.[1];
+  const programme = forum.match(/<div class="programme-stream">([\s\S]*?)<\/div>\s*<\/div>/u)?.[1];
+
+  assert.equal((trackSection.match(/<article>/gu) || []).length, 8);
+  assert.equal((programme.match(/<article/gu) || []).length, 8);
+  for (const area of ['基础医学', '临床医学', '转化医学', '生命科学', '药学与化学', '医学人工智能', '生物医药交叉学科']) {
+    assert.match(trackSection, new RegExp(area, 'u'));
+    assert.match(registration, new RegExp(area, 'u'));
+  }
+  for (const range of ['13:00–13:15', '13:15–13:45', '13:45–15:10', '15:10–16:15', '16:15–16:45', '16:45–18:10', '18:10–18:20', '18:20–18:30']) {
+    assert.match(programme, new RegExp(range, 'u'));
+  }
+  assert.match(forum, /€200/u);
+  assert.doesNotMatch(forum, /5 HONOREES/u);
+  assert.match(forum, /<script src="\.\.\/script\.js\?v=[\d-]+" defer><\/script>/u);
+});

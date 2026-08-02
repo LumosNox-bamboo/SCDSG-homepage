@@ -15,6 +15,11 @@ const CAREER_STAGES = new Set([
 ]);
 
 const RESEARCH_AREAS = new Set([
+  'basic',
+  'life_sciences',
+  'medical_ai',
+  'biomed_cross',
+  // Legacy values retained for submissions prepared before the track update.
   'molecular',
   'immunology',
   'clinical',
