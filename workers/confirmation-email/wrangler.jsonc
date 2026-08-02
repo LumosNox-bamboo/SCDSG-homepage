@@ -1,0 +1,18 @@
+{
+  "$schema": "../../node_modules/wrangler/config-schema.json",
+  "name": "scdsg-confirmation-email",
+  "main": "src/index.js",
+  "compatibility_date": "2026-08-02",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": false,
+  "send_email": [
+    {
+      "name": "EMAIL",
+      "allowed_sender_addresses": ["forum@scdsg-med.com"]
+    }
+  ],
+  "observability": {
+    "enabled": true,
+    "logs": { "head_sampling_rate": 1 }
+  }
+}

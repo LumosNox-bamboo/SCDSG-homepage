@@ -27,7 +27,7 @@ function makeForm() {
 function makeEnvironment() {
   const stored = new Map();
   const batches = [];
-  const sentMessages = [];
+  const confirmationRequests = [];
   const bucket = {
     async put(key, body, options) {
       stored.set(key, { body, options });
@@ -49,10 +49,15 @@ function makeEnvironment() {
       return statements.map(() => ({ success: true }));
     }
   };
-  const email = {
-    async send(message) {
-      sentMessages.push(message);
-      return { messageId: 'test-message-id' };
+  const confirmationEmail = {
+    async fetch(input, init) {
+      const request = new Request(input, init);
+      confirmationRequests.push({
+        url: request.url,
+        method: request.method,
+        body: await request.json()
+      });
+      return Response.json({ sent: true });
     }
   };
 
@@ -60,11 +65,11 @@ function makeEnvironment() {
     env: {
       REGISTRATIONS_DB: database,
       SUBMISSION_FILES: bucket,
-      EMAIL: email
+      CONFIRMATION_EMAIL: confirmationEmail
     },
     stored,
     batches,
-    sentMessages
+    confirmationRequests
   };
 }
 
@@ -101,13 +106,14 @@ test('stores a valid abstract and required PDF privately', async () => {
     state.batches[0][0].values.length
   );
   assert.match([...state.stored.keys()][0], /^private\/forum\/2026\/[0-9a-f-]+\/cv\.pdf$/u);
-  assert.equal(state.sentMessages.length, 1);
-  assert.equal(state.sentMessages[0].to, 'test@example.com');
-  assert.equal(state.sentMessages[0].from.email, 'forum@scdsg-med.com');
-  assert.equal(state.sentMessages[0].replyTo, 'scdsg.heidelberg@gmail.com');
-  assert.match(state.sentMessages[0].subject, /投稿确认/u);
-  assert.match(state.sentMessages[0].text, new RegExp(result.submissionId, 'u'));
-  assert.match(state.sentMessages[0].text, /祝科研顺利/u);
+  assert.equal(state.confirmationRequests.length, 1);
+  assert.equal(state.confirmationRequests[0].url, 'https://confirmation-email/send');
+  assert.equal(state.confirmationRequests[0].method, 'POST');
+  assert.deepEqual(state.confirmationRequests[0].body, {
+    recipient: 'test@example.com',
+    submissionCode: result.submissionId,
+    locale: 'zh'
+  });
 });
 
 test('stores one optional valid figure with its metadata', async () => {
@@ -129,8 +135,8 @@ test('stores one optional valid figure with its metadata', async () => {
 test('keeps a saved submission successful when confirmation email fails', async () => {
   const state = makeEnvironment();
   const backgroundTasks = [];
-  state.env.EMAIL.send = async () => {
-    throw Object.assign(new Error('Test email failure'), { code: 'E_DELIVERY_FAILED' });
+  state.env.CONFIRMATION_EMAIL.fetch = async () => {
+    throw new Error('Test email failure');
   };
 
   const response = await onRequestPost({

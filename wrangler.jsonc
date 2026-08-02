@@ -19,10 +19,10 @@
       "jurisdiction": "eu"
     }
   ],
-  "send_email": [
+  "services": [
     {
-      "name": "EMAIL",
-      "allowed_sender_addresses": ["forum@scdsg-med.com"]
+      "binding": "CONFIRMATION_EMAIL",
+      "service": "scdsg-confirmation-email"
     }
   ]
 }
