@@ -18,5 +18,11 @@
       "bucket_name": "scdsg-private-submissions",
       "jurisdiction": "eu"
     }
+  ],
+  "send_email": [
+    {
+      "name": "EMAIL",
+      "allowed_sender_addresses": ["forum@scdsg-med.com"]
+    }
   ]
 }

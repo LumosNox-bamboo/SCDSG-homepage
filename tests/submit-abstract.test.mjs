@@ -27,6 +27,7 @@ function makeForm() {
 function makeEnvironment() {
   const stored = new Map();
   const batches = [];
+  const sentMessages = [];
   const bucket = {
     async put(key, body, options) {
       stored.set(key, { body, options });
@@ -48,14 +49,22 @@ function makeEnvironment() {
       return statements.map(() => ({ success: true }));
     }
   };
+  const email = {
+    async send(message) {
+      sentMessages.push(message);
+      return { messageId: 'test-message-id' };
+    }
+  };
 
   return {
     env: {
       REGISTRATIONS_DB: database,
-      SUBMISSION_FILES: bucket
+      SUBMISSION_FILES: bucket,
+      EMAIL: email
     },
     stored,
-    batches
+    batches,
+    sentMessages
   };
 }
 
@@ -69,10 +78,15 @@ function makeRequest(form) {
 
 test('stores a valid abstract and required PDF privately', async () => {
   const state = makeEnvironment();
+  const backgroundTasks = [];
   const response = await onRequestPost({
     request: makeRequest(makeForm()),
-    env: state.env
+    env: state.env,
+    waitUntil(task) {
+      backgroundTasks.push(task);
+    }
   });
+  await Promise.all(backgroundTasks);
   const result = await response.json();
 
   assert.equal(response.status, 201);
@@ -87,6 +101,13 @@ test('stores a valid abstract and required PDF privately', async () => {
     state.batches[0][0].values.length
   );
   assert.match([...state.stored.keys()][0], /^private\/forum\/2026\/[0-9a-f-]+\/cv\.pdf$/u);
+  assert.equal(state.sentMessages.length, 1);
+  assert.equal(state.sentMessages[0].to, 'test@example.com');
+  assert.equal(state.sentMessages[0].from.email, 'forum@scdsg-med.com');
+  assert.equal(state.sentMessages[0].replyTo, 'scdsg.heidelberg@gmail.com');
+  assert.match(state.sentMessages[0].subject, /投稿确认/u);
+  assert.match(state.sentMessages[0].text, new RegExp(result.submissionId, 'u'));
+  assert.match(state.sentMessages[0].text, /祝科研顺利/u);
 });
 
 test('stores one optional valid figure with its metadata', async () => {
@@ -103,6 +124,27 @@ test('stores one optional valid figure with its metadata', async () => {
   assert.equal(response.status, 201);
   assert.equal(state.stored.size, 2);
   assert.equal(state.batches[0].length, 3);
+});
+
+test('keeps a saved submission successful when confirmation email fails', async () => {
+  const state = makeEnvironment();
+  const backgroundTasks = [];
+  state.env.EMAIL.send = async () => {
+    throw Object.assign(new Error('Test email failure'), { code: 'E_DELIVERY_FAILED' });
+  };
+
+  const response = await onRequestPost({
+    request: makeRequest(makeForm()),
+    env: state.env,
+    waitUntil(task) {
+      backgroundTasks.push(task);
+    }
+  });
+  await Promise.all(backgroundTasks);
+
+  assert.equal(response.status, 201);
+  assert.equal(state.batches.length, 1);
+  assert.equal(state.stored.size, 1);
 });
 
 test('rejects a file whose bytes do not match PDF', async () => {

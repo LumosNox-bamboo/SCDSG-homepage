@@ -4,6 +4,8 @@ const MAX_CV_BYTES = 10 * MIB;
 const MAX_FIGURE_BYTES = 20 * MIB;
 const MAX_ABSTRACT_WORDS = 300;
 const CONSENT_VERSION = 'forum-2026-v2';
+const CONFIRMATION_FROM = 'forum@scdsg-med.com';
+const CONTACT_EMAIL = 'scdsg.heidelberg@gmail.com';
 
 const CAREER_STAGES = new Set([
   'doctoral',
@@ -123,6 +125,50 @@ async function sha256(buffer) {
 
 function localizedMessage(locale, zh, de) {
   return locale === 'de' ? de : zh;
+}
+
+function confirmationEmail(recipient, submissionCode, locale) {
+  if (locale === 'de') {
+    return {
+      to: recipient,
+      from: { email: CONFIRMATION_FROM, name: 'SCDSG Nachwuchsforum' },
+      replyTo: CONTACT_EMAIL,
+      subject: 'Bestätigung Ihrer Abstract-Einreichung · SCDSG 2026',
+      html: `<p>Ihre Einreichung wurde erfolgreich übermittelt.</p><p><strong>Einreichungsnummer: ${submissionCode}</strong></p><p>Wir wünschen Ihnen weiterhin viel Erfolg bei Ihrer Forschung.</p><p>Bei Fragen kontaktieren Sie bitte <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>.</p>`,
+      text: `Ihre Einreichung wurde erfolgreich übermittelt.\n\nEinreichungsnummer: ${submissionCode}\n\nWir wünschen Ihnen weiterhin viel Erfolg bei Ihrer Forschung.\n\nBei Fragen kontaktieren Sie bitte ${CONTACT_EMAIL}.`
+    };
+  }
+
+  return {
+    to: recipient,
+    from: { email: CONFIRMATION_FROM, name: 'SCDSG 青年学术论坛' },
+    replyTo: CONTACT_EMAIL,
+    subject: '摘要投稿确认 · SCDSG 2026',
+    html: `<p>您的摘要投稿已成功提交。</p><p><strong>投稿编号：${submissionCode}</strong></p><p>祝科研顺利。</p><p>如有问题，请联系 <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>。</p>`,
+    text: `您的摘要投稿已成功提交。\n\n投稿编号：${submissionCode}\n\n祝科研顺利。\n\n如有问题，请联系 ${CONTACT_EMAIL}。`
+  };
+}
+
+async function sendConfirmationEmail(env, submission, submissionCode) {
+  if (!env.EMAIL) {
+    console.error({ event: 'submission_confirmation_email_unavailable', submissionCode });
+    return;
+  }
+
+  try {
+    await env.EMAIL.send(confirmationEmail(
+      submission.email,
+      submissionCode,
+      submission.locale
+    ));
+    console.log({ event: 'submission_confirmation_email_sent', submissionCode });
+  } catch (error) {
+    console.error({
+      event: 'submission_confirmation_email_failed',
+      submissionCode,
+      errorCode: error && typeof error === 'object' && 'code' in error ? error.code : 'unknown'
+    });
+  }
 }
 
 async function prepareCv(file, locale) {
@@ -436,6 +482,10 @@ export async function onRequestPost(context) {
     researchArea: submission.researchArea,
     fileCount: uploadedKeys.length
   });
+
+  const emailTask = sendConfirmationEmail(env, submission, submissionCode);
+  if (typeof context.waitUntil === 'function') context.waitUntil(emailTask);
+  else await emailTask;
 
   return json({ submissionId: submissionCode }, 201);
 }
