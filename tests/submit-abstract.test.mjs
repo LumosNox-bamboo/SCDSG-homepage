@@ -81,6 +81,11 @@ test('stores a valid abstract and required PDF privately', async () => {
   assert.equal(state.batches.length, 1);
   assert.equal(state.batches[0].length, 2);
   assert.equal(state.batches[0][0].values[8], 'either');
+  assert.ok(state.batches[0][0].values.includes('forum-2026-v2'));
+  assert.equal(
+    [...state.batches[0][0].sql.matchAll(/\?/gu)].length,
+    state.batches[0][0].values.length
+  );
   assert.match([...state.stored.keys()][0], /^private\/forum\/2026\/[0-9a-f-]+\/cv\.pdf$/u);
 });
 

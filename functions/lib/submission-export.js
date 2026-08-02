@@ -64,9 +64,10 @@ export async function loadExportRecords(database, submissionCodes) {
   const submissionQuery = `
     SELECT id, submission_code, full_name, email, institution, career_stage,
            contribution_title, research_area, presentation_preference,
-           abstract_text, keywords, status, consented_at, created_at
+           abstract_text, keywords, status, consent_version, consented_at, created_at
       FROM abstract_submissions
      WHERE submission_code IN (${placeholders(submissionCodes.length)})
+       AND deleted_at IS NULL
      ORDER BY created_at ASC
   `;
   const { results: submissions = [] } = await database
@@ -163,4 +164,3 @@ export async function createExportResponse(submissions, fileMap, bucket, exporte
 }
 
 export { manifestCsv, sanitizeSegment };
-

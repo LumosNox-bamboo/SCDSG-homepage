@@ -39,6 +39,8 @@ h1 { margin: 0; font-family: Georgia, "Noto Serif SC", serif; font-size: clamp(2
 .button { height: 42px; padding: 0 15px; border: 1px solid var(--blue); font-size: .72rem; font-weight: 900; cursor: pointer; }
 .button-primary { color: var(--white); background: var(--blue); }
 .button-secondary { color: var(--blue); background: var(--white); }
+.button-danger { color: #8b3028; background: var(--white); border-color: #b54a40; }
+.button-danger:not(:disabled):hover { color: var(--white); background: #8b3028; }
 .button:disabled { opacity: .42; cursor: not-allowed; }
 .status { min-height: 0; padding: 0 30px; color: var(--soft); font-size: .8rem; }
 .status:not(:empty) { padding-top: 14px; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
@@ -70,4 +72,3 @@ td small { margin-top: 3px; color: var(--soft); font-size: .68rem; line-height: 
   .toolbar-actions .button { flex: 1; }
   th, td { padding: 14px 10px; }
 }
-

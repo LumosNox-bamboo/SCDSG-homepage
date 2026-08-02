@@ -26,6 +26,7 @@ export async function onRequestGet(context) {
         FROM abstract_submissions s
         LEFT JOIN submission_files f
           ON f.submission_id = s.id AND f.deleted_at IS NULL
+       WHERE s.deleted_at IS NULL
        GROUP BY s.id
        ORDER BY s.created_at DESC
        LIMIT 500
@@ -43,4 +44,3 @@ export async function onRequestGet(context) {
 export function onRequestPost() {
   return json({ message: 'Method not allowed.' }, 405);
 }
-

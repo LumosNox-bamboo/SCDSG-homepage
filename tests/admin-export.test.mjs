@@ -6,7 +6,11 @@ import {
   sanitizeSegment,
   validateSubmissionCodes
 } from '../functions/lib/submission-export.js';
-import { createSubmissionDocument } from '../functions/lib/submission-document.js';
+import {
+  consentDetails,
+  createSubmissionDocument
+} from '../functions/lib/submission-document.js';
+import { softDeleteSubmissions } from '../functions/lib/submission-admin.js';
 
 const submission = {
   id: 'submission-1',
@@ -21,6 +25,7 @@ const submission = {
   abstract_text: 'Background. Methods. Results. Conclusion.',
   keywords: 'medicine; translation',
   status: 'submitted',
+  consent_version: 'forum-2026-v2',
   consented_at: '2026-08-01T10:00:00.000Z',
   created_at: '2026-08-01T10:00:00.000Z'
 };
@@ -70,6 +75,50 @@ test('creates a non-empty Word document', async () => {
   assert.equal(document[1], 0x4b);
 });
 
+test('describes the exact consent scope recorded for the submission', () => {
+  const consent = consentDetails('forum-2026-v2');
+  assert.equal(consent.items.length, 3);
+  assert.match(consent.items.join('\n'), /个人简历/u);
+  assert.match(consent.items.join('\n'), /匿名学术评审/u);
+  assert.match(consent.items.join('\n'), /会务联络/u);
+});
+
+test('soft deletes selected submissions without touching private files', async () => {
+  const batches = [];
+  const database = {
+    prepare(sql) {
+      return {
+        bind(...values) {
+          return {
+            async all() {
+              return { results: [{ id: submission.id, submission_code: submission.submission_code }] };
+            },
+            sql,
+            values
+          };
+        }
+      };
+    },
+    async batch(statements) {
+      batches.push(statements);
+      return statements.map(() => ({ success: true, results: [], meta: {} }));
+    }
+  };
+
+  const deleted = await softDeleteSubmissions(
+    database,
+    [submission.submission_code],
+    'administrator@example.com',
+    new Date('2026-08-02T12:00:00.000Z')
+  );
+
+  assert.deepEqual(deleted, [submission.submission_code]);
+  assert.equal(batches.length, 1);
+  assert.equal(batches[0].length, 2);
+  assert.match(batches[0][0].sql, /UPDATE abstract_submissions/u);
+  assert.match(batches[0][1].sql, /INSERT INTO admin_audit_log/u);
+});
+
 test('streams a ZIP containing document and private attachments', async () => {
   const bodies = new Map([
     ['private/test/cv.pdf', new TextEncoder().encode('PDF test')],
@@ -100,4 +149,3 @@ test('streams a ZIP containing document and private attachments', async () => {
   assert.equal(archive[0], 0x50);
   assert.equal(archive[1], 0x4b);
 });
-

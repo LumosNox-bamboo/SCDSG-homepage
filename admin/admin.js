@@ -2,7 +2,8 @@ const state = {
   submissions: [],
   filtered: [],
   selected: new Set(),
-  exporting: false
+  exporting: false,
+  deleting: false
 };
 
 const list = document.querySelector('#submission-list');
@@ -13,6 +14,7 @@ const status = document.querySelector('#status');
 const search = document.querySelector('#search');
 const selectAll = document.querySelector('#select-all');
 const exportButton = document.querySelector('#export');
+const deleteButton = document.querySelector('#delete-selected');
 
 function text(value) {
   return String(value ?? '');
@@ -35,10 +37,13 @@ function setStatus(message, error = false) {
 }
 
 function updateControls() {
+  const busy = state.exporting || state.deleting;
   selectedCount.textContent = state.selected.size;
-  exportButton.disabled = !state.selected.size || state.exporting;
+  exportButton.disabled = !state.selected.size || busy;
   exportButton.textContent = state.exporting ? '正在准备…' : '下载所选 ZIP';
-  selectAll.disabled = state.exporting || !state.filtered.length;
+  deleteButton.disabled = !state.selected.size || busy;
+  deleteButton.textContent = state.deleting ? '正在删除…' : '删除所选';
+  selectAll.disabled = busy || !state.filtered.length;
 }
 
 function cell(primary, secondary = '') {
@@ -165,6 +170,45 @@ exportButton.addEventListener('click', () => {
     updateControls();
     setStatus('下载请求已提交；浏览器将在文件准备完成后开始下载。');
   }, 1200);
+});
+
+deleteButton.addEventListener('click', async () => {
+  const submissionCodes = [...state.selected];
+  const confirmed = window.confirm(
+    `确定删除所选 ${submissionCodes.length} 份投稿吗？\n\n它们将从管理列表和批量导出中隐藏，私有附件暂时保留以便误删恢复。`
+  );
+  if (!confirmed) return;
+
+  state.deleting = true;
+  updateControls();
+  setStatus(`正在删除 ${submissionCodes.length} 份投稿…`);
+  try {
+    const response = await fetch('/admin/api/delete', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      credentials: 'same-origin',
+      body: JSON.stringify({ submissionCodes })
+    });
+    const result = await response.json();
+    if (!response.ok) throw new Error(result.message || '删除失败。');
+
+    const deleted = new Set(result.deletedSubmissionCodes || []);
+    state.submissions = state.submissions.filter(
+      (submission) => !deleted.has(submission.submission_code)
+    );
+    state.selected.clear();
+    count.textContent = state.submissions.length;
+    filter();
+    setStatus(`已删除 ${deleted.size} 份投稿；附件已私有保留以便误删恢复。`);
+  } catch (error) {
+    setStatus(error instanceof Error ? error.message : '删除失败。', true);
+  } finally {
+    state.deleting = false;
+    updateControls();
+  }
 });
 
 loadSubmissions();

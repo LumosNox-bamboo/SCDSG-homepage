@@ -10,6 +10,12 @@ import {
   TextRun
 } from 'docx';
 
+const DOCUMENT_FONT = {
+  ascii: 'Arial',
+  hAnsi: 'Arial',
+  eastAsia: 'STSong'
+};
+
 const TRACKS = {
   molecular: '分子、细胞与系统生物学',
   immunology: '免疫、感染与炎症研究',
@@ -35,6 +41,24 @@ const PRESENTATIONS = {
   either: '均可'
 };
 
+const CONSENTS = {
+  'forum-2026-v1': {
+    label: 'forum-2026-v1（原始投稿表）',
+    items: [
+      '协会保存和使用本次投稿信息',
+      '用途：本次论坛的匿名学术评审、会务联络及学术展示'
+    ]
+  },
+  'forum-2026-v2': {
+    label: 'forum-2026-v2',
+    items: [
+      '接收与保存：姓名、电子邮箱、机构与职业信息、投稿题目、摘要、关键词、个人简历及可选补充图表',
+      '学术处理：研究内容用于匿名学术评审，入选后用于会议安排及相应学术展示',
+      '会务联络：姓名和电子邮箱用于投稿确认、评审结果及本次论坛相关通知'
+    ]
+  }
+};
+
 function value(map, key) {
   return map[key] || key || '—';
 }
@@ -57,6 +81,10 @@ function sectionHeading(text) {
   });
 }
 
+export function consentDetails(version) {
+  return CONSENTS[version] || CONSENTS['forum-2026-v1'];
+}
+
 export async function createSubmissionDocument(submission, files) {
   const createdAt = new Date(submission.created_at);
   const submittedAt = Number.isNaN(createdAt.getTime())
@@ -71,6 +99,7 @@ export async function createSubmissionDocument(submission, files) {
         )]
       }))
     : [new Paragraph('无附件记录')];
+  const consent = consentDetails(submission.consent_version);
 
   const document = new Document({
     creator: 'SCDSG',
@@ -80,7 +109,7 @@ export async function createSubmissionDocument(submission, files) {
       default: {
         document: {
           run: {
-            font: 'Noto Sans CJK SC',
+            font: DOCUMENT_FONT,
             size: 22,
             color: '10273C'
           },
@@ -95,7 +124,7 @@ export async function createSubmissionDocument(submission, files) {
           next: 'Normal',
           quickFormat: true,
           run: {
-            font: 'Noto Sans CJK SC',
+            font: DOCUMENT_FONT,
             size: 46,
             bold: true,
             color: '0B3156'
@@ -109,7 +138,7 @@ export async function createSubmissionDocument(submission, files) {
           next: 'Normal',
           quickFormat: true,
           run: {
-            font: 'Noto Sans CJK SC',
+            font: DOCUMENT_FONT,
             size: 32,
             bold: true,
             color: '155EA8'
@@ -181,6 +210,12 @@ export async function createSubmissionDocument(submission, files) {
         sectionHeading('附件记录'),
         ...fileLines,
         sectionHeading('同意记录'),
+        metadataLine('同意版本', consent.label),
+        ...consent.items.map((item) => new Paragraph({
+          bullet: { level: 0 },
+          spacing: { after: 80, line: 300 },
+          children: [new TextRun(item)]
+        })),
         metadataLine('同意时间', submission.consented_at)
       ]
     }]
