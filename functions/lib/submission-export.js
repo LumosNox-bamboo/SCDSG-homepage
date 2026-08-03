@@ -33,6 +33,11 @@ function manifestCsv(submissions, fileMap) {
     'confirmation_email_1_status',
     'confirmation_email_2_status',
     'confirmation_any_sent',
+    'decision_result',
+    'decision_email_1_status',
+    'decision_email_2_status',
+    'decision_any_sent',
+    'decision_notified_at',
     'file_count'
   ]];
 
@@ -51,6 +56,11 @@ function manifestCsv(submissions, fileMap) {
       submission.confirmation_email_1_status,
       submission.confirmation_email_2_status,
       submission.confirmation_any_sent,
+      submission.decision_result,
+      submission.decision_email_1_status,
+      submission.decision_email_2_status,
+      submission.decision_any_sent,
+      submission.decision_notified_at,
       fileMap.get(submission.id)?.length || 0
     ]);
   }
@@ -76,7 +86,10 @@ export async function loadExportRecords(database, submissionCodes) {
            confirmation_email_1_status, confirmation_email_1_channel,
            confirmation_email_1_attempted_at, confirmation_email_2_status,
            confirmation_email_2_channel, confirmation_email_2_attempted_at,
-           confirmation_any_sent
+           confirmation_any_sent, decision_result, decision_email_1_status,
+           decision_email_1_channel, decision_email_2_status,
+           decision_email_2_channel, decision_any_sent, decision_notified_at,
+           decision_notified_by
       FROM abstract_submissions
      WHERE submission_code IN (${placeholders(submissionCodes.length)})
        AND deleted_at IS NULL

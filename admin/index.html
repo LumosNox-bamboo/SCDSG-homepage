@@ -7,8 +7,8 @@
   <link rel="apple-touch-icon" href="../assets/images/apple-touch-icon.png">
   <meta name="robots" content="noindex, nofollow, noarchive">
   <title>投稿管理 · SCDSG</title>
-  <link rel="stylesheet" href="admin.css?v=20260803">
-  <script src="admin.js?v=20260803" defer></script>
+  <link rel="stylesheet" href="admin.css?v=20260803-2">
+  <script src="admin.js?v=20260803-2" defer></script>
 </head>
 <body>
   <header class="admin-header">
@@ -43,10 +43,36 @@
             <span class="sr-only">搜索投稿</span>
             <input id="search" type="search" placeholder="搜索编号、姓名、单位或题目">
           </label>
+          <label class="filter-field">
+            <span class="sr-only">按确认邮件状态筛选</span>
+            <select id="email-filter">
+              <option value="all">全部邮件状态</option>
+              <option value="any-sent">至少一个已发出</option>
+              <option value="none-sent">两个邮箱均未成功</option>
+              <option value="unresolved">待发送 / 历史未追踪</option>
+            </select>
+          </label>
           <button id="select-all" class="button button-secondary" type="button">选择当前结果</button>
           <button id="export" class="button button-primary" type="button" disabled>下载所选 ZIP</button>
           <button id="delete-selected" class="button button-danger" type="button" disabled>删除所选</button>
         </div>
+      </div>
+
+      <div class="notification-toolbar">
+        <div>
+          <strong>批量发送评审结果</strong>
+          <small>仅向当前勾选的投稿发送；点击后需要二次确认。</small>
+        </div>
+        <label>
+          <span class="sr-only">评审结果</span>
+          <select id="result-type">
+            <option value="">选择评审结果</option>
+            <option value="oral">口头报告入选</option>
+            <option value="poster">壁报展示入选</option>
+            <option value="not_selected">未入选</option>
+          </select>
+        </label>
+        <button id="send-results" class="button button-primary" type="button" disabled>发送所选结果</button>
       </div>
 
       <div id="status" class="status" role="status" aria-live="polite"></div>
@@ -60,6 +86,7 @@
               <th scope="col">题目 / 方向</th>
               <th scope="col">意向</th>
               <th scope="col">确认邮件</th>
+              <th scope="col">评审结果通知</th>
               <th scope="col">附件</th>
             </tr>
           </thead>

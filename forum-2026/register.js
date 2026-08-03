@@ -114,8 +114,8 @@ if (registrationForm) {
       setStatus(
         'success',
         language === 'en'
-          ? `Your abstract and files have been saved. Submission number: ${result.submissionId}. Confirmation email delivery is being attempted.`
-          : `投稿及文件已保存。您的投稿编号是 ${result.submissionId}，系统正在尝试发送确认邮件。`
+          ? `Your abstract and files have been saved. Submission number: ${result.submissionId}.`
+          : `投稿及文件已保存。您的投稿编号是 ${result.submissionId}，请妥善保存。`
       );
     } catch (error) {
       setStatus('error', error.message);

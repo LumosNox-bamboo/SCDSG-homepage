@@ -56,6 +56,12 @@ const DELIVERY_STATUSES = {
   legacy_unknown: '历史记录未追踪'
 };
 
+const DECISION_RESULTS = {
+  oral: '口头报告入选',
+  poster: '壁报展示入选',
+  not_selected: '未入选'
+};
+
 const CONSENTS = {
   'forum-2026-v1': {
     label: 'forum-2026-v1（原始投稿表）',
@@ -234,6 +240,11 @@ export async function createSubmissionDocument(submission, files) {
           `${value(DELIVERY_STATUSES, submission.confirmation_email_2_status)}${submission.confirmation_email_2_channel ? `（${submission.confirmation_email_2_channel}）` : ''}`
         ),
         metadataLine('至少一个已发出', Number(submission.confirmation_any_sent) === 1 ? '是' : '否'),
+        sectionHeading('评审结果通知'),
+        metadataLine('评审结果', value(DECISION_RESULTS, submission.decision_result)),
+        metadataLine('邮箱 1 通知', value(DELIVERY_STATUSES, submission.decision_email_1_status || 'not_sent')),
+        metadataLine('邮箱 2 通知', value(DELIVERY_STATUSES, submission.decision_email_2_status || 'not_sent')),
+        metadataLine('通知时间', submission.decision_notified_at),
         sectionHeading('摘要'),
         new Paragraph({
           spacing: { after: 180, line: 300 },

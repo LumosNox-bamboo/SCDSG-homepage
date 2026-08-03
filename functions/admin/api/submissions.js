@@ -25,6 +25,10 @@ export async function onRequestGet(context) {
              s.confirmation_email_1_attempted_at,
              s.confirmation_email_2_status, s.confirmation_email_2_channel,
              s.confirmation_email_2_attempted_at, s.confirmation_any_sent,
+             s.decision_result, s.decision_email_1_status,
+             s.decision_email_1_channel, s.decision_email_2_status,
+             s.decision_email_2_channel, s.decision_any_sent,
+             s.decision_notified_at,
              COUNT(f.id) AS file_count,
              SUM(CASE WHEN f.purpose = 'figure' THEN 1 ELSE 0 END) AS figure_count
         FROM abstract_submissions s

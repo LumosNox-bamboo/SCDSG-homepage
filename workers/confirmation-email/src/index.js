@@ -3,6 +3,7 @@ const CONTACT_EMAIL = 'scdsg.heidelberg@gmail.com';
 const SUBMISSION_CODE_PATTERN = /^SCDSG26-A-[A-F0-9]{10}$/u;
 const GMAIL_TOKEN_URL = 'https://oauth2.googleapis.com/token';
 const GMAIL_SEND_URL = 'https://gmail.googleapis.com/gmail/v1/users/me/messages/send';
+const DECISIONS = new Set(['oral', 'poster', 'not_selected']);
 
 function json(data, status = 200) {
   return Response.json(data, {
@@ -40,6 +41,72 @@ function confirmationEmail(recipient, submissionCode, locale) {
     subject: '摘要投稿确认 · SCDSG 2026',
     html: `<p>您的摘要投稿已成功提交。</p><p><strong>投稿编号：${submissionCode}</strong></p><p>祝科研顺利。</p><p>如有问题，请联系 <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>。</p>`,
     text: `您的摘要投稿已成功提交。\n\n投稿编号：${submissionCode}\n\n祝科研顺利。\n\n如有问题，请联系 ${CONTACT_EMAIL}。`
+  };
+}
+
+function escapeHtml(value) {
+  return String(value)
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#39;');
+}
+
+function decisionEmail(recipient, submissionCode, fullName, locale, decision) {
+  const safeName = escapeHtml(fullName);
+  const decisions = {
+    oral: {
+      zh: {
+        label: '口头报告入选',
+        result: '您的摘要经学术委员会评审，已入选 2026 青年学术论坛口头报告。具体报告时间及准备要求将由会务组另行通知。'
+      },
+      en: {
+        label: 'Selected for Oral Presentation',
+        result: 'Following review by the scientific committee, your abstract has been selected for an oral presentation at the SCDSG Young Scholars Forum 2026. The programme time and presentation guidance will follow separately.'
+      }
+    },
+    poster: {
+      zh: {
+        label: '壁报展示入选',
+        result: '您的摘要经学术委员会评审，已入选 2026 青年学术论坛壁报展示。壁报准备要求及现场安排将由会务组另行通知。'
+      },
+      en: {
+        label: 'Selected for Poster Presentation',
+        result: 'Following review by the scientific committee, your abstract has been selected for a poster presentation at the SCDSG Young Scholars Forum 2026. Poster preparation guidance and on-site arrangements will follow separately.'
+      }
+    },
+    not_selected: {
+      zh: {
+        label: '评审结果通知',
+        result: '感谢您的投稿。经学术委员会评审，您的摘要本次未入选口头报告或壁报展示。感谢您对本次论坛的关注与支持。'
+      },
+      en: {
+        label: 'Review Outcome',
+        result: 'Thank you for your submission. Following review by the scientific committee, your abstract was not selected for an oral or poster presentation on this occasion. We appreciate your interest in and support for the forum.'
+      }
+    }
+  };
+  const content = decisions[decision][locale];
+
+  if (locale === 'en') {
+    return {
+      to: recipient,
+      from: { email: CONFIRMATION_FROM, name: 'SCDSG Young Scholars Forum' },
+      replyTo: CONTACT_EMAIL,
+      subject: `${content.label} · SCDSG 2026`,
+      html: `<p>Dear ${safeName},</p><p>${content.result}</p><p><strong>Submission number: ${submissionCode}</strong></p><p>If you have any questions, please contact <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>.</p><p>We wish you every success in your research.</p>`,
+      text: `Dear ${fullName},\n\n${content.result}\n\nSubmission number: ${submissionCode}\n\nIf you have any questions, please contact ${CONTACT_EMAIL}.\n\nWe wish you every success in your research.`
+    };
+  }
+
+  return {
+    to: recipient,
+    from: { email: CONFIRMATION_FROM, name: 'SCDSG 青年学术论坛' },
+    replyTo: CONTACT_EMAIL,
+    subject: `${content.label} · SCDSG 2026`,
+    html: `<p>${safeName}，您好：</p><p>${content.result}</p><p><strong>投稿编号：${submissionCode}</strong></p><p>如有问题，请联系 <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>。</p><p>祝科研顺利。</p>`,
+    text: `${fullName}，您好：\n\n${content.result}\n\n投稿编号：${submissionCode}\n\n如有问题，请联系 ${CONTACT_EMAIL}。\n\n祝科研顺利。`
   };
 }
 
@@ -146,21 +213,34 @@ export default {
     }
 
     const locale = body.locale === 'en' ? 'en' : 'zh';
+    const messageType = body.messageType || 'confirmation';
     if (!validEmail(body.recipient) || !SUBMISSION_CODE_PATTERN.test(body.submissionCode)) {
       return json({ message: 'Invalid confirmation request.' }, 400);
     }
+    if (!['confirmation', 'decision'].includes(messageType)) {
+      return json({ message: 'Invalid message type.' }, 400);
+    }
+    const fullName = typeof body.fullName === 'string' ? body.fullName.trim().slice(0, 80) : '';
+    if (messageType === 'decision' && (!DECISIONS.has(body.decision) || !fullName)) {
+      return json({ message: 'Invalid decision notification request.' }, 400);
+    }
 
-    const message = confirmationEmail(body.recipient, body.submissionCode, locale);
+    const message = messageType === 'decision'
+      ? decisionEmail(body.recipient, body.submissionCode, fullName, locale, body.decision)
+      : confirmationEmail(body.recipient, body.submissionCode, locale);
+    const eventName = messageType === 'decision'
+      ? 'submission_decision_email_sent'
+      : 'submission_confirmation_email_sent';
     try {
       await env.EMAIL.send(message);
-      console.log({ event: 'submission_confirmation_email_sent', submissionCode: body.submissionCode, channel: 'cloudflare' });
+      console.log({ event: eventName, submissionCode: body.submissionCode, channel: 'cloudflare' });
       return json({ sent: true, channel: 'cloudflare' });
     } catch (primaryError) {
       const primaryErrorCode = errorCode(primaryError);
       try {
         await sendWithGmail(env, message);
         console.log({
-          event: 'submission_confirmation_email_sent',
+          event: eventName,
           submissionCode: body.submissionCode,
           channel: 'gmail_fallback',
           primaryErrorCode
@@ -168,7 +248,9 @@ export default {
         return json({ sent: true, channel: 'gmail_fallback' });
       } catch (fallbackError) {
         console.error({
-          event: 'submission_confirmation_email_failed',
+          event: messageType === 'decision'
+            ? 'submission_decision_email_failed'
+            : 'submission_confirmation_email_failed',
           submissionCode: body.submissionCode,
           primaryErrorCode,
           fallbackErrorCode: errorCode(fallbackError)

@@ -83,6 +83,7 @@ test('forum presents eight aligned research areas and the revised programme', ()
   }
   for (const stage of ['本科生', '硕士研究生']) assert.match(registration, new RegExp(stage, 'u'));
   assert.match(registration, /placeholder="Background \/ Method \/ Result \/ Conclusion"/u);
+  assert.match(registration, /建议至少填写一个非机构邮箱/u);
   assert.doesNotMatch(forum, /abstract-template-link|下载英文摘要准备模板/u);
   assert.doesNotMatch(registration, /registration-template-link|下载英文摘要准备模板/u);
   assert.match(registration, /我同意协会为本次论坛的投稿评审及会务联络处理所提交的信息与材料/u);
@@ -120,4 +121,18 @@ test('contact channels and local icons are present across the public site', () =
   for (const icon of ['logo.png', 'favicon-32.png', 'apple-touch-icon.png']) {
     assert.ok(fs.existsSync(path.join(root, 'assets', 'images', icon)));
   }
+});
+
+test('submission and admin interfaces expose the revised email workflow', () => {
+  const registrationScript = fs.readFileSync(path.join(root, 'forum-2026', 'register.js'), 'utf8');
+  const admin = fs.readFileSync(path.join(root, 'admin', 'index.html'), 'utf8');
+  const adminScript = fs.readFileSync(path.join(root, 'admin', 'admin.js'), 'utf8');
+
+  assert.doesNotMatch(registrationScript, /正在尝试发送确认邮件/u);
+  assert.match(admin, /value="none-sent">两个邮箱均未成功/u);
+  for (const decision of ['oral', 'poster', 'not_selected']) {
+    assert.match(admin, new RegExp(`value="${decision}"`, 'u'));
+  }
+  assert.match(adminScript, /\/admin\/api\/notify-results/u);
+  assert.match(adminScript, /window\.confirm/u);
 });

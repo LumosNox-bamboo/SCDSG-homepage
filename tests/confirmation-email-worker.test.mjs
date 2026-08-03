@@ -57,6 +57,75 @@ test('sends an English confirmation for an English submission', async () => {
   assert.match(messages[0].text, /success in your research/u);
 });
 
+test('sends a selected oral presentation result without exposing HTML from the name', async () => {
+  const messages = [];
+  const response = await worker.fetch(request({
+    messageType: 'decision',
+    decision: 'oral',
+    recipient: 'researcher@example.com',
+    submissionCode: 'SCDSG26-A-123456789A',
+    fullName: '<Test Researcher>',
+    locale: 'zh'
+  }), {
+    EMAIL: {
+      async send(message) {
+        messages.push(message);
+        return { messageId: 'test-message-id' };
+      }
+    }
+  });
+
+  assert.equal(response.status, 200);
+  assert.match(messages[0].subject, /口头报告入选/u);
+  assert.match(messages[0].text, /学术委员会评审/u);
+  assert.match(messages[0].html, /&lt;Test Researcher&gt;/u);
+  assert.doesNotMatch(messages[0].html, /<Test Researcher>/u);
+});
+
+test('sends an English poster presentation result', async () => {
+  const messages = [];
+  const response = await worker.fetch(request({
+    messageType: 'decision',
+    decision: 'poster',
+    recipient: 'researcher@example.com',
+    submissionCode: 'SCDSG26-A-123456789A',
+    fullName: 'Test Researcher',
+    locale: 'en'
+  }), {
+    EMAIL: {
+      async send(message) {
+        messages.push(message);
+        return { messageId: 'test-message-id' };
+      }
+    }
+  });
+
+  assert.equal(response.status, 200);
+  assert.match(messages[0].subject, /Selected for Poster Presentation/u);
+  assert.match(messages[0].text, /poster presentation/u);
+});
+
+test('rejects an invalid decision notification', async () => {
+  let sends = 0;
+  const response = await worker.fetch(request({
+    messageType: 'decision',
+    decision: 'invalid',
+    recipient: 'researcher@example.com',
+    submissionCode: 'SCDSG26-A-123456789A',
+    fullName: 'Test Researcher',
+    locale: 'zh'
+  }), {
+    EMAIL: {
+      async send() {
+        sends += 1;
+      }
+    }
+  });
+
+  assert.equal(response.status, 400);
+  assert.equal(sends, 0);
+});
+
 test('rejects a malformed confirmation request without sending email', async () => {
   let sends = 0;
   const response = await worker.fetch(request({

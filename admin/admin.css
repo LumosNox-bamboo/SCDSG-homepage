@@ -12,7 +12,7 @@
 
 * { box-sizing: border-box; }
 body { margin: 0; color: var(--ink); background: var(--cream); font-family: Inter, "Avenir Next", "Noto Sans SC", "PingFang SC", sans-serif; }
-button, input { font: inherit; }
+button, input, select { font: inherit; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 .admin-header { min-height: 82px; padding: 14px clamp(22px,5vw,70px); display: flex; align-items: center; justify-content: space-between; color: var(--white); background: var(--deep); border-bottom: 3px solid var(--cyan); }
 .admin-brand { display: flex; align-items: center; gap: 13px; color: inherit; text-decoration: none; }
@@ -36,6 +36,7 @@ h1 { margin: 0; font-family: Georgia, "Noto Serif SC", serif; font-size: clamp(2
 .panel-toolbar p { margin: 5px 0 0; color: var(--soft); font-size: .76rem; }
 .toolbar-actions { display: flex; align-items: center; gap: 10px; }
 .search-field input { width: min(310px,28vw); height: 42px; padding: 0 13px; color: var(--ink); border: 1px solid var(--line); background: #fbfcfd; }
+.filter-field select, .notification-toolbar select { height: 42px; padding: 0 34px 0 12px; color: var(--ink); border: 1px solid var(--line); background: #fbfcfd; }
 .button { height: 42px; padding: 0 15px; border: 1px solid var(--blue); font-size: .72rem; font-weight: 900; cursor: pointer; }
 .button-primary { color: var(--white); background: var(--blue); }
 .button-secondary { color: var(--blue); background: var(--white); }
@@ -45,6 +46,11 @@ h1 { margin: 0; font-family: Georgia, "Noto Serif SC", serif; font-size: clamp(2
 .status { min-height: 0; padding: 0 30px; color: var(--soft); font-size: .8rem; }
 .status:not(:empty) { padding-top: 14px; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
 .status.error { color: #8b3028; background: #fff4f2; }
+.notification-toolbar { padding: 16px 30px; display: flex; align-items: center; justify-content: flex-end; gap: 12px; background: #f7fafc; border-bottom: 1px solid var(--line); }
+.notification-toolbar > div { margin-right: auto; }
+.notification-toolbar strong, .notification-toolbar small { display: block; }
+.notification-toolbar strong { font-size: .78rem; }
+.notification-toolbar small { margin-top: 3px; color: var(--soft); font-size: .68rem; }
 .table-wrap { overflow-x: auto; }
 table { width: 100%; border-collapse: collapse; }
 th, td { padding: 18px 14px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: middle; }
@@ -67,6 +73,10 @@ td small { margin-top: 3px; color: var(--soft); font-size: .68rem; line-height: 
   .toolbar-actions { align-items: stretch; flex-wrap: wrap; }
   .search-field { flex: 1 1 100%; }
   .search-field input { width: 100%; }
+  .filter-field { flex: 1 1 auto; }
+  .filter-field select { width: 100%; }
+  .notification-toolbar { align-items: stretch; flex-wrap: wrap; }
+  .notification-toolbar > div { flex: 1 1 100%; }
 }
 
 @media (max-width: 560px) {
