@@ -47,6 +47,15 @@ const PRESENTATIONS = {
   either: '均可'
 };
 
+const DELIVERY_STATUSES = {
+  sent: '已发出',
+  failed: '发送失败',
+  unavailable: '发信服务不可用',
+  pending: '正在发送',
+  not_provided: '未填写',
+  legacy_unknown: '历史记录未追踪'
+};
+
 const CONSENTS = {
   'forum-2026-v1': {
     label: 'forum-2026-v1（原始投稿表）',
@@ -206,7 +215,8 @@ export async function createSubmissionDocument(submission, files) {
         sectionHeading('投稿与申请人'),
         metadataLine('投稿时间（德国时间）', submittedAt),
         metadataLine('姓名', submission.full_name),
-        metadataLine('电子邮箱', submission.email),
+        metadataLine('常用邮箱 1', submission.email),
+        metadataLine('常用邮箱 2', submission.email_secondary),
         metadataLine('单位', submission.institution),
         metadataLine('职业阶段', value(CAREER_STAGES, submission.career_stage)),
         metadataLine('投稿题目', submission.contribution_title),
@@ -214,6 +224,16 @@ export async function createSubmissionDocument(submission, files) {
         metadataLine('展示意向', value(PRESENTATIONS, submission.presentation_preference)),
         metadataLine('关键词', submission.keywords),
         metadataLine('当前状态', submission.status),
+        sectionHeading('确认邮件'),
+        metadataLine(
+          '邮箱 1',
+          `${value(DELIVERY_STATUSES, submission.confirmation_email_1_status)}${submission.confirmation_email_1_channel ? `（${submission.confirmation_email_1_channel}）` : ''}`
+        ),
+        metadataLine(
+          '邮箱 2',
+          `${value(DELIVERY_STATUSES, submission.confirmation_email_2_status)}${submission.confirmation_email_2_channel ? `（${submission.confirmation_email_2_channel}）` : ''}`
+        ),
+        metadataLine('至少一个已发出', Number(submission.confirmation_any_sent) === 1 ? '是' : '否'),
         sectionHeading('摘要'),
         new Paragraph({
           spacing: { after: 180, line: 300 },

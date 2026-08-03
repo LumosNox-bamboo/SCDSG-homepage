@@ -5,6 +5,8 @@ if (registrationForm) {
   const submitButton = registrationForm.querySelector('button[type="submit"]');
   const submitLabel = submitButton.querySelector('span:first-child');
   const abstractField = registrationForm.elements.abstractText;
+  const primaryEmailField = registrationForm.elements.email;
+  const secondaryEmailField = registrationForm.elements.emailSecondary;
   const cvField = registrationForm.elements.cvFile;
   const figureField = registrationForm.elements.figureFile;
   const abstractCounter = document.getElementById('abstract-counter');
@@ -50,6 +52,18 @@ if (registrationForm) {
         language === 'en' ? 'The abstract must not exceed 300 words.' : '英文摘要不得超过 300 词。'
       );
       abstractField.focus();
+      return;
+    }
+
+    if (
+      secondaryEmailField.value.trim() &&
+      secondaryEmailField.value.trim().toLowerCase() === primaryEmailField.value.trim().toLowerCase()
+    ) {
+      setStatus(
+        'error',
+        language === 'en' ? 'Email 2 must be different from Email 1.' : '常用邮箱 2 请不要与常用邮箱 1 重复。'
+      );
+      secondaryEmailField.focus();
       return;
     }
 
@@ -100,8 +114,8 @@ if (registrationForm) {
       setStatus(
         'success',
         language === 'en'
-          ? `Your abstract and files have been saved. Submission number: ${result.submissionId}.`
-          : `投稿及文件已保存。您的投稿编号是 ${result.submissionId}，请妥善保存。`
+          ? `Your abstract and files have been saved. Submission number: ${result.submissionId}. Confirmation email delivery is being attempted.`
+          : `投稿及文件已保存。您的投稿编号是 ${result.submissionId}，系统正在尝试发送确认邮件。`
       );
     } catch (error) {
       setStatus('error', error.message);

@@ -54,6 +54,10 @@ td:first-child, th:first-child { width: 46px; padding-left: 26px; }
 td strong, td small { display: block; }
 td small { margin-top: 3px; color: var(--soft); font-size: .68rem; line-height: 1.5; }
 .attachment-count { color: var(--blue); font-weight: 900; }
+.delivery-badge { display: inline-block; width: fit-content; margin-bottom: 5px; padding: 4px 7px; border-radius: 2px; font-size: .66rem; }
+.delivery-badge.sent { color: #1f6946; background: #e8f5ee; }
+.delivery-badge.failed { color: #8b3028; background: #fff0ed; }
+.delivery-badge.pending { color: #71551f; background: #fff7df; }
 .empty-row td { padding: 54px 30px; color: var(--soft); text-align: center; }
 
 @media (max-width: 900px) {

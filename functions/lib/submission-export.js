@@ -22,13 +22,17 @@ function manifestCsv(submissions, fileMap) {
   const rows = [[
     'submission_code',
     'full_name',
-    'email',
+    'email_1',
+    'email_2',
     'institution',
     'contribution_title',
     'research_area',
     'presentation_preference',
     'status',
     'created_at',
+    'confirmation_email_1_status',
+    'confirmation_email_2_status',
+    'confirmation_any_sent',
     'file_count'
   ]];
 
@@ -37,12 +41,16 @@ function manifestCsv(submissions, fileMap) {
       submission.submission_code,
       submission.full_name,
       submission.email,
+      submission.email_secondary,
       submission.institution,
       submission.contribution_title,
       submission.research_area,
       submission.presentation_preference,
       submission.status,
       submission.created_at,
+      submission.confirmation_email_1_status,
+      submission.confirmation_email_2_status,
+      submission.confirmation_any_sent,
       fileMap.get(submission.id)?.length || 0
     ]);
   }
@@ -62,9 +70,13 @@ export function validateSubmissionCodes(value) {
 
 export async function loadExportRecords(database, submissionCodes) {
   const submissionQuery = `
-    SELECT id, submission_code, full_name, email, institution, career_stage,
+    SELECT id, submission_code, full_name, email, email_secondary, institution, career_stage,
            contribution_title, research_area, presentation_preference,
-           abstract_text, keywords, status, consent_version, consented_at, created_at
+           abstract_text, keywords, status, consent_version, consented_at, created_at,
+           confirmation_email_1_status, confirmation_email_1_channel,
+           confirmation_email_1_attempted_at, confirmation_email_2_status,
+           confirmation_email_2_channel, confirmation_email_2_attempted_at,
+           confirmation_any_sent
       FROM abstract_submissions
      WHERE submission_code IN (${placeholders(submissionCodes.length)})
        AND deleted_at IS NULL

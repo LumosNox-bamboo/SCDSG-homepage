@@ -7,6 +7,7 @@ function makeForm() {
   const form = new FormData();
   form.set('fullName', 'Test User');
   form.set('email', 'test@example.com');
+  form.set('emailSecondary', 'backup@example.org');
   form.set('institution', 'Test Institution');
   form.set('careerStage', 'postdoc');
   form.set('contributionTitle', 'A Test Contribution');
@@ -27,6 +28,7 @@ function makeForm() {
 function makeEnvironment() {
   const stored = new Map();
   const batches = [];
+  const runs = [];
   const confirmationRequests = [];
   const bucket = {
     async put(key, body, options) {
@@ -40,7 +42,14 @@ function makeEnvironment() {
     prepare(sql) {
       return {
         bind(...values) {
-          return { sql, values };
+          return {
+            sql,
+            values,
+            async run() {
+              runs.push({ sql, values });
+              return { success: true };
+            }
+          };
         }
       };
     },
@@ -69,6 +78,7 @@ function makeEnvironment() {
     },
     stored,
     batches,
+    runs,
     confirmationRequests
   };
 }
@@ -99,14 +109,14 @@ test('stores a valid abstract and required PDF privately', async () => {
   assert.equal(state.stored.size, 1);
   assert.equal(state.batches.length, 1);
   assert.equal(state.batches[0].length, 2);
-  assert.equal(state.batches[0][0].values[8], 'either');
+  assert.equal(state.batches[0][0].values[9], 'either');
   assert.ok(state.batches[0][0].values.includes('forum-2026-v3'));
   assert.equal(
     [...state.batches[0][0].sql.matchAll(/\?/gu)].length,
     state.batches[0][0].values.length
   );
   assert.match([...state.stored.keys()][0], /^private\/forum\/2026\/[0-9a-f-]+\/cv\.pdf$/u);
-  assert.equal(state.confirmationRequests.length, 1);
+  assert.equal(state.confirmationRequests.length, 2);
   assert.equal(state.confirmationRequests[0].url, 'https://confirmation-email/send');
   assert.equal(state.confirmationRequests[0].method, 'POST');
   assert.deepEqual(state.confirmationRequests[0].body, {
@@ -114,6 +124,59 @@ test('stores a valid abstract and required PDF privately', async () => {
     submissionCode: result.submissionId,
     locale: 'zh'
   });
+  assert.equal(state.runs.length, 1);
+  assert.equal(state.runs[0].values[0], 'sent');
+  assert.equal(state.runs[0].values[1], 'cloudflare');
+  assert.match(state.runs[0].values[2], /^\d{4}-\d{2}-\d{2}T/u);
+  assert.equal(state.confirmationRequests[1].body.recipient, 'backup@example.org');
+  assert.equal(state.runs[0].values[3], 'sent');
+  assert.equal(state.runs[0].values[6], 1);
+});
+
+test('sends confirmations to two different addresses and records both results', async () => {
+  const form = makeForm();
+  form.set('emailSecondary', 'second@example.net');
+  const state = makeEnvironment();
+  const backgroundTasks = [];
+  const response = await onRequestPost({
+    request: makeRequest(form),
+    env: state.env,
+    waitUntil(task) {
+      backgroundTasks.push(task);
+    }
+  });
+  await Promise.all(backgroundTasks);
+
+  assert.equal(response.status, 201);
+  assert.deepEqual(
+    state.confirmationRequests.map((item) => item.body.recipient),
+    ['test@example.com', 'second@example.net']
+  );
+  assert.equal(state.batches[0][0].values[4], 'second@example.net');
+  assert.equal(state.runs[0].values[0], 'sent');
+  assert.equal(state.runs[0].values[3], 'sent');
+  assert.equal(state.runs[0].values[6], 1);
+});
+
+test('rejects a duplicate secondary email address', async () => {
+  const form = makeForm();
+  form.set('emailSecondary', 'TEST@example.com');
+  const state = makeEnvironment();
+  const response = await onRequestPost({ request: makeRequest(form), env: state.env });
+
+  assert.equal(response.status, 400);
+  assert.equal(state.stored.size, 0);
+  assert.equal(state.confirmationRequests.length, 0);
+});
+
+test('requires a secondary email address', async () => {
+  const form = makeForm();
+  form.delete('emailSecondary');
+  const state = makeEnvironment();
+  const response = await onRequestPost({ request: makeRequest(form), env: state.env });
+
+  assert.equal(response.status, 400);
+  assert.equal(state.stored.size, 0);
 });
 
 test('stores one optional valid figure with its metadata', async () => {
@@ -143,7 +206,7 @@ test('accepts undergraduate and masters career stages', async () => {
     });
 
     assert.equal(response.status, 201);
-    assert.equal(state.batches[0][0].values[5], careerStage);
+    assert.equal(state.batches[0][0].values[6], careerStage);
   }
 });
 
@@ -166,6 +229,9 @@ test('keeps a saved submission successful when confirmation email fails', async 
   assert.equal(response.status, 201);
   assert.equal(state.batches.length, 1);
   assert.equal(state.stored.size, 1);
+  assert.equal(state.runs[0].values[0], 'failed');
+  assert.equal(state.runs[0].values[3], 'failed');
+  assert.equal(state.runs[0].values[6], 0);
 });
 
 test('rejects a file whose bytes do not match PDF', async () => {

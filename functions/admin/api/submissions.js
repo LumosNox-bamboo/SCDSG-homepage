@@ -18,9 +18,13 @@ export async function onRequestGet(context) {
 
   try {
     const { results = [] } = await context.env.REGISTRATIONS_DB.prepare(`
-      SELECT s.submission_code, s.full_name, s.institution,
+      SELECT s.submission_code, s.full_name, s.email, s.email_secondary, s.institution,
              s.contribution_title, s.research_area,
              s.presentation_preference, s.status, s.created_at,
+             s.confirmation_email_1_status, s.confirmation_email_1_channel,
+             s.confirmation_email_1_attempted_at,
+             s.confirmation_email_2_status, s.confirmation_email_2_channel,
+             s.confirmation_email_2_attempted_at, s.confirmation_any_sent,
              COUNT(f.id) AS file_count,
              SUM(CASE WHEN f.purpose = 'figure' THEN 1 ELSE 0 END) AS figure_count
         FROM abstract_submissions s

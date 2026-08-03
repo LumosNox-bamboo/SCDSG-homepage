@@ -17,6 +17,7 @@ const submission = {
   submission_code: 'SCDSG26-A-1234567890',
   full_name: '测试 / 投稿人',
   email: 'test@example.com',
+  email_secondary: 'backup@example.org',
   institution: '测试医学院',
   career_stage: 'postdoc',
   contribution_title: 'A translational medicine study',
@@ -27,7 +28,14 @@ const submission = {
   status: 'submitted',
   consent_version: 'forum-2026-v2',
   consented_at: '2026-08-01T10:00:00.000Z',
-  created_at: '2026-08-01T10:00:00.000Z'
+  created_at: '2026-08-01T10:00:00.000Z',
+  confirmation_email_1_status: 'sent',
+  confirmation_email_1_channel: 'cloudflare',
+  confirmation_email_1_attempted_at: '2026-08-01T10:01:00.000Z',
+  confirmation_email_2_status: 'failed',
+  confirmation_email_2_channel: '',
+  confirmation_email_2_attempted_at: '2026-08-01T10:01:02.000Z',
+  confirmation_any_sent: 1
 };
 
 const files = [

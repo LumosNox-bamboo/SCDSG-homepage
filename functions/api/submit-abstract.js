@@ -132,28 +132,81 @@ function localizedMessage(locale, zh, en) {
   return locale === 'en' ? en : zh;
 }
 
-async function sendConfirmationEmail(env, submission, submissionCode) {
-  if (!env.CONFIRMATION_EMAIL) {
-    console.error({ event: 'submission_confirmation_email_unavailable', submissionCode });
-    return;
-  }
-
+async function sendConfirmationEmail(env, recipient, locale, submissionCode) {
+  const attemptedAt = new Date().toISOString();
+  if (!env.CONFIRMATION_EMAIL) return { status: 'unavailable', channel: '', attemptedAt };
   try {
     const response = await env.CONFIRMATION_EMAIL.fetch('https://confirmation-email/send', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        recipient: submission.email,
+        recipient,
         submissionCode,
-        locale: submission.locale
+        locale
       })
     });
     if (!response.ok) throw new Error('Confirmation email service rejected the request.');
-    console.log({ event: 'submission_confirmation_email_sent', submissionCode });
+    const result = await response.json().catch(() => ({}));
+    return {
+      status: 'sent',
+      channel: typeof result.channel === 'string' ? result.channel.slice(0, 40) : 'cloudflare',
+      attemptedAt
+    };
+  } catch {
+    return { status: 'failed', channel: '', attemptedAt };
+  }
+}
+
+async function sendConfirmationEmails(env, submissionId, submission, submissionCode) {
+  const primary = await sendConfirmationEmail(
+    env,
+    submission.email,
+    submission.locale,
+    submissionCode
+  );
+  const secondary = submission.emailSecondary
+    ? await sendConfirmationEmail(
+        env,
+        submission.emailSecondary,
+        submission.locale,
+        submissionCode
+      )
+    : { status: 'not_provided', channel: '', attemptedAt: null };
+  const anySent = primary.status === 'sent' || secondary.status === 'sent';
+
+  try {
+    await env.REGISTRATIONS_DB.prepare(`
+      UPDATE abstract_submissions
+         SET confirmation_email_1_status = ?,
+             confirmation_email_1_channel = ?,
+             confirmation_email_1_attempted_at = ?,
+             confirmation_email_2_status = ?,
+             confirmation_email_2_channel = ?,
+             confirmation_email_2_attempted_at = ?,
+             confirmation_any_sent = ?
+       WHERE id = ?
+    `).bind(
+      primary.status,
+      primary.channel,
+      primary.attemptedAt,
+      secondary.status,
+      secondary.channel,
+      secondary.attemptedAt,
+      anySent ? 1 : 0,
+      submissionId
+    ).run();
+    console.log({
+      event: 'submission_confirmation_email_status_saved',
+      submissionCode,
+      primaryStatus: primary.status,
+      secondaryStatus: secondary.status,
+      anySent
+    });
   } catch (error) {
     console.error({
-      event: 'submission_confirmation_email_failed',
-      submissionCode
+      event: 'submission_confirmation_email_status_save_failed',
+      submissionCode,
+      error: error instanceof Error ? error.message : String(error)
     });
   }
 }
@@ -266,6 +319,7 @@ export async function onRequestPost(context) {
   const submission = {
     fullName: cleanString(form.get('fullName'), 80),
     email: cleanString(form.get('email'), 160).toLowerCase(),
+    emailSecondary: cleanString(form.get('emailSecondary'), 160).toLowerCase(),
     institution: cleanString(form.get('institution'), 160),
     careerStage: cleanString(form.get('careerStage'), 24),
     contributionTitle: cleanString(form.get('contributionTitle'), 240),
@@ -280,6 +334,8 @@ export async function onRequestPost(context) {
   const invalid =
     !submission.fullName ||
     !validateEmail(submission.email) ||
+    !validateEmail(submission.emailSecondary) ||
+    submission.emailSecondary === submission.email ||
     !submission.institution ||
     !CAREER_STAGES.has(submission.careerStage) ||
     !submission.contributionTitle ||
@@ -342,6 +398,7 @@ export async function onRequestPost(context) {
           submission_code,
           full_name,
           email,
+          email_secondary,
           institution,
           career_stage,
           contribution_title,
@@ -360,13 +417,16 @@ export async function onRequestPost(context) {
           status,
           consent_version,
           consented_at,
-          created_at
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'submitted', ?, ?, ?)`
+          created_at,
+          confirmation_email_1_status,
+          confirmation_email_2_status
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'submitted', ?, ?, ?, 'pending', ?)`
       ).bind(
         id,
         submissionCode,
         submission.fullName,
         submission.email,
+        submission.emailSecondary,
         submission.institution,
         submission.careerStage,
         submission.contributionTitle,
@@ -384,7 +444,8 @@ export async function onRequestPost(context) {
         submission.locale,
         CONSENT_VERSION,
         createdAt,
-        createdAt
+        createdAt,
+        'pending'
       ),
       env.REGISTRATIONS_DB.prepare(
         `INSERT INTO submission_files (
@@ -470,7 +531,7 @@ export async function onRequestPost(context) {
     fileCount: uploadedKeys.length
   });
 
-  const emailTask = sendConfirmationEmail(env, submission, submissionCode);
+  const emailTask = sendConfirmationEmails(env, id, submission, submissionCode);
   if (typeof context.waitUntil === 'function') context.waitUntil(emailTask);
   else await emailTask;
 

@@ -59,13 +59,55 @@ function cell(primary, secondary = '') {
   return td;
 }
 
+const EMAIL_STATUS_LABELS = {
+  sent: '已发出',
+  failed: '发送失败',
+  unavailable: '发信服务不可用',
+  pending: '正在发送',
+  not_provided: '未填写',
+  legacy_unknown: '历史记录未追踪'
+};
+
+function confirmationCell(submission) {
+  const td = document.createElement('td');
+  const primaryStatus = submission.confirmation_email_1_status || 'legacy_unknown';
+  const secondaryStatus = submission.confirmation_email_2_status || 'not_provided';
+  const badge = document.createElement('strong');
+  const anySent = Number(submission.confirmation_any_sent) === 1;
+  const completedWithoutSuccess = ['failed', 'unavailable'].includes(primaryStatus) &&
+    ['failed', 'unavailable', 'not_provided'].includes(secondaryStatus);
+  const legacyRecord = primaryStatus === 'legacy_unknown';
+
+  badge.className = `delivery-badge ${anySent ? 'sent' : completedWithoutSuccess ? 'failed' : 'pending'}`;
+  badge.textContent = anySent
+    ? '✓ 至少一个已发出'
+    : completedWithoutSuccess
+      ? '需人工联系'
+      : legacyRecord
+        ? '历史记录'
+        : '待确认';
+  td.append(badge);
+
+  const addresses = [
+    ['邮箱 1', submission.email, primaryStatus, submission.confirmation_email_1_channel],
+    ['邮箱 2', submission.email_secondary, secondaryStatus, submission.confirmation_email_2_channel]
+  ];
+  for (const [label, address, deliveryStatus, channel] of addresses) {
+    const small = document.createElement('small');
+    const detail = EMAIL_STATUS_LABELS[deliveryStatus] || deliveryStatus;
+    small.textContent = `${label}：${address || '—'} · ${detail}${channel ? ` · ${channel}` : ''}`;
+    td.append(small);
+  }
+  return td;
+}
+
 function render() {
   list.replaceChildren();
   if (!state.filtered.length) {
     const row = document.createElement('tr');
     row.className = 'empty-row';
     const td = document.createElement('td');
-    td.colSpan = 6;
+    td.colSpan = 7;
     td.textContent = state.submissions.length ? '没有符合搜索条件的投稿。' : '暂无投稿。';
     row.append(td);
     list.append(row);
@@ -92,6 +134,7 @@ function render() {
       cell(submission.full_name, submission.institution),
       cell(submission.contribution_title, submission.research_area),
       cell(submission.presentation_preference, submission.status),
+      confirmationCell(submission),
       cell(`${submission.file_count} 个`, submission.figure_count ? '含补充图表' : '仅简历')
     );
     row.lastElementChild.classList.add('attachment-count');
@@ -106,6 +149,8 @@ function filter() {
     ? state.submissions.filter((submission) => [
         submission.submission_code,
         submission.full_name,
+        submission.email,
+        submission.email_secondary,
         submission.institution,
         submission.contribution_title,
         submission.research_area
