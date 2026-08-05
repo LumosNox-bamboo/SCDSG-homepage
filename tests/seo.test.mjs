@@ -24,6 +24,9 @@ test('homepage exposes valid WebSite and Organization structured data', () => {
   const structuredData = JSON.parse(json);
   const types = structuredData['@graph'].map((entry) => entry['@type']);
   assert.deepEqual(types, ['WebSite', 'Organization']);
+  assert.match(homepage, /<title>旅德华人医师学者协会（SCDSG）<\/title>/u);
+  assert.match(homepage, /property="og:site_name" content="旅德华人医师学者协会"/u);
+  assert.deepEqual(structuredData['@graph'][0].alternateName, ['SCDSG', 'Chinese Association of Medical Doctors and Scholars in Germany', 'scdsg-med.com']);
 });
 
 test('homepage activity cards are complete, matched and newest first', () => {
@@ -70,6 +73,7 @@ test('homepage history is chronological and the English script is cache-busted',
 });
 
 test('forum presents eight aligned research areas and the revised programme', () => {
+  const homepage = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
   const forum = fs.readFileSync(path.join(root, 'forum-2026', 'index.html'), 'utf8');
   const registration = fs.readFileSync(path.join(root, 'forum-2026', 'register', 'index.html'), 'utf8');
   const trackSection = forum.match(/<div class="science-track">([\s\S]*?)<\/div>/u)?.[1];
@@ -89,6 +93,10 @@ test('forum presents eight aligned research areas and the revised programme', ()
   assert.match(registration, /我同意协会为本次论坛的投稿评审及会务联络处理所提交的信息与材料/u);
   assert.match(forum, /投稿需要准备哪些材料/u);
   assert.match(forum, /投稿和评审的关键日期是什么/u);
+  assert.match(homepage, /data-zh="免费注册参会" data-en="Free Registration"/u);
+  assert.match(forum, /data-zh="免费注册参会" data-en="Free Registration"/u);
+  assert.match(forum, /参加本次学术论坛是否需要缴费？/u);
+  assert.match(forum, /本次青年学术论坛免收注册费/u);
   for (const range of ['13:00–13:15', '13:15–13:45', '13:45–15:10', '15:10–16:15', '16:15–16:45', '16:45–18:10', '18:10–18:20', '18:20–18:30']) {
     assert.match(programme, new RegExp(range, 'u'));
   }
