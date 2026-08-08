@@ -382,7 +382,7 @@ button { color: inherit; font: inherit; }
 .keynote-copy > p:not(.speaker-index) { max-width: 610px; margin: 28px 0; color: rgba(255,255,255,.7); font-size: .9rem; line-height: 1.82; }
 .keynote-copy a { width: fit-content; color: var(--forum-lime); font-size: .78rem; font-weight: 800; }
 .faculty-more { margin-top: 28px; display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid rgba(255,255,255,.18); border-bottom: 1px solid rgba(255,255,255,.18); }
-.faculty-more > div { min-height: 190px; padding: 28px; display: grid; grid-template-rows: auto 1fr auto; border-right: 1px solid rgba(255,255,255,.18); }
+.faculty-more > div { min-height: 190px; padding: 28px; border-right: 1px solid rgba(255,255,255,.18); }
 .faculty-more > div:last-child { border-right: 0; }
 .faculty-more span, .faculty-more strong { display: block; }
 .faculty-more span { color: var(--cyan); font-size: .62rem; font-weight: 900; letter-spacing: .13em; }
