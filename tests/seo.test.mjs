@@ -103,6 +103,12 @@ test('forum presents eight aligned research areas and the revised programme', ()
   assert.match(forum, /€200/u);
   assert.doesNotMatch(forum, /5 HONOREES/u);
   assert.doesNotMatch(forum, /东二区|会议规模|Keynote Lecture II|KEYNOTE II|主旨报告 II/u);
+  assert.equal((forum.match(/class="keynote-card(?:\s[^"]*)?"/gu) || []).length, 2);
+  const keynoteSection = forum.match(/<div class="keynote-grid">([\s\S]*?)<\/div>\s*<div class="faculty-more/u)?.[1];
+  const facultyCandidates = forum.match(/<div class="faculty-more[^>]*>([\s\S]*?)<\/div>\s*<\/section>/u)?.[1];
+  assert.doesNotMatch(keynoteSection, /孔波|Bo Kong/u);
+  assert.match(facultyCandidates, /孔波 医学博士 · 海德堡大学医院/u);
+  assert.doesNotMatch(facultyCandidates, /胰腺疾病外科|patient stratification|查看 UKHD 官方资料/u);
   assert.match(forum, /2012 年成立的“海德堡龙一族”/u);
   assert.equal((forum.match(/class="forum-keyfacts"[\s\S]*?<\/section>/u)?.[0].match(/<article>/gu) || []).length, 3);
   assert.match(forum, /<script src="\.\.\/script\.js\?v=[\d-]+" defer><\/script>/u);
