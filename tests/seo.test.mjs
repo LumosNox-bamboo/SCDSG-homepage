@@ -107,7 +107,9 @@ test('forum presents eight aligned research areas and the revised programme', ()
   const keynoteSection = forum.match(/<div class="keynote-grid">([\s\S]*?)<\/div>\s*<div class="faculty-more/u)?.[1];
   const facultyCandidates = forum.match(/<div class="faculty-more[^>]*>([\s\S]*?)<\/div>\s*<\/section>/u)?.[1];
   assert.doesNotMatch(keynoteSection, /孔波|Bo Kong/u);
-  assert.match(facultyCandidates, /孔波 医学博士 · 海德堡大学医院/u);
+  assert.match(facultyCandidates, /孔波教授 · 海德堡大学医院/u);
+  assert.match(facultyCandidates, /Prof Bo Kong · Heidelberg University Hospital/u);
+  assert.doesNotMatch(facultyCandidates, /孔波 医学博士|PD Dr Dr med Bo Kong/u);
   assert.equal((facultyCandidates.match(/data-zh="拟邀嘉宾" data-en="PROPOSED FACULTY"/gu) || []).length, 3);
   assert.match(facultyCandidates, /研究方向：胰腺疾病外科及转化研究/u);
   assert.doesNotMatch(facultyCandidates, /patient stratification|查看 UKHD 官方资料/u);
