@@ -108,7 +108,12 @@ test('forum presents eight aligned research areas and the revised programme', ()
   const facultyCandidates = forum.match(/<div class="faculty-more[^>]*>([\s\S]*?)<\/div>\s*<\/section>/u)?.[1];
   assert.doesNotMatch(keynoteSection, /孔波|Bo Kong/u);
   assert.match(facultyCandidates, /孔波 医学博士 · 海德堡大学医院/u);
-  assert.doesNotMatch(facultyCandidates, /胰腺疾病外科|patient stratification|查看 UKHD 官方资料/u);
+  assert.equal((facultyCandidates.match(/data-zh="拟邀嘉宾" data-en="PROPOSED FACULTY"/gu) || []).length, 3);
+  assert.match(facultyCandidates, /研究方向：胰腺疾病外科及转化研究/u);
+  assert.doesNotMatch(facultyCandidates, /patient stratification|查看 UKHD 官方资料/u);
+  const stylesheet = fs.readFileSync(path.join(root, 'styles-v2.css'), 'utf8');
+  assert.match(stylesheet, /\.faculty-more \{[^}]*grid-template-columns: repeat\(3, 1fr\)/u);
+  assert.match(stylesheet, /\.faculty-more > div \{[^}]*display: grid;[^}]*grid-template-rows: auto 1fr auto;/u);
   assert.match(forum, /2012 年成立的“海德堡龙一族”/u);
   assert.equal((forum.match(/class="forum-keyfacts"[\s\S]*?<\/section>/u)?.[0].match(/<article>/gu) || []).length, 3);
   assert.match(forum, /<script src="\.\.\/script\.js\?v=[\d-]+" defer><\/script>/u);
