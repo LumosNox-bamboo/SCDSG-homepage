@@ -1,0 +1,14 @@
+.detail-photo-stack {
+  display: grid;
+  gap: 1.25rem;
+  margin: 2rem 0;
+}
+
+.detail-photo-stack img {
+  width: 100%;
+  height: auto;
+  max-height: none;
+  object-fit: contain;
+  margin: 0;
+  background: #eef2f5;
+}

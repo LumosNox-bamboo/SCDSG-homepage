@@ -75,7 +75,7 @@ test('homepage history is chronological and the English script is cache-busted',
 test('2023 Wenzhou forum uses the supplied collage and full group photo without cropping', () => {
   const homepage = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
   const detail = fs.readFileSync(path.join(root, 'activities', 'forum-2023', 'index.html'), 'utf8');
-  const detailStyles = fs.readFileSync(path.join(root, 'activity-archive', 'detail.css'), 'utf8');
+  const detailStyles = fs.readFileSync(path.join(root, 'activities', 'forum-2023', 'photo-layout.css'), 'utf8');
 
   for (const image of ['forum-2023-collage.png', 'forum-2023-group.png']) {
     assert.ok(fs.existsSync(path.join(root, 'assets', 'images', 'activity-records', image)));
@@ -83,7 +83,8 @@ test('2023 Wenzhou forum uses the supplied collage and full group photo without 
   }
   assert.match(homepage, /activity-card[^>]*href="activities\/forum-2023\/index\.html">\s*<img src="assets\/images\/activity-records\/forum-2023-collage\.png"/u);
   assert.match(homepage, /gallery-item[^>]*href="activities\/forum-2023\/index\.html"[^>]*><figure><img class="group-photo" src="assets\/images\/activity-records\/forum-2023-group\.png"/u);
-  assert.match(detailStyles, /\.detail-photo-stack img\{[^}]*height:auto;[^}]*object-fit:contain;/u);
+  assert.match(detailStyles, /\.detail-photo-stack img\s*\{[^}]*height: auto;[^}]*object-fit: contain;/u);
+  assert.match(detail, /<link rel="stylesheet" href="photo-layout\.css\?v=[\d-]+">/u);
 });
 
 test('forum presents eight aligned research areas and the revised programme', () => {
