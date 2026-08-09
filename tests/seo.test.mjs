@@ -72,6 +72,20 @@ test('homepage history is chronological and the English script is cache-busted',
   assert.match(homepage, /<script src="script\.js\?v=[\d-]+" defer><\/script>/u);
 });
 
+test('2023 Wenzhou forum uses the supplied collage and full group photo without cropping', () => {
+  const homepage = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
+  const detail = fs.readFileSync(path.join(root, 'activities', 'forum-2023', 'index.html'), 'utf8');
+  const detailStyles = fs.readFileSync(path.join(root, 'activity-archive', 'detail.css'), 'utf8');
+
+  for (const image of ['forum-2023-collage.png', 'forum-2023-group.png']) {
+    assert.ok(fs.existsSync(path.join(root, 'assets', 'images', 'activity-records', image)));
+    assert.match(detail, new RegExp(image, 'u'));
+  }
+  assert.match(homepage, /activity-card[^>]*href="activities\/forum-2023\/index\.html">\s*<img src="assets\/images\/activity-records\/forum-2023-collage\.png"/u);
+  assert.match(homepage, /gallery-item[^>]*href="activities\/forum-2023\/index\.html"[^>]*><figure><img class="group-photo" src="assets\/images\/activity-records\/forum-2023-group\.png"/u);
+  assert.match(detailStyles, /\.detail-photo-stack img\{[^}]*height:auto;[^}]*object-fit:contain;/u);
+});
+
 test('forum presents eight aligned research areas and the revised programme', () => {
   const homepage = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
   const forum = fs.readFileSync(path.join(root, 'forum-2026', 'index.html'), 'utf8');

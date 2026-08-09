@@ -80,7 +80,7 @@ const records = {
     date: '2023年07月27日 03:18', category: '年度论坛', location: '温州',
     title: '闪耀！旅德华人医师学者协会第三届国内研讨会圆满落幕！',
     summary: '第三届国内研讨会在温州举行，连接海德堡与国内医学、生命科学合作网络。',
-    image: '../assets/images/activity-records/forum-2023.jpg',
+    image: '../assets/images/activity-records/forum-2023-collage.png',
     source: '../SCDSG_articles/闪耀_旅德华人医师学者协会第三届国内研讨会圆满落幕_/index.html'
   },
   'license-2024': {
