@@ -3,187 +3,379 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="旅德华人医师学者青年学术论坛 2026，德国海德堡，中德医学与生命科学青年学术交流。">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32.png">
+  <link rel="apple-touch-icon" href="../assets/images/apple-touch-icon.png">
+  <meta name="description" content="旅德华人医师学者青年学术论坛 2026——面向旅德青年医师与生命科学研究者的跨学科学术会议。">
+  <link rel="canonical" href="https://scdsg-med.com/forum-2026/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="2026 青年学术论坛 · SCDSG">
+  <meta property="og:description" content="旅德华人医师学者青年学术论坛 2026——面向旅德青年医师与生命科学研究者的跨学科学术会议。">
+  <meta property="og:url" content="https://scdsg-med.com/forum-2026/">
+  <meta property="og:image" content="https://scdsg-med.com/assets/images/forum-2026-hero-concept.png">
   <title>2026 青年学术论坛 · SCDSG</title>
-  <link rel="stylesheet" href="../styles.css">
-  <script src="../script.js" defer></script>
+  <link rel="stylesheet" href="../styles-v2.css?v=20260805-1">
+  <link rel="stylesheet" href="faculty-layout.css?v=20260808-1">
+  <script src="../script.js?v=20260802-4" defer></script>
 </head>
-<body class="forum-page" data-title-zh="2026 青年学术论坛 · SCDSG" data-title-de="Forum 2026 · SCDSG">
+<body class="forum-page" data-title-zh="2026 青年学术论坛 · SCDSG" data-title-en="Forum 2026 · SCDSG">
   <a class="skip-link" href="#main">跳至正文</a>
 
-  <header class="site-header" id="top">
-    <a class="brand" href="../" aria-label="SCDSG 首页">
+  <header class="site-header forum-header" id="top">
+    <a class="brand" href="../index.html" aria-label="SCDSG 首页">
       <img src="../assets/images/logo.png" alt="SCDSG 会徽">
       <span class="brand-copy">
         <strong>SCDSG</strong>
-        <small data-zh="旅德华人医师学者协会" data-de="Gesellschaft Chinesischer Ärzte und Wissenschaftler in Deutschland">旅德华人医师学者协会</small>
+        <small data-zh="2026 青年学术论坛" data-en="2026 Young Scholars Forum">2026 青年学术论坛</small>
       </span>
     </a>
 
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
       <span></span><span></span><span></span>
-      <span class="sr-only" data-zh="打开菜单" data-de="Menü öffnen" data-zh-close="关闭菜单" data-de-close="Menü schließen">打开菜单</span>
+      <span class="sr-only" data-zh="打开菜单" data-en="Open menu" data-zh-close="关闭菜单" data-en-close="Close menu">打开菜单</span>
     </button>
 
     <nav class="site-nav" id="site-nav" aria-label="会议导航">
-      <a href="#overview" data-zh="会议概览" data-de="Überblick">会议概览</a>
-      <a href="#program" data-zh="日程" data-de="Programm">日程</a>
-      <a href="#abstracts" data-zh="征稿" data-de="Abstracts">征稿</a>
-      <a href="#awards" data-zh="奖项" data-de="Preise">奖项</a>
-      <a href="#experts" data-zh="拟邀专家" data-de="Expertinnen">拟邀专家</a>
-      <a href="../" data-zh="协会主页" data-de="SCDSG">协会主页</a>
+      <a href="#speakers" data-zh="拟邀讲者" data-en="Invited Faculty">拟邀讲者</a>
+      <a href="#programme" data-zh="学术议程" data-en="Scientific Programme">学术议程</a>
+      <a href="#abstracts" data-zh="摘要征集" data-en="Call for Abstracts">摘要征集</a>
+      <a href="#awards" data-zh="青年学者奖项" data-en="Young Scientist Awards">青年学者奖项</a>
+      <a href="#organisers" data-zh="组织与合作单位" data-en="Organisers and Partner">组织与合作单位</a>
+      <a href="register/index.html" data-zh="摘要投稿" data-en="Submit an Abstract">摘要投稿</a>
+      <a href="../index.html" data-zh="协会主页 ↗" data-en="SCDSG Website ↗">协会主页 ↗</a>
     </nav>
 
-    <button class="language-switch" type="button" aria-label="切换中文和德文">
-      <span class="active">中</span><span aria-hidden="true">/</span><span>DE</span>
+    <button class="language-switch" type="button" aria-label="切换中文和英文">
+      <span class="active">中</span><span aria-hidden="true">/</span><span>EN</span>
     </button>
   </header>
 
   <main id="main">
+    <div class="forum-announcement" role="status">
+      <span class="announcement-label" data-zh="最新动态" data-en="LATEST UPDATE">最新动态</span>
+      <p data-zh="青年学者摘要投稿现已开放，论坛将于 2026 年 11 月 14 日举行。" data-en="Abstract submission is now open. The forum will take place on 14 November 2026.">青年学者摘要投稿现已开放，论坛将于 2026 年 11 月 14 日举行。</p>
+      <a href="#abstracts" data-zh="了解投稿要求 →" data-en="View Submission Requirements →">了解投稿要求 →</a>
+    </div>
+
     <section class="forum-hero" aria-labelledby="forum-title">
-      <img class="forum-hero-image" src="../assets/images/forum-stage.jpg" alt="SCDSG 学术论坛现场">
-      <div class="forum-hero-shade" aria-hidden="true"></div>
       <div class="forum-hero-copy reveal">
-        <p class="eyebrow" data-zh="HEIDELBERG · OCT–NOV 2026" data-de="HEIDELBERG · OKT–NOV 2026">HEIDELBERG · OCT–NOV 2026</p>
-        <h1 id="forum-title" data-zh="旅德华人医师学者青年学术论坛" data-de="Young Chinese Medical Scholars Forum in Germany">旅德华人医师学者青年学术论坛</h1>
-        <p data-zh="以青年学者为主角的医学与生命科学交流平台：Keynote、口头报告、壁报巡讲、专家点评与奖项评选集中在一个高密度学术下午。" data-de="Eine Plattform für junge Forschende in Medizin und Lebenswissenschaften: Keynotes, Oral Presentations, Poster Walks, Expert Feedback und Awards in einem kompakten wissenschaftlichen Format.">以青年学者为主角的医学与生命科学交流平台：Keynote、口头报告、壁报巡讲、专家点评与奖项评选集中在一个高密度学术下午。</p>
+        <div class="forum-edition">
+          <span>SCDSG</span>
+          <strong>FORUM</strong>
+          <em>2026</em>
+        </div>
+        <p class="eyebrow" data-zh="YOUNG CHINESE MEDICAL SCHOLARS FORUM IN GERMANY" data-en="YOUNG CHINESE MEDICAL SCHOLARS FORUM IN GERMANY">YOUNG CHINESE MEDICAL SCHOLARS FORUM IN GERMANY</p>
+        <h1 id="forum-title" data-zh="青年医学研究与中德学术交流" data-en="Early-Career Medical Research and Sino-German Academic Exchange">青年医学研究与中德学术交流</h1>
+        <p class="forum-lead" data-zh="论坛征集基础医学、临床医学、转化医学、生命科学、药学与化学、医学人工智能及生物医药交叉学科等方向的研究成果，设置主旨报告、青年学者报告、壁报展示与专家评议。" data-en="The forum welcomes research across basic medicine, clinical medicine, translational medicine, life sciences, pharmaceutical sciences and chemistry, medical AI, and interdisciplinary biomedicine, with keynote lectures, young investigator talks, poster presentations and expert review.">论坛征集基础医学、临床医学、转化医学、生命科学、药学与化学、医学人工智能及生物医药交叉学科等方向的研究成果，设置主旨报告、青年学者报告、壁报展示与专家评议。</p>
         <div class="forum-hero-actions">
-          <a class="button button-primary" href="#abstracts"><span data-zh="查看征稿方向" data-de="Abstract-Themen ansehen">查看征稿方向</span><span aria-hidden="true">↓</span></a>
-          <a class="button button-light" href="#program"><span data-zh="浏览日程" data-de="Programm ansehen">浏览日程</span><span aria-hidden="true">→</span></a>
+          <div class="forum-submit-action">
+            <a class="button button-primary" href="register/index.html"><span data-zh="提交摘要" data-en="Submit an Abstract">提交摘要</span><span aria-hidden="true">↗</span></a>
+            <small data-zh="截止日期：2026 年 9 月 30 日 23:30（UTC+2）" data-en="Deadline: 30 September 2026, 23:30 (UTC+2)">截止日期：2026 年 9 月 30 日 23:30（UTC+2）</small>
+          </div>
+          <a class="forum-text-link" href="#programme"><span data-zh="查看科学议程" data-en="View Scientific Programme">查看科学议程</span><span aria-hidden="true">↓</span></a>
         </div>
       </div>
-      <aside class="forum-facts reveal" aria-label="会议关键信息">
-        <div><span data-zh="时间" data-de="Zeit">时间</span><strong data-zh="2026 年 10–11 月某周六" data-de="Samstag im Oktober–November 2026">2026 年 10–11 月某周六</strong></div>
-        <div><span data-zh="地点" data-de="Ort">地点</span><strong data-zh="德国 · 海德堡" data-de="Heidelberg · Deutschland">德国 · 海德堡</strong></div>
-        <div><span data-zh="形式" data-de="Format">形式</span><strong data-zh="线下为主，支持线上同步" data-de="Vor Ort mit Online-Teilnahme">线下为主，支持线上同步</strong></div>
-        <div><span data-zh="规模" data-de="Größe">规模</span><strong data-zh="50–80 人线下，线上开放" data-de="50–80 vor Ort, online offen">50–80 人线下，线上开放</strong></div>
-      </aside>
+
+      <div class="forum-hero-visual reveal">
+        <img src="../assets/images/forum-2026-hero-concept.png" alt="海德堡、医学研究与生命科学概念视觉">
+        <div class="forum-visual-caption">
+          <span data-zh="会议日期" data-en="DATE">会议日期</span>
+          <strong data-zh="2026 年 11 月 14 日" data-en="14 November 2026">2026 年 11 月 14 日</strong>
+          <p data-zh="德国海德堡｜线下为主，线上同步" data-en="Heidelberg, Germany · On-site with live online access">德国海德堡｜线下为主，线上同步</p>
+          <em data-zh="免费注册参会" data-en="Free Registration">免费注册参会</em>
+        </div>
+        <div class="forum-orbit" aria-hidden="true"><span></span><span></span><span></span></div>
+      </div>
     </section>
 
-    <section class="forum-anchor-bar" aria-label="会议快捷导航">
-      <a href="#overview" data-zh="宗旨" data-de="Ziel">宗旨</a>
-      <a href="#program" data-zh="日程" data-de="Programm">日程</a>
-      <a href="#abstracts" data-zh="投稿" data-de="Einreichen">投稿</a>
-      <a href="#awards" data-zh="奖项" data-de="Awards">奖项</a>
-      <a href="#partners" data-zh="合作" data-de="Partner">合作</a>
+    <section class="forum-keyfacts" aria-label="会议关键信息">
+      <article><span>01</span><div><small data-zh="参会对象" data-en="AUDIENCE">参会对象</small><strong data-zh="青年医师与科研学者" data-en="Early-Career Clinicians and Researchers">青年医师与科研学者</strong></div></article>
+      <article><span>02</span><div><small data-zh="核心舞台" data-en="SCIENTIFIC FORMAT">核心舞台</small><strong data-zh="2 场 Keynote · 10 场青年报告 · 壁报展示" data-en="2 Keynotes · 10 Young Investigator Talks · Poster Session">2 场 Keynote · 10 场青年报告 · 壁报展示</strong></div></article>
+      <article><span>03</span><div><small data-zh="会议语言" data-en="LANGUAGES">会议语言</small><strong data-zh="学术报告以英文为主｜交流环节可使用中文、德文或英文" data-en="Scientific presentations in English · Discussion in Chinese, German or English">学术报告以英文为主｜交流环节可使用中文、德文或英文</strong></div></article>
     </section>
 
-    <section class="section forum-overview" id="overview">
+    <nav class="forum-anchor-bar" aria-label="会议快捷导航">
+      <a href="#speakers" data-zh="拟邀主旨讲者" data-en="Proposed Keynote Speakers">拟邀主旨讲者</a>
+      <a href="#programme" data-zh="会议议程概览" data-en="Programme at a Glance">会议议程概览</a>
+      <a href="#abstracts" data-zh="摘要征集" data-en="Call for Abstracts">摘要征集</a>
+      <a href="register/index.html" data-zh="提交摘要" data-en="Submit an Abstract">提交摘要</a>
+      <a href="#organisers" data-zh="组织与合作单位" data-en="Organisers and Partner">组织与合作单位</a>
+    </nav>
+
+    <section class="section congress-intro" id="overview">
+      <div class="congress-intro-copy reveal">
+        <p class="eyebrow" data-zh="ABOUT THE FORUM" data-en="ABOUT THE FORUM">ABOUT THE FORUM</p>
+        <h2 data-zh="面向青年医学与生命科学研究者的学术交流平台" data-en="An academic platform for early-career researchers in medicine and the life sciences">面向青年医学与生命科学研究者的学术交流平台</h2>
+      </div>
+      <div class="congress-intro-body reveal">
+        <p data-zh="论坛主要面向在德国从事医学与生命科学研究或临床工作的博士研究生、博士后、青年研究人员及医师，并欢迎中德医学合作相关人员参与。论坛旨在为高质量研究提供专业展示与同行评议机会，促进学术反馈、方法交流及潜在合作。" data-en="The forum is designed primarily for doctoral candidates, postdoctoral researchers, early-career scientists and clinicians working in medicine and the life sciences in Germany, and welcomes participants involved in Sino-German medical collaboration. It provides a professional setting for presenting high-quality research, receiving peer feedback, exchanging methods and developing potential collaborations.">论坛主要面向在德国从事医学与生命科学研究或临床工作的博士研究生、博士后、青年研究人员及医师，并欢迎中德医学合作相关人员参与。论坛旨在为高质量研究提供专业展示与同行评议机会，促进学术反馈、方法交流及潜在合作。</p>
+        <div class="congress-pillars">
+          <article><span>DISCOVER</span><strong data-zh="前沿科学" data-en="Frontier Science">前沿科学</strong><p data-zh="拟邀主旨讲者将围绕脑肿瘤研究、精准医学及临床转化等方向作专题报告。" data-en="Proposed keynote lectures will address areas including brain-tumour research, precision medicine and clinical translation.">拟邀主旨讲者将围绕脑肿瘤研究、精准医学及临床转化等方向作专题报告。</p></article>
+          <article><span>PRESENT</span><strong data-zh="青年主场" data-en="Young Investigators">青年主场</strong><p data-zh="论坛计划遴选 10 项口头报告，并设置壁报展示与专家现场评议环节。" data-en="The forum plans to select ten oral presentations and will include a poster session with on-site expert review.">论坛计划遴选 10 项口头报告，并设置壁报展示与专家现场评议环节。</p></article>
+          <article><span>CONNECT</span><strong data-zh="中德连接" data-en="Sino-German Connections">中德连接</strong><p data-zh="推动德国科研机构、临床医疗体系与中国医学院校之间的专业协作。" data-en="Advancing professional collaboration among German research institutions, clinical systems and Chinese medical schools.">推动德国科研机构、临床医疗体系与中国医学院校之间的专业协作。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section faculty-section" id="speakers">
       <div class="section-heading row reveal">
         <div>
-          <p class="eyebrow" data-zh="01 · 论坛定位" data-de="01 · PROFIL">01 · 论坛定位</p>
-          <h2 data-zh="把旅德青年医学科研者推到舞台中央。" data-de="Junge medizinische Forschende in Deutschland auf die Bühne bringen.">把旅德青年医学科研者推到舞台中央。</h2>
+          <p class="eyebrow" data-zh="拟邀主旨讲者与评审专家" data-en="PROPOSED KEYNOTES AND SCIENTIFIC REVIEWERS">拟邀主旨讲者与评审专家</p>
+          <h2 data-zh="邀请推动基础发现与临床转化的学者分享前沿成果及专业判断" data-en="Researchers advancing discovery and clinical translation share frontier findings and expert perspectives">邀请推动基础发现与临床转化的学者分享前沿成果及专业判断</h2>
         </div>
-        <p data-zh="本论坛面向旅德博士后、博士研究生、青年 PI、青年医师及中德医学科研合作相关人员，鼓励以英文摘要展示科研成果，并通过专家点评建立更强的跨国学术连接。" data-de="Das Forum richtet sich an Postdocs, Promovierende, junge PIs, Ärztinnen und Ärzte sowie Partner der deutsch-chinesischen medizinischen Forschung. Englische Abstracts und Expert Feedback stärken Sichtbarkeit und Kooperation.">本论坛面向旅德博士后、博士研究生、青年 PI、青年医师及中德医学科研合作相关人员，鼓励以英文摘要展示科研成果，并通过专家点评建立更强的跨国学术连接。</p>
+        <p class="faculty-status" data-zh="以下人员为拟邀人选，尚未确认出席。正式 Faculty 名单及出席信息以协会后续公告为准。" data-en="The individuals below are proposed invitees and have not yet confirmed attendance. The final faculty list will be announced through official SCDSG channels.">以下人员为拟邀人选，尚未确认出席。正式 Faculty 名单及出席信息以协会后续公告为准。</p>
       </div>
-      <div class="forum-metrics">
-        <article class="reveal"><strong>2</strong><span data-zh="Keynote Lecture" data-de="Keynote Lectures">Keynote Lecture</span></article>
-        <article class="reveal"><strong>10</strong><span data-zh="青年口头报告" data-de="Oral Presentations">青年口头报告</span></article>
-        <article class="reveal"><strong>5–8</strong><span data-zh="评审专家" data-de="Expert Jury">评审专家</span></article>
-        <article class="reveal"><strong>200–500</strong><span data-zh="预计线上触达" data-de="Online-Reichweite">预计线上触达</span></article>
+
+      <div class="keynote-grid">
+        <article class="keynote-card reveal">
+          <div class="keynote-photo">
+            <img src="../assets/images/speaker-haikun-liu.webp" alt="Dr. Haikun Liu">
+            <span data-zh="拟邀 KEYNOTE" data-en="PROPOSED KEYNOTE">拟邀 KEYNOTE</span>
+          </div>
+          <div class="keynote-copy">
+            <p class="speaker-index">01 / DKFZ</p>
+            <h3 data-zh="刘海坤博士｜DKFZ 分子神经遗传学部门负责人" data-en="Dr Haikun Liu · Head, Division of Molecular Neurogenetics, DKFZ">刘海坤博士｜DKFZ 分子神经遗传学部门负责人</h3>
+            <strong data-zh="德国癌症研究中心（DKFZ）" data-en="German Cancer Research Center (DKFZ)">德国癌症研究中心（DKFZ）</strong>
+            <p data-zh="主要研究方向包括脑肿瘤干细胞生物学、肿瘤休眠机制、患者来源类器官模型及精准治疗策略。其团队综合应用单细胞组学、CRISPR/Cas9 基因编辑及人工智能方法，解析胶质母细胞瘤的分子与细胞异质性。" data-en="His research includes brain-tumour stem-cell biology, tumour dormancy, patient-derived organoid models and precision-treatment strategies. His team combines single-cell omics, CRISPR/Cas9 gene editing and AI to investigate the molecular and cellular heterogeneity of glioblastoma.">主要研究方向包括脑肿瘤干细胞生物学、肿瘤休眠机制、患者来源类器官模型及精准治疗策略。其团队综合应用单细胞组学、CRISPR/Cas9 基因编辑及人工智能方法，解析胶质母细胞瘤的分子与细胞异质性。</p>
+            <a href="https://www.dkfz.de/en/molecular-neurogenetics" target="_blank" rel="noreferrer" data-zh="查看 DKFZ 官方资料 ↗" data-en="View Official DKFZ Profile ↗">查看 DKFZ 官方资料 ↗</a>
+          </div>
+        </article>
+
+        <article class="keynote-card partner-keynote reveal">
+          <div class="keynote-photo keynote-institution">
+            <img src="../assets/images/partner-tusm.png" alt="同济大学医学院">
+            <span data-zh="拟邀 KEYNOTE" data-en="PROPOSED KEYNOTE">拟邀 KEYNOTE</span>
+          </div>
+          <div class="keynote-copy">
+            <p class="speaker-index">02 / TONGJI UNIVERSITY SCHOOL OF MEDICINE</p>
+            <h3 data-zh="同济大学医学院专家｜人选待定" data-en="Tongji University School of Medicine Expert · To Be Confirmed">同济大学医学院专家｜人选待定</h3>
+            <strong data-zh="拟由合作医学院选派专家作 Keynote Lecture" data-en="A Keynote Lecture is intended for an expert nominated by the partner medical school.">拟由合作医学院选派专家作 Keynote Lecture</strong>
+            <p data-zh="具体讲者及报告主题将在双方完成学术与会务确认后公布。本席位目前仅作为会议方案中的拟邀安排，不代表任何个人已确认出席。" data-en="The speaker and topic will be announced after academic and organisational confirmation by both parties. This slot is a proposed part of the programme and does not indicate that any individual has confirmed attendance.">具体讲者及报告主题将在双方完成学术与会务确认后公布。本席位目前仅作为会议方案中的拟邀安排，不代表任何个人已确认出席。</p>
+            <a href="#organisers" data-zh="了解拟合作医学院 ↗" data-en="Learn About the Proposed Partner Medical School ↗">了解拟合作医学院 ↗</a>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="faculty-more reveal">
+        <div><span data-zh="拟邀嘉宾" data-en="PROPOSED FACULTY">拟邀嘉宾</span><strong data-zh="孙崇教授 · DKFZ" data-en="Prof Chong Sun · DKFZ">孙崇教授 · DKFZ</strong><p data-zh="研究方向：肿瘤免疫调控及免疫治疗机制" data-en="Research: tumour immune regulation and mechanisms of immunotherapy">研究方向：肿瘤免疫调控及免疫治疗机制</p></div>
+        <div><span data-zh="拟邀嘉宾" data-en="PROPOSED FACULTY">拟邀嘉宾</span><strong data-zh="周小波教授 · Mannheim" data-en="Prof Xiaobo Zhou · Mannheim">周小波教授 · Mannheim</strong><p data-zh="研究方向：心血管机制、内皮功能及电生理" data-en="Research: cardiovascular mechanisms, endothelial function and electrophysiology">研究方向：心血管机制、内皮功能及电生理</p></div>
+        <div><span data-zh="拟邀嘉宾" data-en="PROPOSED FACULTY">拟邀嘉宾</span><strong data-zh="孔波教授 · 海德堡大学医院" data-en="Prof Bo Kong · Heidelberg University Hospital">孔波教授 · 海德堡大学医院</strong><p data-zh="研究方向：胰腺疾病外科及转化研究" data-en="Research: pancreatic surgery and translational research">研究方向：胰腺疾病外科及转化研究</p></div>
       </div>
     </section>
 
-    <section class="section program-section" id="program">
-      <div class="section-heading reveal">
-        <p class="eyebrow" data-zh="02 · 会议日程" data-de="02 · PROGRAMM">02 · 会议日程</p>
-        <h2 data-zh="一个下午完成高密度展示、讨论与评选。" data-de="Ein kompakter Nachmittag für Präsentation, Diskussion und Auszeichnung.">一个下午完成高密度展示、讨论与评选。</h2>
+    <section class="section programme-section" id="programme">
+      <div class="programme-heading reveal">
+        <p class="eyebrow" data-zh="会议议程概览" data-en="Programme at a Glance">会议议程概览</p>
+        <h2 data-zh="会议议程将依次围绕研究发现、成果展示、专业讨论及合作连接展开" data-en="A programme structured around discovery, presentation, scientific discussion and collaboration">会议议程将依次围绕研究发现、成果展示、专业讨论及合作连接展开</h2>
+        <p data-zh="以下为初步日程，最终安排以正式会议通知为准。" data-en="Preliminary programme · The final schedule will be published in the official meeting notice.">以下为初步日程，最终安排以正式会议通知为准。</p>
       </div>
-      <div class="program-list reveal">
-        <article><time>13:00</time><div><h3 data-zh="开幕式与嘉宾致辞" data-de="Eröffnung und Grußworte">开幕式与嘉宾致辞</h3><p data-zh="协会、合作单位与嘉宾开场。" data-de="Begrüßung durch SCDSG, Partner und Gäste.">协会、合作单位与嘉宾开场。</p></div></article>
-        <article><time>13:15</time><div><h3>Keynote Lecture I</h3><p data-zh="医学前沿、转化研究或青年科研发展路径。" data-de="Frontiers in medicine, translational research or scientific career paths.">医学前沿、转化研究或青年科研发展路径。</p></div></article>
-        <article><time>13:45</time><div><h3>Keynote Lecture II</h3><p data-zh="拟由合作医学院或特邀专家参与。" data-de="Mit Beteiligung einer Partner Medical School oder eingeladener Expertinnen.">拟由合作医学院或特邀专家参与。</p></div></article>
-        <article><time>14:25</time><div><h3 data-zh="青年学者口头报告 · 上半场" data-de="Oral Presentations · Session I">青年学者口头报告 · 上半场</h3><p data-zh="5 位报告人，每人 15 分钟报告 + 5 分钟点评。" data-de="5 Talks, jeweils 15 Minuten Vortrag + 5 Minuten Feedback.">5 位报告人，每人 15 分钟报告 + 5 分钟点评。</p></div></article>
-        <article><time>16:05</time><div><h3 data-zh="茶歇与壁报交流" data-de="Coffee Break und Poster Austausch">茶歇与壁报交流</h3><p data-zh="壁报巡讲、自由交流与评审互动。" data-de="Poster Walk, Networking und Austausch mit der Jury.">壁报巡讲、自由交流与评审互动。</p></div></article>
-        <article><time>16:25</time><div><h3 data-zh="青年学者口头报告 · 下半场" data-de="Oral Presentations · Session II">青年学者口头报告 · 下半场</h3><p data-zh="继续 5 位入选青年学者报告。" data-de="Weitere 5 ausgewählte Präsentationen.">继续 5 位入选青年学者报告。</p></div></article>
-        <article><time>17:45</time><div><h3 data-zh="专家总结点评与颁奖" data-de="Expert Feedback und Awards">专家总结点评与颁奖</h3><p data-zh="评委总结、青年科学家奖与优秀报告/壁报奖。" data-de="Zusammenfassung der Jury, Young Scientist Awards und Poster-/Talk-Auszeichnungen.">评委总结、青年科学家奖与优秀报告/壁报奖。</p></div></article>
+
+      <div class="programme-board reveal">
+        <div class="programme-day">
+          <span data-zh="SATURDAY" data-en="SATURDAY">SATURDAY</span>
+          <strong data-zh="青年科学主场" data-en="Young Science Day">青年科学主场</strong>
+          <p>13:00—18:30 · Heidelberg</p>
+        </div>
+        <div class="programme-stream">
+          <article><time>13:00–13:15</time><div><span>OPENING</span><h3 data-zh="开幕式与嘉宾致辞" data-en="Opening Ceremony and Guest Remarks">开幕式与嘉宾致辞</h3><p data-zh="15 分钟" data-en="15 minutes">15 分钟</p></div></article>
+          <article class="programme-feature"><time>13:15–13:45</time><div><span>KEYNOTE LECTURE I</span><h3 data-zh="主旨报告 I" data-en="Keynote Lecture I">主旨报告 I</h3><p data-zh="30 分钟" data-en="30 minutes">30 分钟</p></div></article>
+          <article><time>13:45–15:10</time><div><span>YOUNG INVESTIGATORS · I</span><h3 data-zh="青年学者口头报告（上半场）" data-en="Young Investigator Talks · Session I">青年学者口头报告（上半场）</h3><p data-zh="5 位报告人 × 17 分钟，共 85 分钟" data-en="Five speakers × 17 minutes · 85 minutes total">5 位报告人 × 17 分钟，共 85 分钟</p></div></article>
+          <article class="programme-feature"><time>15:10–16:15</time><div><span>BREAK + POSTER SESSION</span><h3 data-zh="茶歇与 Poster 展示" data-en="Break and Poster Session">茶歇与 Poster 展示</h3><p data-zh="Poster 展示 60 分钟；最佳 Poster 投票 5 分钟" data-en="Poster session: 60 minutes · Best Poster voting: 5 minutes">Poster 展示 60 分钟；最佳 Poster 投票 5 分钟</p></div></article>
+          <article class="programme-feature"><time>16:15–16:45</time><div><span>KEYNOTE LECTURE</span><h3 data-zh="主旨报告：同济大学医学院" data-en="Keynote Lecture · Tongji University School of Medicine">主旨报告：同济大学医学院</h3><p data-zh="30 分钟" data-en="30 minutes">30 分钟</p></div></article>
+          <article><time>16:45–18:10</time><div><span>YOUNG INVESTIGATORS · II</span><h3 data-zh="青年学者口头报告（下半场）" data-en="Young Investigator Talks · Session II">青年学者口头报告（下半场）</h3><p data-zh="5 位报告人 × 17 分钟，共 85 分钟" data-en="Five speakers × 17 minutes · 85 minutes total">5 位报告人 × 17 分钟，共 85 分钟</p></div></article>
+          <article><time>18:10–18:20</time><div><span>CLOSING REMARKS</span><h3 data-zh="大会主席和评委代表总结点评" data-en="Summary and Comments from the Congress Chair and Jury Representative">大会主席和评委代表总结点评</h3><p data-zh="10 分钟" data-en="10 minutes">10 分钟</p></div></article>
+          <article><time>18:20–18:30</time><div><span>AWARDS</span><h3 data-zh="颁奖仪式" data-en="Awards Ceremony">颁奖仪式</h3><p data-zh="10 分钟" data-en="10 minutes">10 分钟</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section science-section" aria-labelledby="science-title">
+      <div class="section-heading reveal">
+        <p class="eyebrow" data-zh="学术议题" data-en="SCIENTIFIC TRACKS">学术议题</p>
+        <h2 id="science-title" data-zh="研究方向包括但不限于" data-en="Research areas include, but are not limited to">研究方向包括但不限于</h2>
+      </div>
+      <div class="science-track">
+        <article><span>01</span><h3 data-zh="基础医学" data-en="Basic Medicine">基础医学</h3><p>Basic Medicine</p></article>
+        <article><span>02</span><h3 data-zh="临床医学" data-en="Clinical Medicine">临床医学</h3><p>Clinical Medicine</p></article>
+        <article><span>03</span><h3 data-zh="转化医学" data-en="Translational Medicine">转化医学</h3><p>Translational Medicine</p></article>
+        <article><span>04</span><h3 data-zh="生命科学" data-en="Life Sciences">生命科学</h3><p>Life Sciences</p></article>
+        <article><span>05</span><h3 data-zh="药学与化学" data-en="Pharmaceutical Sciences and Chemistry">药学与化学</h3><p>Pharmaceutical Sciences · Chemistry</p></article>
+        <article><span>06</span><h3 data-zh="医学人工智能" data-en="Artificial Intelligence in Medicine">医学人工智能</h3><p>Medical AI</p></article>
+        <article><span>07</span><h3 data-zh="生物医药交叉学科" data-en="Interdisciplinary Biomedicine">生物医药交叉学科</h3><p>Interdisciplinary Biomedicine</p></article>
+        <article><span>08</span><h3 data-zh="其他医学与生命科学相关方向" data-en="Other Related Areas">其他医学与生命科学相关方向</h3><p>Other Related Areas</p></article>
       </div>
     </section>
 
     <section class="section abstracts-section" id="abstracts">
-      <div class="section-heading row reveal">
+      <div class="abstract-call reveal">
         <div>
-          <p class="eyebrow" data-zh="03 · 摘要征集" data-de="03 · ABSTRACTS">03 · 摘要征集</p>
-          <h2 data-zh="英文摘要，300 词以内，匿名评审。" data-de="Englische Abstracts bis 300 Wörter, anonym begutachtet.">英文摘要，300 词以内，匿名评审。</h2>
+          <p class="eyebrow" data-zh="CALL FOR ABSTRACTS · NOW OPEN" data-en="CALL FOR ABSTRACTS · NOW OPEN">CALL FOR ABSTRACTS · NOW OPEN</p>
+          <h2 data-zh="欢迎提交医学与生命科学研究摘要，并在海德堡进行学术展示" data-en="Present Your Research in Medicine and the Life Sciences in Heidelberg">欢迎提交医学与生命科学研究摘要，并在海德堡进行学术展示</h2>
+          <p data-zh="所有投稿将接受匿名学术评审，综合排名前 10 的摘要将获邀进行口头报告；其余高质量投稿将根据评审结果进入壁报展示环节。" data-en="All submissions will undergo anonymous academic review. The ten highest-ranked abstracts will be invited for oral presentation; other high-quality submissions may be selected for poster presentation.">所有投稿将接受匿名学术评审，综合排名前 10 的摘要将获邀进行口头报告；其余高质量投稿将根据评审结果进入壁报展示环节。</p>
         </div>
-        <p data-zh="最终投稿开放时间和报名方式将在协会公众号、小红书及合作单位渠道发布。" data-de="Einreichungsfristen und Registrierung werden über SCDSG Kanäle und Partner bekanntgegeben.">最终投稿开放时间和报名方式将在协会公众号、小红书及合作单位渠道发布。</p>
+        <div class="abstract-format">
+          <span data-zh="投稿格式" data-en="FORMAT">投稿格式</span>
+          <strong data-zh="英文 · 不超过 300 词" data-en="English · Maximum 300 Words">英文 · 不超过 300 词</strong>
+          <ul>
+            <li data-zh="原创医学或生命科学研究" data-en="Original research in medicine or the life sciences">原创医学或生命科学研究</li>
+            <li data-zh="摘要采用匿名学术评审" data-en="Anonymous academic review">摘要采用匿名学术评审</li>
+            <li data-zh="口头报告 15 分钟 + 5 分钟问答" data-en="15-minute oral presentation + 5-minute Q&amp;A">口头报告 15 分钟 + 5 分钟问答</li>
+            <li data-zh="入选壁报将在论坛现场集中展示并接受评议" data-en="Selected posters will be displayed and reviewed at the forum">入选壁报将在论坛现场集中展示并接受评议</li>
+          </ul>
+        </div>
       </div>
-      <div class="topic-filters reveal" role="group" aria-label="投稿方向筛选" data-filter-group=".topic-card">
-        <button class="active" type="button" data-filter="all" data-zh="全部方向" data-de="Alle Themen">全部方向</button>
-        <button type="button" data-filter="medicine" data-zh="医学" data-de="Medizin">医学</button>
-        <button type="button" data-filter="translation" data-zh="转化" data-de="Translation">转化</button>
-        <button type="button" data-filter="ai" data-zh="AI/交叉" data-de="AI/Interdisziplinär">AI/交叉</button>
-      </div>
-      <div class="topic-grid">
-        <article class="topic-card reveal" data-category="medicine"><span>01</span><h3 data-zh="基础医学" data-de="Grundlagenmedizin">基础医学</h3></article>
-        <article class="topic-card reveal" data-category="medicine"><span>02</span><h3 data-zh="临床医学" data-de="Klinische Medizin">临床医学</h3></article>
-        <article class="topic-card reveal" data-category="translation"><span>03</span><h3 data-zh="转化医学" data-de="Translationale Medizin">转化医学</h3></article>
-        <article class="topic-card reveal" data-category="translation"><span>04</span><h3 data-zh="生命科学" data-de="Lebenswissenschaften">生命科学</h3></article>
-        <article class="topic-card reveal" data-category="translation"><span>05</span><h3 data-zh="药学与生物医药" data-de="Pharmazie und Biomedizin">药学与生物医药</h3></article>
-        <article class="topic-card reveal" data-category="ai"><span>06</span><h3 data-zh="医学人工智能" data-de="Medizinische KI">医学人工智能</h3></article>
-        <article class="topic-card reveal" data-category="ai"><span>07</span><h3 data-zh="生物医药交叉学科" data-de="Interdisziplinäre Biomedizin">生物医药交叉学科</h3></article>
+
+      <div class="important-dates reveal">
+        <p data-zh="重要日期" data-en="IMPORTANT DATES">重要日期</p>
+        <article><span>01</span><strong data-zh="摘要征集开放" data-en="Call for Abstracts Opens">摘要征集开放</strong><em data-zh="现已开放" data-en="Now Open">现已开放</em></article>
+        <article><span>02</span><strong data-zh="投稿截止" data-en="Submission Deadline">投稿截止</strong><em data-zh="2026 年 9 月 30 日 23:30（UTC+2）" data-en="30 September 2026 · 23:30 (UTC+2)">2026 年 9 月 30 日 23:30（UTC+2）</em></article>
+        <article><span>03</span><strong data-zh="结果公布" data-en="Results Announced">结果公布</strong><em data-zh="2026 年 10 月 8–10 日" data-en="8–10 October 2026">2026 年 10 月 8–10 日</em></article>
+        <article><span>04</span><strong data-zh="论坛举办" data-en="Forum">论坛举办</strong><em data-zh="2026 年 11 月 14 日" data-en="14 November 2026">2026 年 11 月 14 日</em></article>
       </div>
     </section>
 
     <section class="section awards-section" id="awards">
       <div class="awards-copy reveal">
-        <p class="eyebrow" data-zh="04 · 奖项设置" data-de="04 · AWARDS">04 · 奖项设置</p>
-        <h2 data-zh="以奖项鼓励真正扎实的青年科研表达。" data-de="Awards für starke Forschung und klare wissenschaftliche Kommunikation.">以奖项鼓励真正扎实的青年科研表达。</h2>
-        <p data-zh="核心奖项拟由协会与合作医学院联合评选并颁发，评审维度包括学术研究水平、创新性、学术表现与发展潜力。" data-de="Die Hauptpreise sollen gemeinsam mit einer Partner Medical School vergeben werden. Kriterien sind Forschungsqualität, Innovation, Präsentation und Entwicklungspotenzial.">核心奖项拟由协会与合作医学院联合评选并颁发，评审维度包括学术研究水平、创新性、学术表现与发展潜力。</p>
+        <p class="eyebrow" data-zh="YOUNG SCIENTIST RECOGNITION" data-en="YOUNG SCIENTIST RECOGNITION">YOUNG SCIENTIST RECOGNITION</p>
+        <h2 data-zh="表彰兼具研究质量、创新价值与学术表达能力的青年学者" data-en="Recognising early-career researchers for scientific quality, innovation and effective communication">表彰兼具研究质量、创新价值与学术表达能力的青年学者</h2>
+        <p data-zh="评选工作拟由协会与合作医学院共同组织，评价维度包括科学质量、创新程度、学术表达及未来研究潜力。" data-en="The awards are planned to be jointly organised by SCDSG and the partner medical school. Assessment will consider scientific quality, innovation, communication and future research potential.">评选工作拟由协会与合作医学院共同组织，评价维度包括科学质量、创新程度、学术表达及未来研究潜力。</p>
       </div>
-      <div class="award-card reveal">
-        <span data-zh="核心奖项" data-de="Hauptpreis">核心奖项</span>
-        <strong data-zh="旅德华人杰出青年科学家" data-de="Outstanding Young Chinese Scientist in Germany">旅德华人杰出青年科学家</strong>
-        <p data-zh="拟设 5 名，包含奖金、联合署名证书与协会官方渠道展示。" data-de="Geplant sind 5 Auszeichnungen mit Preisgeld, gemeinsamem Zertifikat und Sichtbarkeit über SCDSG Kanäle.">拟设 5 名，包含奖金、联合署名证书与协会官方渠道展示。</p>
+      <article class="award-card award-card-main reveal">
+        <span>OUTSTANDING YOUNG SCIENTIST</span>
+        <strong data-zh="旅德华人杰出青年科学家奖" data-en="Outstanding Young Chinese Scientist in Germany Award">旅德华人杰出青年科学家奖</strong>
+        <div class="award-prize"><b>€200</b><small data-zh="奖金" data-en="MONETARY PRIZE">奖金</small></div>
+        <p data-zh="表彰在研究质量、创新价值、学术表达与发展潜力方面表现突出的青年科学家，获奖者将获得荣誉证书与学术传播支持。" data-en="Recognising an outstanding early-career scientist for research quality, innovation, scientific communication and future potential. The recipient will also receive a certificate and academic-communication support.">表彰在研究质量、创新价值、学术表达与发展潜力方面表现突出的青年科学家，获奖者将获得荣誉证书与学术传播支持。</p>
+      </article>
+      <article class="award-card reveal"><span>BEST ORAL</span><strong data-zh="最佳学术报告奖" data-en="Best Oral Presentation Award">最佳学术报告奖</strong><p data-zh="表彰研究质量、报告结构及现场学术交流表现突出的口头报告，获奖者将获得荣誉证书与纪念礼品。" data-en="Recognising an outstanding oral presentation for research quality, structure and scientific discussion. The recipient will receive a certificate and commemorative gift.">表彰研究质量、报告结构及现场学术交流表现突出的口头报告，获奖者将获得荣誉证书与纪念礼品。</p></article>
+      <article class="award-card reveal"><span>BEST POSTER</span><strong data-zh="最佳学术壁报奖" data-en="Best Academic Poster Award">最佳学术壁报奖</strong><p data-zh="表彰科学内容、视觉表达及现场讨论质量突出的学术壁报，获奖者将获得荣誉证书与纪念礼品。" data-en="Recognising an outstanding academic poster for scientific content, visual communication and discussion. The recipient will receive a certificate and commemorative gift.">表彰科学内容、视觉表达及现场讨论质量突出的学术壁报，获奖者将获得荣誉证书与纪念礼品。</p></article>
+      <div class="award-benefits reveal">
+        <strong data-zh="其他学术支持" data-en="Additional Academic Opportunities">其他学术支持</strong>
+        <ul>
+          <li data-zh="优胜者可获邀参加同济大学青年论坛" data-en="Selected winners may be invited to the Tongji University Young Scholars Forum">优胜者可获邀参加同济大学青年论坛</li>
+          <li data-zh="按相关活动安排报销食宿并给予奖励" data-en="Accommodation and meals may be reimbursed and an award provided in accordance with the relevant event arrangements">按相关活动安排报销食宿并给予奖励</li>
+          <li data-zh="获得协会学术传播与后续交流支持" data-en="Academic-communication and follow-up networking support from SCDSG">获得协会学术传播与后续交流支持</li>
+        </ul>
       </div>
-      <div class="award-mini reveal"><strong data-zh="优秀学术报告奖" data-de="Best Oral Presentation">优秀学术报告奖</strong><span data-zh="覆盖入选口头报告学者" data-de="Für ausgewählte Oral Presentations">覆盖入选口头报告学者</span></div>
-      <div class="award-mini reveal"><strong data-zh="优秀学术壁报奖" data-de="Best Poster Award">优秀学术壁报奖</strong><span data-zh="专家评审 + 参会学者投票" data-de="Jury und Publikumsvoting">专家评审 + 参会学者投票</span></div>
     </section>
 
-    <section class="section experts-section" id="experts">
+    <section class="section organisers-section" id="organisers">
+      <div class="section-heading row reveal">
+        <div>
+          <p class="eyebrow" data-zh="ORGANISERS &amp; PROPOSED PARTNER" data-en="ORGANISERS &amp; PROPOSED PARTNER">ORGANISERS & PROPOSED PARTNER</p>
+          <h2 data-zh="依托旅德华人医学与生命科学网络，促进中德医学交流与协作" data-en="Rooted in a Chinese professional network in Germany and advancing Sino-German medical collaboration">依托旅德华人医学与生命科学网络，促进中德医学交流与协作</h2>
+        </div>
+        <p data-zh="协办及合作单位的状态将根据正式确认结果动态更新；页面提及的 DKFZ、UKHD 及 Mannheim 现阶段仅用于说明拟邀专家的机构归属，不代表相关机构已确认参与协办。" data-en="Partner status will be updated after formal confirmation. References to DKFZ, UKHD and Mannheim currently identify the affiliations of proposed faculty only and do not indicate confirmed institutional participation.">协办及合作单位的状态将根据正式确认结果动态更新；页面提及的 DKFZ、UKHD 及 Mannheim 现阶段仅用于说明拟邀专家的机构归属，不代表相关机构已确认参与协办。</p>
+      </div>
+
+      <div class="organiser-grid">
+        <article class="organiser-card reveal">
+          <span class="organiser-badge" data-zh="主办单位" data-en="ORGANISER">主办单位</span>
+          <img class="organiser-logo scdsg-logo" src="../assets/images/logo.png" alt="SCDSG">
+          <h3 data-zh="旅德华人医师学者协会（SCDSG）" data-en="SCDSG">旅德华人医师学者协会（SCDSG）</h3>
+          <p data-zh="旅德华人医师学者协会源起于 2012 年成立的“海德堡龙一族”，并于 2016 年在海德堡正式成立为非营利学术组织，服务于德国、欧洲及中国的华人医学与生命科学专业群体。" data-en="SCDSG developed from Heidelberg Long Yi Zu, a professional community founded in 2012, and was formally established as a non-profit academic association in Heidelberg in 2016. It serves Chinese professionals in medicine and the life sciences across Germany, Europe and China.">旅德华人医师学者协会源起于 2012 年成立的“海德堡龙一族”，并于 2016 年在海德堡正式成立为非营利学术组织，服务于德国、欧洲及中国的华人医学与生命科学专业群体。</p>
+          <a href="../index.html#about" data-zh="了解协会 ↗" data-en="Learn More About SCDSG ↗">了解协会 ↗</a>
+        </article>
+
+        <article class="organiser-card proposed-partner reveal">
+          <span class="organiser-badge" data-zh="拟联合主办 / 协办 · 待确认" data-en="PROPOSED CO-ORGANISER / PARTNER · TO BE CONFIRMED">拟联合主办 / 协办 · 待确认</span>
+          <img class="organiser-logo tusm-logo" src="../assets/images/partner-tusm.png" alt="同济大学医学院">
+          <h3 data-zh="同济大学医学院｜拟重点合作单位" data-en="Tongji University School of Medicine · Proposed Principal Partner">同济大学医学院｜拟重点合作单位</h3>
+          <p data-zh="同济医学的历史可追溯至 1907 年创办的德文医学堂，长期以来持续推动中德医学教育、科研及人才交流。学院拥有覆盖基础医学、临床医学、转化医学和医学交叉创新的教学科研体系，并依托多家附属医院开展临床与转化研究。" data-en="Tongji Medicine traces its history to the German Medical School founded in 1907 and has a longstanding role in Sino-German medical education, research and talent exchange. Its teaching and research span basic, clinical and translational medicine as well as interdisciplinary medical innovation, supported by affiliated hospitals.">同济医学的历史可追溯至 1907 年创办的德文医学堂，长期以来持续推动中德医学教育、科研及人才交流。学院拥有覆盖基础医学、临床医学、转化医学和医学交叉创新的教学科研体系，并依托多家附属医院开展临床与转化研究。</p>
+          <ul class="partner-role-list">
+            <li data-zh="拟选派一位医学院专家作 Keynote Lecture" data-en="A medical-school expert is proposed for a Keynote Lecture">拟选派一位医学院专家作 Keynote Lecture</li>
+            <li data-zh="拟共同参与摘要评审、青年学者奖项及联合证书" data-en="Proposed joint participation in abstract review, Young Scientist Awards and joint certificates">拟共同参与摘要评审、青年学者奖项及联合证书</li>
+            <li data-zh="优胜者拟获邀参加同济大学青年论坛，并按活动安排报销食宿、给予奖励" data-en="Selected winners may be invited to the Tongji University Young Scholars Forum, with accommodation, meals and an award provided according to the event arrangements">优胜者拟获邀参加同济大学青年论坛，并按活动安排报销食宿、给予奖励</li>
+          </ul>
+          <a href="https://med.tongji.edu.cn/english/HOME.htm" target="_blank" rel="noreferrer" data-zh="访问医学院官网 ↗" data-en="Visit the Medical School Website ↗">访问医学院官网 ↗</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section registration-section" id="registration">
+      <div class="registration-copy reveal">
+        <p class="eyebrow" data-zh="ABSTRACT SUBMISSION" data-en="ABSTRACT SUBMISSION">ABSTRACT SUBMISSION</p>
+        <h2 data-zh="提交研究摘要，申请口头报告或壁报展示" data-en="Submit Your Abstract for an Oral or Poster Presentation">提交研究摘要，申请口头报告或壁报展示</h2>
+        <p data-zh="欢迎提交英文研究摘要，申请青年学者口头报告或壁报展示。投稿材料包括题目、研究方向、摘要、关键词、个人简历及补充图表（可选）。" data-en="We welcome English-language research abstracts for young investigator talks or poster presentations. Submissions include a title, research field, abstract, keywords and CV; one supplementary figure is optional.">欢迎提交英文研究摘要，申请青年学者口头报告或壁报展示。投稿材料包括题目、研究方向、摘要、关键词、个人简历及补充图表（可选）。</p>
+      </div>
+      <div class="registration-panel reveal">
+        <span data-zh="青年学者摘要投稿" data-en="YOUNG INVESTIGATOR ABSTRACT SUBMISSION">青年学者摘要投稿</span>
+        <strong data-zh="英文摘要不超过 300 词" data-en="English Abstract · Maximum 300 Words">英文摘要不超过 300 词</strong>
+        <ul>
+          <li data-zh="填写题目、研究方向、摘要与关键词" data-en="Provide the title, research field, abstract and keywords">填写题目、研究方向、摘要与关键词</li>
+          <li data-zh="上传个人简历；补充图表为可选项" data-en="Upload a CV; a supplementary figure is optional">上传个人简历；补充图表为可选项</li>
+          <li data-zh="提交后获得唯一投稿编号" data-en="Receive a unique submission number after submitting">提交后获得唯一投稿编号</li>
+        </ul>
+        <a class="button button-primary" href="register/index.html"><span data-zh="进入投稿网站" data-en="Submit an Abstract">进入投稿网站</span><span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <section class="forum-faq section">
       <div class="section-heading reveal">
-        <p class="eyebrow" data-zh="05 · 拟邀 Keynote 与评委" data-de="05 · EINGELADENE EXPERTINNEN">05 · 拟邀 Keynote 与评委</p>
-        <h2 data-zh="来自 DKFZ、海德堡大学医院与合作医学院的学术力量。" data-de="Wissenschaftliche Stimmen von DKFZ, Universitätsklinikum Heidelberg und Partner Medical Schools.">来自 DKFZ、海德堡大学医院与合作医学院的学术力量。</h2>
+        <p class="eyebrow">FAQ</p>
+        <h2 data-zh="参会常见问题" data-en="Frequently Asked Questions">参会常见问题</h2>
       </div>
-      <div class="expert-grid">
-        <article class="expert-card reveal">
-          <span>DKFZ</span>
-          <h3 data-zh="刘海坤 教授" data-de="Prof. Haikun Liu">刘海坤 教授</h3>
-          <p data-zh="德国癌症研究中心分子神经遗传学部主任，研究方向涵盖肿瘤与神经生物学、干细胞和人工智能与健康。" data-de="Leiter der Molekularen Neurogenetik am DKFZ mit Arbeiten zu Tumor- und Neurobiologie, Stammzellen sowie KI und Gesundheit.">德国癌症研究中心分子神经遗传学部主任，研究方向涵盖肿瘤与神经生物学、干细胞和人工智能与健康。</p>
-        </article>
-        <article class="expert-card reveal">
-          <span>DKFZ</span>
-          <h3 data-zh="孙崇 教授" data-de="Prof. Chong Sun">孙崇 教授</h3>
-          <p data-zh="德国癌症研究中心肿瘤免疫调控研究组负责人，聚焦肿瘤免疫微环境与免疫治疗机制。" data-de="Gruppenleiter am DKFZ mit Fokus auf Tumorimmunologie, Tumormikromilieu und Mechanismen der Immuntherapie.">德国癌症研究中心肿瘤免疫调控研究组负责人，聚焦肿瘤免疫微环境与免疫治疗机制。</p>
-        </article>
-        <article class="expert-card reveal">
-          <span>Heidelberg</span>
-          <h3 data-zh="孔波 教授" data-de="Prof. Bo Kong">孔波 教授</h3>
-          <p data-zh="海德堡大学医院普外科与移植外科主任医师，长期开展胰腺癌基础、转化与临床研究。" data-de="Oberarzt am Universitätsklinikum Heidelberg mit translationaler und klinischer Forschung zu Pankreaskarzinom.">海德堡大学医院普外科与移植外科主任医师，长期开展胰腺癌基础、转化与临床研究。</p>
-        </article>
-        <article class="expert-card reveal">
-          <span>Mannheim</span>
-          <h3 data-zh="周小波 教授" data-de="Prof. Xiaobo Zhou">周小波 教授</h3>
-          <p data-zh="海德堡大学曼海姆医学院 PI，研究心血管生理病理机制、内皮功能与细胞分子电生理。" data-de="PI an der Medizinischen Fakultät Mannheim mit Fokus auf kardiovaskuläre Mechanismen, Endothelfunktion und Elektrophysiologie.">海德堡大学曼海姆医学院 PI，研究心血管生理病理机制、内皮功能与细胞分子电生理。</p>
-        </article>
+      <div class="faq-list reveal">
+        <details>
+          <summary data-zh="谁可以投稿和参会？" data-en="Who Can Submit and Attend?">谁可以投稿和参会？</summary>
+          <p data-zh="论坛面向医学、生命科学及相关交叉领域的本科生、硕士研究生、博士研究生、博士后、青年医师、青年 PI 及其他青年研究者。" data-en="The forum welcomes undergraduate and master's students, doctoral candidates, postdoctoral researchers, early-career clinicians, young PIs and other researchers in medicine, the life sciences and related interdisciplinary fields.">论坛面向医学、生命科学及相关交叉领域的本科生、硕士研究生、博士研究生、博士后、青年医师、青年 PI 及其他青年研究者。</p>
+        </details>
+        <details>
+          <summary data-zh="投稿需要准备哪些材料？" data-en="What Materials Are Required for Submission?">投稿需要准备哪些材料？</summary>
+          <p data-zh="请在线填写英文题目、研究方向、英文摘要和关键词，并上传 PDF 格式个人简历；补充图表为可选材料。英文摘要不超过 300 词。" data-en="Please provide an English title, research area, abstract and keywords, and upload a CV in PDF format. A supplementary figure is optional. The abstract must not exceed 300 words.">请在线填写英文题目、研究方向、英文摘要和关键词，并上传 PDF 格式个人简历；补充图表为可选材料。英文摘要不超过 300 词。</p>
+        </details>
+        <details>
+          <summary data-zh="可以选择口头报告或壁报展示吗？" data-en="Can I Choose an Oral or Poster Presentation?">可以选择口头报告或壁报展示吗？</summary>
+          <p data-zh="投稿时可选择口头报告、壁报展示或均可。该选择仅代表投稿偏好，最终展示形式由评审委员会根据匿名评审结果确定。" data-en="Authors may indicate oral presentation, poster presentation or either as their preference. The final format will be determined by the review committee following anonymous assessment.">投稿时可选择口头报告、壁报展示或均可。该选择仅代表投稿偏好，最终展示形式由评审委员会根据匿名评审结果确定。</p>
+        </details>
+        <details>
+          <summary data-zh="投稿和评审的关键日期是什么？" data-en="What Are the Key Submission and Review Dates?">投稿和评审的关键日期是什么？</summary>
+          <p data-zh="投稿截止时间为 2026 年 9 月 30 日 23:30（UTC+2），评审结果计划于 10 月 8—10 日公布，论坛于 11 月 14 日举行。" data-en="Submissions close at 23:30 (UTC+2) on 30 September 2026. Review results are scheduled for 8–10 October, and the forum will take place on 14 November.">投稿截止时间为 2026 年 9 月 30 日 23:30（UTC+2），评审结果计划于 10 月 8—10 日公布，论坛于 11 月 14 日举行。</p>
+        </details>
+        <details>
+          <summary data-zh="可以在线参加吗？" data-en="Is Online Participation Available?">可以在线参加吗？</summary>
+          <p data-zh="论坛以德国海德堡线下会议为主，并计划提供线上参与方式。具体接入信息将通过协会官方渠道另行通知。" data-en="The forum will be held primarily on site in Heidelberg, with online participation planned. Access details will be announced separately through official SCDSG channels.">论坛以德国海德堡线下会议为主，并计划提供线上参与方式。具体接入信息将通过协会官方渠道另行通知。</p>
+        </details>
+        <details>
+          <summary data-zh="参加本次学术论坛是否需要缴费？" data-en="Is There a Fee to Attend the Forum?">参加本次学术论坛是否需要缴费？</summary>
+          <p data-zh="本次青年学术论坛免收注册费，会议现场将免费提供茶歇与茶点。除大会特邀嘉宾外，参会人员的交通及住宿费用自理。" data-en="Registration for the Young Scholars Forum is free of charge, and complimentary refreshments will be provided during the meeting. Except for invited guests of the forum, participants are responsible for their own travel and accommodation expenses.">本次青年学术论坛免收注册费，会议现场将免费提供茶歇与茶点。除大会特邀嘉宾外，参会人员的交通及住宿费用自理。</p>
+        </details>
       </div>
-      <p class="expert-note reveal" data-zh="名单为拟邀请方向，最终嘉宾与评委以正式通知为准。" data-de="Die Liste zeigt geplante Einladungen. Finale Gäste und Jury werden offiziell bekanntgegeben.">名单为拟邀请方向，最终嘉宾与评委以正式通知为准。</p>
     </section>
 
-    <section class="forum-cta" id="partners">
+    <section class="forum-cta">
+      <img class="group-photo" src="../assets/images/activity-records/forum-2025.jpg" alt="">
       <div class="forum-cta-copy reveal">
-        <p class="eyebrow" data-zh="合作与参与" data-de="PARTNERSCHAFT UND TEILNAHME">合作与参与</p>
-        <h2 data-zh="共同支持旅德青年医学人才的下一次亮相。" data-de="Gemeinsam junge medizinische Talente in Deutschland sichtbar machen.">共同支持旅德青年医学人才的下一次亮相。</h2>
-        <p data-zh="论坛拟由旅德华人医师学者协会主办，并邀请国内医学院校、医院、科研机构与赞助伙伴共同参与。具体合作方式以正式沟通为准。" data-de="Das Forum wird von SCDSG organisiert und lädt Medical Schools, Kliniken, Forschungseinrichtungen und Partner zur Zusammenarbeit ein. Details folgen in der offiziellen Abstimmung.">论坛拟由旅德华人医师学者协会主办，并邀请国内医学院校、医院、科研机构与赞助伙伴共同参与。具体合作方式以正式沟通为准。</p>
-        <a class="button button-light" href="../#join"><span data-zh="联系协会" data-de="SCDSG kontaktieren">联系协会</span><span aria-hidden="true">↗</span></a>
+        <p class="eyebrow" data-zh="BE PART OF THE FORUM" data-en="BE PART OF THE FORUM">BE PART OF THE FORUM</p>
+        <h2 data-zh="面向青年医学与生命科学研究者征集研究摘要" data-en="Call for Abstracts in Medicine and the Life Sciences">面向青年医学与生命科学研究者征集研究摘要</h2>
+        <p data-zh="注册流程及最终讲者与评审专家名单将通过协会官方渠道发布。" data-en="Registration details and the final list of speakers and reviewers will be published through official SCDSG channels.">注册流程及最终讲者与评审专家名单将通过协会官方渠道发布。</p>
+        <div class="forum-cta-actions">
+          <a class="button button-light" href="register/index.html"><span data-zh="提交摘要" data-en="Submit an Abstract">提交摘要</span><span aria-hidden="true">↗</span></a>
+          <a class="forum-text-link forum-text-link-light" href="../index.html#join"><span data-zh="关注协会动态" data-en="Follow SCDSG Updates">关注协会动态</span><span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact forum-contact" id="contact">
+      <div class="contact-copy reveal">
+        <p class="eyebrow" data-zh="联系协会" data-en="Contact SCDSG">联系协会</p>
+        <h2 data-zh="联系旅德华人医师学者协会" data-en="Get in Touch with SCDSG">联系旅德华人医师学者协会</h2>
+        <p data-zh="论坛投稿、学术合作及其他事务，请通过电子邮箱联系我们。" data-en="For abstract submissions, academic collaboration and general enquiries, please contact us by email.">论坛投稿、学术合作及其他事务，请通过电子邮箱联系我们。</p>
+        <a class="contact-email" href="mailto:scdsg.heidelberg@gmail.com">scdsg.heidelberg@gmail.com</a>
+        <a class="contact-linkedin" href="https://www.linkedin.com/company/society-of-chinese-doctors-and-scholars-in-germany-scdsg/" target="_blank" rel="noreferrer" data-zh="LinkedIn 协会主页 ↗" data-en="SCDSG on LinkedIn ↗">LinkedIn 协会主页 ↗</a>
+      </div>
+      <div class="contact-qr-grid reveal" aria-label="协会社交媒体二维码">
+        <article><img class="social-qr" src="../assets/images/social/wechat-qr.jpg" alt="协会微信公众号二维码"><strong data-zh="协会公众号" data-en="Official WeChat Account">协会公众号</strong><span data-zh="微信：龙一族 SCDSG" data-en="WeChat: 龙一族 SCDSG">微信：龙一族 SCDSG</span></article>
+        <article><img class="social-qr" src="../assets/images/social/xiaohongshu-qr.jpg" alt="协会小红书二维码"><strong data-zh="小红书" data-en="Xiaohongshu">小红书</strong><span>SCDSG</span></article>
+        <article><img class="social-qr" src="../assets/images/social/douyin-qr.jpg" alt="协会抖音二维码"><strong data-zh="抖音" data-en="Douyin">抖音</strong><span>SCDSG</span></article>
+        <article><img class="social-qr" src="../assets/images/social/instagram-qr.png" alt="协会 Instagram 二维码"><strong>Instagram</strong><span>@scdsg.heidelberg</span></article>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="footer-brand"><img src="../assets/images/logo.png" alt=""><div><strong>SCDSG</strong><span data-zh="旅德华人医师学者协会" data-de="Gesellschaft Chinesischer Ärzte und Wissenschaftler in Deutschland">旅德华人医师学者协会</span></div></div>
-    <p data-zh="旅德华人医师学者青年学术论坛 · 2026" data-de="Young Chinese Medical Scholars Forum · 2026">旅德华人医师学者青年学术论坛 · 2026</p>
-    <a href="#top" data-zh="返回顶部 ↑" data-de="Nach oben ↑">返回顶部 ↑</a>
+    <div class="footer-brand"><img src="../assets/images/logo.png" alt=""><div><strong>SCDSG</strong><span data-zh="旅德华人医师学者协会" data-en="Chinese Association of Medical Doctors and Scholars in Germany">旅德华人医师学者协会</span></div></div>
+    <p data-zh="旅德华人医师学者青年学术论坛 · 海德堡 · 2026" data-en="SCDSG Young Scholars Forum · Heidelberg · 2026">旅德华人医师学者青年学术论坛 · 海德堡 · 2026</p>
+    <a href="#top" data-zh="返回顶部 ↑" data-en="Back to Top ↑">返回顶部 ↑</a>
   </footer>
 </body>
 </html>
